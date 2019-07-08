@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('jwt.auth',['except' => ['login']]);
+
     }
 
     private function validator(Request $request)
@@ -41,33 +41,10 @@ class UserController extends Controller
         $this->validate($request ,$rules);
     }
 
-
-    public function login(Request $request)
-    {
-        $token = app('auth')->attempt(['username' => $request->username, 'password' => $request->password]);
-        if($token){
-          return response()->json([
-            'success' => true,
-            'message' => 'Success',
-            'data' => ['token' => $token]
-          ], 200);
-        }else{
-          return response()->json([
-            'success' => false,
-            'message' => 'Failed, Wrong username or password',
-            'data' => ''
-          ], 400);
-        }
-    }
-
     public function index()
     {
-        $user = User::all();
-        return response()->json([
-                  'success' => true,
-                  'message' => 'Success',
-                  'data' => $user
-            ], 200);
+        $all_user = User::all();
+        return view('user.index', compact('all_user'));
     }
 
 
@@ -86,50 +63,14 @@ class UserController extends Controller
 
        $register = User::create($data);
        if($register){
-           return response()->json([
-                    'success' => true,
-                    'code' => 201,
-                    'message' => 'Register berhasil dilakukan',
-                    'data' => $register
-                    ], 201);
-       }else{
-           return response()->json([
-                    'success' => false,
-                    'code' => 400,
-                    'message' => 'Register gagal dilakukan',
-                    'data' => $register
-                  ], 400);
+        // return redirect('user.index')
        }
     }
 
 
-    public function show($username){
-        $user = User::find($username);
-        if($user){
-            $akses = User::find($username)->akses; // Sengaja dipisah, kalo disatuin, var user bakal nampilin semua relasinya
-            $data = null; // default akses
-
-            foreach ($akses as $akses) {
-              if($akses->pivot->status == 'Aktif'){
-                $data = $akses;
-              }
-            };
-
-            return response()->json([
-                'success' => true,
-                'code' => 200,
-                'message' => 'User Found!',
-                'data' => ['user' => $user, 'akses' => $data],
-              ], 200);
-
-        }else{
-            return response()->json([
-                'success' => false,
-                'code' => 400,
-                'message' => 'User not found!',
-                'data' => Null,
-              ], 400);
-        }
+    public function show(User $user)
+    {
+          return view('user.show', compact('user'));
     }
 
     public function update(Request $request, $username)
@@ -151,12 +92,7 @@ class UserController extends Controller
                 }
           }
           // Kalo gagal nanti bakal dilempar kesini
-          return response()->json([
-                'success' => false,
-                'code' => 400,
-                'message' => 'data tidak ditemukan',
-                'data' => ''
-              ], 400);
+          // return redirect('user.dashboard')->
     }
 
     public function delete($username)
