@@ -22,10 +22,12 @@ Route::get('/subscribe', function () {
   return view('subscribe.index-user');
 });
 
+Route::get('/admin', function () {
+  return view('video.index-user');
+});
+
 Route::post('/login', 'UserController@login');
 // $router->post('/login', 'UserController@login');
-
-
 // $router->get('/user', 'UserController@index');
 // $router->get('/user/{username}', 'UserController@show');
 // $router->post('/user', 'UserController@store');
