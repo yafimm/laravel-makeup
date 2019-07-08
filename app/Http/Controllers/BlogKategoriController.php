@@ -34,7 +34,7 @@ class BlogKategoriController extends Controller
 
     public function create()
     {
-        return view('blogkategori.create');
+          return view('blogkategori.create');
     }
 
     public function show(Blog_kategori $blog_kategori)
@@ -61,7 +61,6 @@ class BlogKategoriController extends Controller
           }
           // Kalo gagal nanti bakal dilempar kesini
           return redirect('blogkategori.index')->with();
-
     }
 
     public function delete(Blog_kategori $blog_kategori)
@@ -74,6 +73,5 @@ class BlogKategoriController extends Controller
           // Kalo gagal nanti bakal dilempar kesini
           return redirect('blogkategori.index')->with();
     }
-
     //
 }

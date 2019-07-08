@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('blogkategori', 'App\Blog_kategori');
         Route::model('akses', 'App\Akses');
         Route::model('tipeadmin', 'App\Tipe_admin');
-
+        Route::model('video', 'App\Video');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Video;
+use Storage;
 
 class VideoController extends Controller
 {
@@ -20,7 +21,7 @@ class VideoController extends Controller
         'video'   => 'mimes:mp4,mov,ogg,qt',
         'judul' => 'required|string|min:5|max:255',
         'deskripsi' => 'required|string',
-        'thumbnail' => 'sometimes|mimes:jpg,png,svg'
+        'thumbnail' => 'sometimes|mimes:jpg,png,svg',
         'hak_akses' => 'required'
       ];
 
@@ -30,11 +31,8 @@ class VideoController extends Controller
       $this->validate($request ,$rules);
     }
 
-    protected function buildFailedValidationResponse(Request $request, array $errors) {
-        return ["code"=> 406 , "message" => "forbidden" , "errors" =>$errors];
-    }
-
-    private function upload_video(Request $request){
+    private function uploadVideo(Request $request)
+    {
         $video = $request->file('video');
         $ext = $video->getClientOriginalExtension();
         if($request->file('video')->isValid()){
@@ -47,79 +45,79 @@ class VideoController extends Controller
         return false;
       }
 
-    // private function hapusFoto(Produk $produk){
-    //     $exist = Storage::disk('video')->exists($produk->gambar);
-    //     if(isset($produk->gambar) && $exist){
-    //       $delete = Storage::disk('gambar')->delete($produk->gambar);
-    //       if($delete){
-    //         return true;
-    //       }else{
-    //         return false;
-    //       }
-    //     }
-    //   }
+    private function hapusVideo(Video $video){
+        $exist = Storage::disk('video')->exists($video->video);
+        if(isset($video->video) && $exist){
+            $delete = Storage::disk('video')->delete($video->video);
+            if($delete){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 
     public function index()
     {
-          $video = Video::all();
-          return response()->json([
-                 'success' => true,
-                 'code' => 200,
-                 'message' => 'Success',
-                 'data' => $video
-                ], 200);
+          $all_video = Video::all();
+          return view('video.index', compact('all_video'));
     }
 
-    public function create(Request $request)
+    public function index_user()
+    {
+          $all_video = Video::all();
+          return view('video.index-user', compact('all_video'));
+    }
+
+    public function create()
+    {
+          return view('video.create');
+    }
+
+    public function store(Request $request)
     {
           $this->validator($request);
           $input = $request->all();
           if($request->hasFile('video')){
-                $input['video'] = $this->upload_video($request);
+                $input['video'] = $this->uploadvideo($request);
           }
-          // $input['admin'] = diisi dengan session adminnya
+          $input['admin'] = 'yafimm masih beta';
 
           $video = Video::create($input);
 
           if($video){
-                return response()->json([
-                       'success' => true,
-                       'code' => 201,
-                       'message' => 'Video berhasil diupload',
-                       'data' => $video
-                       ], 201);
-          }else{
-                return response()->json([
-                       'success' => false,
-                       'code' => 400,
-                       'message' => 'Video gagal diupload',
-                       'data' => ''
-                     ], 400);
+              return redirect('video.index')->with();
           }
+          return redirect('video.index')->with();
     }
 
-    public function show($id){
-          $video = Video::find($id);
-          if($video){
-                return response()->json([
-                       'success' => true,
-                       'code' => 201,
-                       'message' => 'Video ditemukan',
-                       'data' => $video
-                       ], 201);
-          }else{
-                return response()->json([
-                       'success' => false,
-                       'code' => 400,
-                       'message' => 'Video tidak ditemukan',
-                       'data' => ''
-                     ], 400);
+    public function show(Video $video)
+    {
+          return view('video.show', compact('video'));
+    }
+
+    public function update(Request $request, Video $video)
+    {
+          $this->validator($request);
+          $input = $request->all();
+          if(isset($input['video']))
+          {
+              $this->hapusVideo($video);
+              $input['video'] = $this->uploadVideo($request);
           }
+          // $input['admin'] = pake admin yang baru
+          $video = $video->update($input);
+
+          if($video){
+              return redirect('video.index')->with();
+          }
+          // kalo gagal, return yang dibawah ini
+          return redirect('video.index')->with();
     }
 
     public function delete(Video $video)
     {
-          // $this->hapusVideo($Video);
+          $this->hapusVideo($video);
           $data = $Akses->delete();
           return redirect('admin/video')->with('alert', 'Video berhasil dihapus');
 

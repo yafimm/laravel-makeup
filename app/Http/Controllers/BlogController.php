@@ -40,6 +40,12 @@ class BlogController extends Controller
           return view('blog.index', compact('all_blog'));
     }
 
+    public function index_user()
+    {
+        $all_blog = Blog::all();
+        return view('blog.index-user', compact('all_blog'));
+    }
+
     public function create()
     {
           return view('blog.create');
