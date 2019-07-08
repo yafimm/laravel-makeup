@@ -31,13 +31,10 @@ class AksesController extends Controller
     }
 
 
-    public function index(){
-        $dataAkses = Akses::all();
-        return response()->json([
-                  'success' => true,
-                  'message' => 'Success',
-                  'data' => $dataAkses
-            ], 200);
+    public function index()
+    {
+          $all_akses = Akses::all();
+          return view('akses.index', compact('all_akses'));
     }
 
     public function store(Request $request)
@@ -46,74 +43,36 @@ class AksesController extends Controller
           $input = $request->all();
           $data = Akses::create($input);
           if($data){
-                return response()->json([
-                       'success' => true,
-                       'code' => 201,
-                       'message' => 'data berhasil disimpan',
-                       'data' => $data
-                       ], 201);
-          }else{
-                return response()->json([
-                       'success' => false,
-                       'code' => 400,
-                       'message' => 'data gagal disimpan',
-                       'data' => ''
-                     ], 400);
+                return redirect('akses.index')->with();
           }
+          //kalo gagal lempar kesini
+          return redirect('akses.index')->with();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Akses $akses)
     {
           $this->validator($request);
           $input = $request->all();
-          $Akses = Akses::find($id);
           $Akses = $Akses->update($input);
-          // return dd($request);
           if($Akses){
-                return response()->json([
-                       'success' => true,
-                       'code' => 201,
-                       'message' => 'data berhasil diubah',
-                       'data' => $input
-                       ], 201);
-          }else{
-                return response()->json([
-                       'success' => false,
-                       'code' => 400,
-                       'message' => 'data gagal diubah',
-                       'data' => ''
-                     ], 400);
+              return redirect('akses.index')->with();
           }
+          //kalo gagal lempar kesini
+          return redirect('akses.index')->with();
     }
 
 
-    public function show($id){
-        $dataAkses = Akses::find($id);
-        return response()->json([
-              'success' => true,
-              'message' => 'Data is Found!',
-              'data' => $dataAkses
-            ], 200);
-    }
-
-    public function delete($id)
+    public function show(Akses $akses)
     {
-          $Akses = Akses::find($id);
+        return view('akses.show', compact('akses'));
+    }
+
+    public function delete(Akses $akses)
+    {
           $data = $Akses->delete();
           if($data){
-                return response()->json([
-                  'success' => true,
-                  'code' => 201,
-                  'message' => 'data berhasil dihapus',
-                  'data' => $data
-                ], 201);
-          }else{
-                return response()->json([
-                  'success' => false,
-                  'code' => 400,
-                  'message' => 'data gagal dihapus',
-                  'data' => ''
-                ], 400);
+              return redirect('akses.index')->with();
           }
+          return redirect('akses.index')->with();
     }
 }
