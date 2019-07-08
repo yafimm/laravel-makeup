@@ -12,8 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/blog', function () {
+  return view('blog.index-user');
+});
+
+Route::get('/subscribe', function () {
+  return view('subscribe.index-user');
+});
+
+Route::get('/video', function () {
+  return view('video.index-user');
+});
+
 
 Route::post('/login', 'UserController@login');
 // $router->post('/login', 'UserController@login');

@@ -1,0 +1,648 @@
+html * {
+	font-family: Quicksand;
+	font-style: normal;
+	font-variant: normal;
+	color: #C01C73;
+}
+#navbar {
+	
+	position: fixed;
+  	transition: 0.4s;
+  	width: 100%;
+  	top: 0;
+  	z-index: 99;
+}
+.dropdown-menu{
+	background-color: black;
+	transition: color 0.5s;
+}
+.dropdown-item{
+	color: white;
+
+}
+.dropdown-item:hover{
+	background-color: gold;
+	color: black;
+	transition: 0.3s;
+}
+.navbar-container {
+
+}
+
+.navbar-container ul {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.navbar-container ul li {
+	display: inline-block;
+	font-size: 16px;
+}
+
+.navbar-container ul li .btn {
+	font-size: 18px;
+	color:  white;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline-block;	
+	padding: 10px;
+	transition: color 0.5s;
+}
+
+.navbar-container ul li .underline {
+	height: 3px;
+	background-color: transparent;
+	width: 0%;
+	transition: width 0.2s, background-color 0.5s;
+	margin: 0 auto;
+}
+
+.navbar-container ul li.active-link .underline {
+	width: 100%;
+	background-color: white;
+}
+
+.navbar-container ul li:hover .underline {
+	background-color: #F098BE;
+	width: 100%;
+}
+
+.navbar-container ul li:hover .btn {
+	color:  #F098BE;
+}
+
+.navbar-container ul li:active .btn {
+	transition: none;
+}
+
+.navbar-container ul li:active .underline {
+	transition: none;
+}
+.navbar-hover .navbar-underline {
+  	text-transform: uppercase;
+  	text-decoration: none;
+  	display: inline-block;
+  	position: relative;
+}
+.navbar-hover .navbar-underline:after {    
+  	background: none repeat scroll 0 0 transparent;
+  	bottom: 0;
+  	content: "";
+  	display: block;
+  	height: 2px;
+  	left: 50%;
+  	position: absolute;
+  	background: #fff;
+  	background-color: #462461;
+  	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  	width: 0;
+  	color: white;
+}
+.navbar-hover .navbar-underline:hover:after {
+	color: white;
+  	width: 100%; 
+  	left: 0; 
+}
+.navbar-hover .navbar-underline:hover {
+	color: #462461;
+}
+
+#navbar #logo {
+  transition: 0.4s;
+}
+
+.jumbotron-1{
+	background-image: url(../Images/jumbotron.jpg);
+	background-size: 
+	cover; 
+	height: 100%;
+}
+.isi-jumbotron{
+	padding-top: 20%; 
+	padding-bottom: 12%;
+}
+.isi-jumbotron h1{
+	text-align: right; 
+	color: white; 
+	font-size: 60px;
+}
+.isi-jumbotron button{
+	color: white; 
+	background: #F599C2; 
+	border-radius: 30px; 
+	width: 150px; 
+	font-size: 17px; 
+	margin-top: 20px;
+}
+.navbar-menu{
+	color : #AC2135 !important;
+	font-weight: bold;
+	font-size: 18px;
+}
+.right {
+  float: right !important;
+}
+.font-tebal{
+	color : #AC2135 !important;
+	font-weight: bold;
+	font-size: 19px;
+}
+.jaga-jarak-samping{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.logo-contact{
+	width: 25px;
+	padding-top: 60px;
+	padding-bottom: 30px;
+}
+
+.margin-logo{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.section-about{
+	height: 90vh;
+	background-color: #E9ECEF;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.body-video{
+	background-color: #E9ECEF;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+.judul-about{
+	
+}
+.modal-header p{
+	padding-top: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+	color : black;
+	font-size: 14px;
+}
+.btn-login{
+	background-color: #AC2135;
+	color: white;
+}
+.btn-login:hover{
+	color: yellow;
+}
+.modal-regis{
+	background-color: #E9ECEF;
+	color: #AC2135;
+}
+.modal-regis:hover{
+	background-color: #F599C2;
+}
+.read-more{
+	background-color: #F599C2;
+	color: white;
+	width: 30%;
+	height: 10%;
+	transition: 0.4s;
+	font-size: 16px;
+}
+.read-more:hover{
+	color: black;
+	transform: scale(1.1);
+	background-color: #A8DEF8;
+}
+.btn-subscribe{
+	background-color: #C01C73 !important;
+	padding: 0px 0px 0px 0px;
+	color: black !important;
+	font-weight: bold;
+	font-size: 18px;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+.btn-subscribe:hover{
+	background-color: transparent !important;
+	border: 1px solid white;
+}
+.btn-subscribe a:hover{
+	color: white !important;
+	text-decoration: none;
+}
+.btn-subscribe a{
+	color: white !important;
+	font-weight: bold;
+	font-size: 18px;
+}
+.btn-upgrade-akun{
+	margin: 10px;
+	text-transform: uppercase;
+	border: 1px solid white;
+	background-color: transparent !important;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+.btn-upgrade-akun:hover{
+	border: 1px solid gold;
+	background-color: gold !important;
+	color: black;
+	
+}
+.margin-logo-footer{
+	padding-top: 30px; padding-bottom: 30px;
+}
+.header-video{
+	background-image: url(../images/video.jpg); 
+	background-size: cover;
+	height: 65vh
+}
+.judul-header-video{
+	padding-top: 200px;
+	float: right;
+}
+.judul-header-video h2{
+	font-weight: bold;
+	color: gold;
+	text-transform: capitalize;
+}
+.breadcrumb{
+	position: absolute; 
+	top: 55vh; 
+	padding-left: 20px; 
+	color: white; 
+	background-color: transparent;
+}
+.breadcrumb-item + .breadcrumb-item::before{
+	color: white;
+}
+.breadcrumb a{
+	text-transform: capitalize;
+	color: white;
+}
+.breadcrumb .active{
+	text-transform: capitalize;
+	color: gold;
+}
+.judul-header-video h5{
+	margin-top: 5px;
+	margin-bottom: 10px;
+	text-transform: capitalize;
+	float: right;
+	color: white;
+}
+.judul-header-video img{
+	border-radius: 50%; 
+	margin: 0px 0px 0px 10px;
+}
+.header-halaman-video{
+	background-image: url(../images/navbar-video.jpg); 
+	background-size: cover;
+	height: 100%;
+	padding-bottom: 150px;
+	padding-top: 200px;
+}
+.header-halaman-blog{
+	background-image: url(../images/navbar-blog.jpg); 
+	background-size: cover;
+	height: 100%;
+	padding-bottom: 150px;
+	padding-top: 200px;
+}
+.judul-header{
+	font-family: 'Pacifico';
+	text-transform: capitalize;
+	color: white; 
+	margin-bottom: 30px;
+	font-size: 50px;
+	text-align: center;
+	font-weight: bold;
+}
+.dot{
+	height: 18px;
+	margin-right: 3px;
+	margin-left: 3px;
+	width: 18px;
+	background-color: white;
+	border-radius: 50%;
+	display: inline-block;
+}
+.btn-navbar{
+	background-color: transparent;
+	color : #AC2135 !important;
+	font-weight: bold;
+	font-size: 19px;
+}
+.background-subscribe{
+	background-image: url(../Images/subscribe.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100%;
+}
+.subscribe-header{
+	padding-top: 160px;
+}
+.subscribe-header strong{
+	font-family: B612;
+	color: white;
+}
+.subscribe-body{
+	margin-top:  50px;
+	margin-bottom: 50px;
+	background-color: rgba(254,153,194,0.6);
+	border-radius: 20px;
+	padding: 50px 20px 50px 20px;
+}
+.box-subscribe{
+	border-radius: 15px;
+	padding: 10px 10px 30px 10px;
+	margin: 100px 5px 5px 5px;
+	height: 55vh;
+}
+.pricing-image{
+	position: absolute;
+	top: -100px;
+	left: 20%;
+}
+.bawah-pricing-image{
+	margin-top: 100px;
+}
+.bawah-pricing-image .coret{
+	text-decoration: line-through;
+	color: red;
+	margin-bottom: 0px;
+}
+.bawah-pricing-image .tidak-diskon{
+	color: white;
+	margin-bottom: 0px;
+}
+.bawah-pricing-image h3{
+	color: black;
+	font-weight: bold;
+}
+.bawah-pricing-image h5{
+	margin-bottom: 20px;
+}
+.bawah-pricing-image h4{
+	color: black;
+}
+.btn-daftar{
+	background-color: none;
+	color: #333;
+	border: 2px solid #333;
+    transition: all 0.3s ease-in;
+    width: 75%;
+    margin-top: 20px;
+}
+.btn-daftar:hover{
+	background-color: #F599C2;
+	color: white;
+	border: 2px solid #F599C2;
+	
+}
+.border20{
+	border-radius: 20px;
+}
+.thumbnail-box{
+	margin-bottom: 30px;
+
+}
+.info-box-video{
+	padding: 10px 10px 10px 10px;
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+.detail-box-video{
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
+.tipe-box-video{
+	font-size: 14px;
+	color: gold;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.tipe-box-video a:hover{
+	text-decoration: none;
+}
+.judul-box-video{
+	font-size: 18px;
+	text-transform: capitalize;
+	color: white;
+}
+.judul-box-video i{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 18px;
+	text-transform: capitalize;
+	color: white;
+}
+.judul-box-video i:hover{
+	color: gold;
+}
+.judul-box-video:hover{
+	text-decoration: none;
+	color: gold;
+}
+.nama-pengunggah:hover{
+	text-decoration: none;
+	color: gold;
+}
+.nama-pengunggah{
+	font-size: 11px;
+	color: white;
+}
+.nama-pengunggah img{
+	border-radius: 50%;
+	margin: 5px 5px 5px 0px;
+}
+.testimoni-background{
+	/*background-color: #F2F6F9;*/
+	background-image: url(../Images/background-testimoni-3.jpg);
+	background-size: cover;
+	padding-bottom: 50px;
+}
+.header-testimoni h2{
+	text-transform: capitalize;
+	padding-top: 100px;
+	margin-bottom: 50px;
+	font-weight: bold;
+	text-align: center;
+	font-family: B612;
+	font-size: 40px;
+	color: black;
+}
+.box-testimoni{
+	padding: 20px 20px 20px 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 60vh;
+}
+.box-testimoni h4{
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.box-testimoni p{
+	text-align: center;
+}
+.foto-testimoni{
+	border-radius: 10px;
+}
+.blog-background{
+	padding-bottom: 90px;
+	padding-top: 90px;
+	background-color: #E9ECEF;
+}
+.daftar-blog{
+	border-right: 2px solid gold;
+}
+.judul-daftar-blog h3{
+	font-weight: bold;
+	text-transform: capitalize;
+	color: black;
+	font-family: sans-serif;
+}
+.tanggal-daftar-blog{
+	background-color: white;
+	width: 100%;
+	padding: 0px 10px 0px 10px;
+}
+.tanggal-daftar-blog p{
+	font-size: 14px;
+	padding: 10px 0px 10px 0px;
+}
+.isi-daftar-blog p{
+	color: black;
+}
+.cari-blog{
+	padding-bottom: 10px;
+}
+.btn-cari-blog{
+	background-color: #F599C2;
+}
+.btn-cari-blog i{
+	color: white;
+}
+.btn-cari-blog:hover{
+	background-color: #FF77BC;
+}
+.box-blog{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-bottom: 2px solid white;
+}
+.kategori-blog{
+	clip-path: polygon(0px 0px, 100% 0px, 82.8033% 100%, 0% 100%) !important;
+    background: #F599C2;
+    color: white;
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 10px;
+}
+.list-group-item{
+	background-color: transparent;
+	border-bottom: 1px solid #F599C2 !important;
+	width: auto;
+
+}
+.list-group-item a:hover{
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+.keuntungan-subscribe{
+	background: #E9ECEF; 
+	height: 100%; 
+	padding-top: 5%; 
+	padding-bottom: 5%;
+}
+.header-keuntungan{
+	margin-bottom: 150px;
+}
+.header-keuntungan h2{
+	text-align: center; 
+	color: black; 
+	text-transform: capitalize; 
+	font-family: B612; 
+	font-size: 40px;
+}
+.box-keuntungan{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	height: 50vh;
+}
+.judul-keuntungan{
+	padding: 10px 10px 10px 10px; 
+	background-color: #FFCF40;
+}
+.judul-keuntungan h3{
+	color: black;
+	font-weight: bold;
+	margin-top: 20px;
+	text-align: center;
+}
+.isi-keuntungan{
+	padding: 30px 10px 10px 10px;
+}
+.isi-keuntungan p{
+	text-align: center;
+	color: black;
+}
+.body-blog h1{
+	color: black;
+	text-transform: uppercase;
+	font-weight : bold;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.body-blog p{
+	color: black
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.body-blog img{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.footer-blog{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-top: 2px solid white;
+}
+.judul-footer-blog h4{
+	margin-bottom: 20px;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+}
+.isi-footer-blog img{
+	height: 200px;
+	border-radius: 10px;
+}
+.isi-footer-blog a{
+	font-weight: bold;
+	text-transform: capitalize;
+	font-size: 21px;
+	color: black;
+}
+.isi-footer-blog a:hover{
+	text-decoration: none;
+	color: #C01C73;;
+}
+.judul-artikel-terkait{
+	padding: 5px;
+}
+.artikel-terkait{
+	margin-bottom: 20px;
+}
