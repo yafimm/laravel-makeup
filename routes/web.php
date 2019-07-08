@@ -26,6 +26,9 @@ Route::get('/subscribe', function () {
 Route::get('/video', function () {
   return view('video.index-user');
 });
+Route::get('/admin', function () {
+  return view('video.index-user');
+});
 
 
 Route::post('/login', 'UserController@login');
