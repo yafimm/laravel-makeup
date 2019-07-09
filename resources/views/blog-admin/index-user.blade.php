@@ -1,9 +1,5 @@
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
+@extends('template-admin.template')
+@section('content')
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
@@ -72,7 +68,7 @@
                                                     <h5 class="name">
                                                         <a href="#">Dzaki Madhani</a>
                                                     </h5>
-                                                    <span class="email">dzakimadhani@gmail.com</span>
+                                                    <span class="email">johndoe@example.com</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -98,9 +94,4 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </header>
-            <!-- HEADER DESKTOP-->
-
-            
+@endsection

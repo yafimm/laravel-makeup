@@ -80,7 +80,13 @@ img {
 p {
     margin: 0;
 }
-
+.judul-halaman{
+    border-bottom: 1.5px solid #fff; 
+    border-top: 1.5px solid #fff; 
+    padding-bottom: 15px; 
+    padding-top: 15px; 
+    margin-bottom: 20px;
+}
 .table-responsive {
     padding-right: 1px;
 }
