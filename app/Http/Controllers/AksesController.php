@@ -20,7 +20,8 @@ class AksesController extends Controller
 
     public function create()
     {
-          return view('akses.create');
+          $akses = new Akses;
+          return view('akses.create', compact('akses'));
     }
 
     public function store(AksesRequest $request)
@@ -28,47 +29,50 @@ class AksesController extends Controller
           $input = $request->all();
           $data = Akses::create($input);
           if($data){
-                return redirect('akses.index')->with('flash_message', 'Data berhasil diinput')
+                return redirect()->route('akses.index')->with('flash_message', 'Data berhasil diinput')
                                               ->with('alert-class', 'alert-success');
           }
           //kalo gagal lempar kesini
-          return redirect('akses.index')->with('flash_message', 'Data gagal diinput')
+          return redirect()->route('akses.index')->with('flash_message', 'Data gagal diinput')
                                         ->with('alert-class', 'alert-danger');
     }
 
-    public function edit(Akses $akses)
+    public function edit($id)
     {
+          $akses = Akses::find($id);
           return view('akses.edit', compact('akses'));
     }
 
-    public function update(AksesRequest $request, Akses $akses)
+    public function update(AksesRequest $request, $id)
     {
           $input = $request->all();
+          $Akses = Akses::find($id);
           $update = $Akses->update($input);
           if($update){
-                return redirect('akses.index')->with('flash_message', 'Data berhasil diubah')
+                return redirect()->route('akses.index')->with('flash_message', 'Data berhasil diubah')
                                               ->with('alert-class', 'alert-success');
           }
           //kalo gagal lempar kesini
-          return redirect('akses.index')->with('flash_message', 'Data gagal diubah')
+          return redirect()->route('akses.index')->with('flash_message', 'Data gagal diubah')
                                         ->with('alert-class', 'alert-danger');
     }
 
 
-    public function show(Akses $akses)
+    public function show($id)
     {
         return view('akses.show', compact('akses'));
     }
 
-    public function delete(Akses $akses)
+    public function destroy($id)
     {
+          $Akses = Akses::find($id);
           $delete = $Akses->delete();
           if($delete){
-                return redirect('akses.index')->with('flash_message', 'Data berhasil dihapus')
+                return redirect()->route('akses.index')->with('flash_message', 'Data berhasil dihapus')
                                               ->with('alert-class', 'alert-success');
           }
           //kalo gagal lempar kesini
-          return redirect('akses.index')->with('flash_message', 'Data gagal dihapus')
+          return redirect()->route('akses.index')->with('flash_message', 'Data gagal dihapus')
                                         ->with('alert-class', 'alert-danger');
     }
 }

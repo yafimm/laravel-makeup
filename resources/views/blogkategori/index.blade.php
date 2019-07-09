@@ -1,104 +1,57 @@
 @extends('template-admin.template')
 @section('content')
-<h3 class="text-center title-1 judul-halaman">Kelola Kategori Blog</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title">
-                                            <h3 class="text-center title-2">Tambah Kategori Blog</h3>
-                                        </div>
-                                        <hr>
-                                        <form action="" method="post" novalidate="novalidate">
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="nama-kategori" class=" form-control-label">Nama</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="text" id="nama-kategori" name="text-input" placeholder="masukkan nama kategori blog" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="deskripsi-kategori" class=" form-control-label">Deskripsi</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <textarea name="textarea-input" id="deskripsi-kategori" rows="9" placeholder="Deskripsi kategori blog" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <br>
-                                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">Submit
-                                                </button>
-                                            </div>
+  <h3 class="text-center title-1 judul-halaman">Kelola Kategori Blog</h3>
+      @include('_partial.flash_message')
+      <div class="row">
+        <div class="col-3">
+          <a href="{{ url('/admin/blogkategori/create') }}" class="btn btn-success">Add Data  </a>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 mx-auto">
+              <!-- DATA TABLE -->
+
+              <div class="table-responsive table-responsive-data2">
+                  <table class="table table-data2">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Nama</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach($all_blog_kategori as $blog_kategori)
+                            <tr class="tr-shadow">
+                                <td>{{ $blog_kategori->id }}</td>
+                                <td class="desc">{{ $blog_kategori->nama_kategori }}</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <!-- <button class="item" data-placement="top" title="Edit" data-toggle="modal" data-target="#modalEditKategori">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+
+                                        <button class="item" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalHapusKategori">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button> -->
+
+                                        <a href="{{ route('blogkategori.edit', $blog_kategori->id) }}" class="item"><i class="zmdi zmdi-edit"></i></a>
+                                        <form class="" action="{{ route('blogkategori.destroy', $blog_kategori->id) }}" method="post">
+                                            @method('DELETE')
+                                            @CSRF
+                                            <button class="item" type="submit">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </button>
                                         </form>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- DATA TABLE -->
-
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
-                                        <thead>
-                                            <tr>
-                                                <th>nama</th>
-                                                <th>deskripsi</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="tr-shadow">
-                                                <td>Lori Lynch</td>
-                                                <td class="desc">Samsung S8 Black</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-placement="top" title="Edit" data-toggle="modal" data-target="#modalEditKategori">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalHapusKategori">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td>Lori Lynch</td>
-                                                <td class="desc">Samsung S8 Black</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-placement="top" title="Edit" data-toggle="modal" data-target="#modalEditKategori">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalHapusKategori">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td>Lori Lynch</td>
-                                                <td class="desc">Samsung S8 Black</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-placement="top" title="Edit" data-toggle="modal" data-target="#modalEditKategori">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalHapusKategori">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- END DATA TABLE -->
-                            </div>
-                        </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                          @endforeach
+                      </tbody>
+                  </table>
+              </div>
+              <!-- END DATA TABLE -->
+          </div>
+      </div>
 @endsection

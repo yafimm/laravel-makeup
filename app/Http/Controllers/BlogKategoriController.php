@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-
+use App\Http\Requests\BlogkategoriRequest;
 use App\Blog_kategori;
 
 class BlogKategoriController extends Controller
@@ -13,27 +12,16 @@ class BlogKategoriController extends Controller
         //
     }
 
-    private function validator(Request $request)
-    {
-        $rules = [
-          'nama_kategori' => 'required|string|min:4|max:255',
-        ];
-
-        $messages = [''];
-
-        //validate the request.
-        $this->validate($request ,$rules);
-    }
-
     public function index()
     {
           $all_blog_kategori = Blog_kategori::all();
-          return view('blogkategori.index', compact('$all_blog_kategori'));
+          return view('blogkategori.index', compact('all_blog_kategori'));
     }
 
     public function create()
     {
-          return view('blogkategori.create');
+          $blog_kategori = new Blog_kategori;
+          return view('blogkategori.create', compact('blog_kategori'));
     }
 
     public function show(Blog_kategori $blog_kategori)
@@ -41,46 +29,49 @@ class BlogKategoriController extends Controller
           return view('blogkategori.show', compact('blog_kategori'));
     }
 
-    public function store(Request $request)
+    public function store(BlogkategoriRequest $request)
     {
-          $this->validator($request);
           $input = $request->all();
           $store = Blog_kategori::create($input);
           if($store)
           {
-              return redirect('blogkategori.index')->with('flash_message', 'Data berhasil diinput')
+              return redirect()->route('blogkategori.index')->with('flash_message', 'Data berhasil diinput')
                                                   ->with('alert-class', 'alert-success');
           }
           //Kalo gagal return yang ini
-          return redirect('blogkategori.index')->with('flash_message', 'Data gagal diinput')
+          return redirect()->route('blogkategori.index')->with('flash_message', 'Data gagal diinput')
                                               ->with('alert-class', 'alert-danger');
     }
 
-    public function update(Request $request, Blog_kategori $blog_kategori)
+    public function edit(Blog_kategori $blog_kategori)
     {
-          $this->validator($request);
+          return view('blogkategori.edit', compact('blog_kategori'));
+    }
+
+    public function update(BlogkategoriRequest $request, Blog_kategori $blog_kategori)
+    {
           $input = $request->all();
           $update = $blog_kategori->update($input);
           if($update)
           {
-              return redirect('blogkategori.index')->with('flash_message', 'Data berhasil diubah')
+              return redirect()->route('blogkategori.index')->with('flash_message', 'Data berhasil diubah')
                                                   ->with('alert-class', 'alert-success');
           }
           //Kalo gagal return yang ini
-          return redirect('blogkategori.index')->with('flash_message', 'Data gagal diubah')
+          return redirect()->route('blogkategori.index')->with('flash_message', 'Data gagal diubah')
                                               ->with('alert-class', 'alert-danger');
     }
 
-    public function delete(Blog_kategori $blog_kategori)
+    public function destroy(Blog_kategori $blog_kategori)
     {
           $delete = $blog_kategori->delete();
-          if($update)
+          if($delete)
           {
-              return redirect('blogkategori.index')->with('flash_message', 'Data berhasil dihapus')
+              return redirect()->route('blogkategori.index')->with('flash_message', 'Data berhasil dihapus')
                                                   ->with('alert-class', 'alert-success');
           }
           //Kalo gagal return yang ini
-          return redirect('blogkategori.index')->with('flash_message', 'Data gagal dihapus')
+          return redirect()->route('blogkategori.index')->with('flash_message', 'Data gagal dihapus')
                                               ->with('alert-class', 'alert-danger');
     }
     //

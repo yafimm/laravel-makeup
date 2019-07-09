@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Video;
+use App\Akses;
 use Storage;
 
 class VideoController extends Controller
@@ -19,7 +20,7 @@ class VideoController extends Controller
       //validation rules.
       if($request->isMethod('POST')){
           $video = 'required|mimes:mp4,mov,ogg,qt';
-          $judul = 'required|string|min:5|max:255';
+          $judul = 'required|string|min:5|max:255|unique:video';
       }else{
           $video = 'sometimes|mimes:mp4,mov,ogg,qt';
           $judul = 'required|string|min:5|max:255';
@@ -75,7 +76,9 @@ class VideoController extends Controller
 
     public function create()
     {
-          return view('video.create');
+          $video = new Video;
+          $all_akses = Akses::all();
+          return view('video.create', compact('video', 'all_akses'));
     }
 
     public function store(Request $request)

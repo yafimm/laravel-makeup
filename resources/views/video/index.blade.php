@@ -3,10 +3,11 @@
                     <h3 class="text-center title-1 judul-halaman">Konten Video</h3>
                         <div class="table-data__tool">
                             <div class="table-data__tool-right">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#modalTambahVideo">
-                                    <i class="zmdi zmdi-plus"></i>add item</button>
-                                </div>
+                                <!-- <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#modalTambahVideo"> -->
+                                    <!-- <i class="zmdi zmdi-plus"></i>add item</button> -->
+                                  <a href="{{ route('video.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i> Add Video</a>
                             </div>
+                          </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -78,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -150,6 +151,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
 @endsection

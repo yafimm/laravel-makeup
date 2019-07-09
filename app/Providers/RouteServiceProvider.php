@@ -28,7 +28,6 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
         Route::model('blog', 'App\Blog');
         Route::model('blogkategori', 'App\Blog_kategori');
-        Route::model('akses', 'App\Akses');
         Route::model('tipeadmin', 'App\Tipe_admin');
         Route::model('video', 'App\Video');
         Route::model('user','App\User');

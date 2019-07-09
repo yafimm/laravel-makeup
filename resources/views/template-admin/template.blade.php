@@ -30,6 +30,9 @@
     <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    
+
     <!-- Main CSS-->
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
 
@@ -78,6 +81,16 @@
 
     <!-- Main JS-->
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+
+    <script type="text/javascript">
+        $('#summernote').summernote({
+          placeholder: 'Enjoy for write an article..',
+          tabsize: 2,
+          height: 300
+        });
+    </script>
 
 </body>
 

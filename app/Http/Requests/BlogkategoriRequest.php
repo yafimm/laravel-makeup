@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AksesRequest extends FormRequest
+class BlogkategoriRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class AksesRequest extends FormRequest
     public function rules()
     {
         return [
-          'nama' => 'required|string|min:4|max:50|unique:akses',
-          'nilai_akses' => 'required|integer',
-          'harga' => 'required|integer',
-          'deskripsi' => 'required|string|min:5|max:255',
+          'nama_kategori' => 'required|string|min:4|max:255|unique:blog_kategori',
         ];
     }
 }
