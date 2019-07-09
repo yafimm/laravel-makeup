@@ -42,8 +42,8 @@ class BlogController extends Controller
 
     public function index_user()
     {
-        $all_blog = Blog::all();
-        return view('blog.index-user', compact('all_blog'));
+          $all_blog = Blog::all();
+          return view('blog.index-user', compact('all_blog'));
     }
 
     public function create()
@@ -64,10 +64,12 @@ class BlogController extends Controller
           $blog = Blog::create($input);
           if($blog)
           {
-              return redirect('blog.index')->with();
+              return redirect('blog.index')->with('flash_message', 'Data berhasil diinput')
+                                            ->with('alert-class', 'alert-success');
           }
           //kalo gagal dilempar kesini
-          return redirect('blog.index')->with();
+          return redirect('blog.index')->with('flash_message', 'Data gagal diinput')
+                                        ->with('alert-class', 'alert-danger');
     }
 
     public function update(Request $request, Blog $blog)
@@ -77,10 +79,12 @@ class BlogController extends Controller
           $update = $blog->update($input);
           if($update)
           {
-              return redirect('blog.index')->with();
+              return redirect('blog.index')->with('flash_message', 'Data berhasil diubah')
+                                            ->with('alert-class', 'alert-success');
           }
-          // Kalo gagal nanti bakal dilempar kesini
-          return redirect('blog.index')->with();
+          //kalo gagal dilempar kesini
+          return redirect('blog.index')->with('flash_message', 'Data gagal diubah')
+                                        ->with('alert-class', 'alert-danger');
     }
 
     public function delete($id)
@@ -88,10 +92,12 @@ class BlogController extends Controller
           $delete = $blog->delete();
           if($delete)
           {
-              return redirect('blog.index')->with();
+              return redirect('blog.index')->with('flash_message', 'Data berhasil dihapus')
+                                            ->with('alert-class', 'alert-success');
           }
-          // Kalo gagal nanti bakal dilempar kesini
-          return redirect('blog.index')->with();
+          //kalo gagal dilempar kesini
+          return redirect('blog.index')->with('flash_message', 'Data gagal dihapus')
+                                        ->with('alert-class', 'alert-danger');
     }
 
     //

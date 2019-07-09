@@ -15,7 +15,6 @@ class BlogKategoriController extends Controller
 
     private function validator(Request $request)
     {
-
         $rules = [
           'nama_kategori' => 'required|string|min:4|max:255',
         ];
@@ -46,8 +45,15 @@ class BlogKategoriController extends Controller
     {
           $this->validator($request);
           $input = $request->all();
-          $blog_kategori = Blog_kategori::create($input);
-          return redirect('blogkategori.index')->with();
+          $store = Blog_kategori::create($input);
+          if($store)
+          {
+              return redirect('blogkategori.index')->with('flash_message', 'Data berhasil diinput')
+                                                  ->with('alert-class', 'alert-success');
+          }
+          //Kalo gagal return yang ini
+          return redirect('blogkategori.index')->with('flash_message', 'Data gagal diinput')
+                                              ->with('alert-class', 'alert-danger');
     }
 
     public function update(Request $request, Blog_kategori $blog_kategori)
@@ -57,21 +63,25 @@ class BlogKategoriController extends Controller
           $update = $blog_kategori->update($input);
           if($update)
           {
-              return redirect('blogkategori.index')->with();
+              return redirect('blogkategori.index')->with('flash_message', 'Data berhasil diubah')
+                                                  ->with('alert-class', 'alert-success');
           }
-          // Kalo gagal nanti bakal dilempar kesini
-          return redirect('blogkategori.index')->with();
+          //Kalo gagal return yang ini
+          return redirect('blogkategori.index')->with('flash_message', 'Data gagal diubah')
+                                              ->with('alert-class', 'alert-danger');
     }
 
     public function delete(Blog_kategori $blog_kategori)
     {
           $delete = $blog_kategori->delete();
-          if($delete)
+          if($update)
           {
-              return redirect('blogkategori.index')->with();
+              return redirect('blogkategori.index')->with('flash_message', 'Data berhasil dihapus')
+                                                  ->with('alert-class', 'alert-success');
           }
-          // Kalo gagal nanti bakal dilempar kesini
-          return redirect('blogkategori.index')->with();
+          //Kalo gagal return yang ini
+          return redirect('blogkategori.index')->with('flash_message', 'Data gagal dihapus')
+                                              ->with('alert-class', 'alert-danger');
     }
     //
 }

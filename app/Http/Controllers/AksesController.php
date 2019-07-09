@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-
+use App\Http\Requests\AksesRequest;
 use App\Akses;
-use Hash;
 
 class AksesController extends Controller
 {
@@ -14,51 +12,46 @@ class AksesController extends Controller
 
     }
 
-    private function validator(Request $request)
-    {
-
-        $rules = [
-          'nama' => 'required|string|min:4|max:50',
-          'nilai_akses' => 'required|integer',
-          'harga' => 'required|integer',
-          'deskripsi' => 'required|string|min:5|max:255',
-        ];
-
-        $messages = [''];
-
-        //validate the request.
-        $this->validate($request ,$rules);
-    }
-
-
     public function index()
     {
           $all_akses = Akses::all();
           return view('akses.index', compact('all_akses'));
     }
 
-    public function store(Request $request)
+    public function create()
     {
-          $this->validator($request);
+          return view('akses.create');
+    }
+
+    public function store(AksesRequest $request)
+    {
           $input = $request->all();
           $data = Akses::create($input);
           if($data){
-                return redirect('akses.index')->with();
+                return redirect('akses.index')->with('flash_message', 'Data berhasil diinput')
+                                              ->with('alert-class', 'alert-success');
           }
           //kalo gagal lempar kesini
-          return redirect('akses.index')->with();
+          return redirect('akses.index')->with('flash_message', 'Data gagal diinput')
+                                        ->with('alert-class', 'alert-danger');
     }
 
-    public function update(Request $request, Akses $akses)
+    public function edit(Akses $akses)
     {
-          $this->validator($request);
+          return view('akses.edit', compact('akses'));
+    }
+
+    public function update(AksesRequest $request, Akses $akses)
+    {
           $input = $request->all();
-          $Akses = $Akses->update($input);
-          if($Akses){
-              return redirect('akses.index')->with();
+          $update = $Akses->update($input);
+          if($update){
+                return redirect('akses.index')->with('flash_message', 'Data berhasil diubah')
+                                              ->with('alert-class', 'alert-success');
           }
           //kalo gagal lempar kesini
-          return redirect('akses.index')->with();
+          return redirect('akses.index')->with('flash_message', 'Data gagal diubah')
+                                        ->with('alert-class', 'alert-danger');
     }
 
 
@@ -69,10 +62,13 @@ class AksesController extends Controller
 
     public function delete(Akses $akses)
     {
-          $data = $Akses->delete();
-          if($data){
-              return redirect('akses.index')->with();
+          $delete = $Akses->delete();
+          if($delete){
+                return redirect('akses.index')->with('flash_message', 'Data berhasil dihapus')
+                                              ->with('alert-class', 'alert-success');
           }
-          return redirect('akses.index')->with();
+          //kalo gagal lempar kesini
+          return redirect('akses.index')->with('flash_message', 'Data gagal dihapus')
+                                        ->with('alert-class', 'alert-danger');
     }
 }

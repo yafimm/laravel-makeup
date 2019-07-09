@@ -17,10 +17,18 @@ class VideoController extends Controller
     private function validator(Request $request)
     {
       //validation rules.
+      if($request->isMethod('POST')){
+          $video = 'required|mimes:mp4,mov,ogg,qt';
+          $judul = 'required|string|min:5|max:255';
+      }else{
+          $video = 'sometimes|mimes:mp4,mov,ogg,qt';
+          $judul = 'required|string|min:5|max:255';
+      }
+
       $rules = [
-        'video'   => 'mimes:mp4,mov,ogg,qt',
-        'judul' => 'required|string|min:5|max:255',
-        'deskripsi' => 'required|string',
+        'video'   => $video,
+        'judul' => $judul,
+        'deskripsi' => 'required|string|min:10',
         'thumbnail' => 'sometimes|mimes:jpg,png,svg',
         'hak_akses' => 'required'
       ];
@@ -36,24 +44,20 @@ class VideoController extends Controller
         $video = $request->file('video');
         $ext = $video->getClientOriginalExtension();
         if($request->file('video')->isValid()){
-          $videoname = date('Ymd').".$request->judul.$ext";
-          $upload_path = 'videos/thread';
-          $request->file('video')->move($upload_path, $videoname);
-
-          return $videoname;
+            $videoname = date('Ymd').".$request->judul.$ext";
+            $upload_path = 'videos/thread';
+            $request->file('video')->move($upload_path, $videoname);
+            return $videoname;
         }
         return false;
-      }
+    }
 
-    private function hapusVideo(Video $video){
+    private function hapusVideo(Video $video)
+    {
         $exist = Storage::disk('video')->exists($video->video);
         if(isset($video->video) && $exist){
             $delete = Storage::disk('video')->delete($video->video);
-            if($delete){
-                return true;
-            }else{
-                return false;
-            }
+            return $delete; //Kalo delete gagal, bakal return false, kalo berhasil bakal return true
         }
     }
 
@@ -86,9 +90,11 @@ class VideoController extends Controller
           $video = Video::create($input);
 
           if($video){
-              return redirect('video.index')->with();
+              return redirect('video.index')->with('flash_message', 'Data berhasil diinput')
+                                            ->with('alert-class', 'alert-success');
           }
-          return redirect('video.index')->with();
+          return redirect('video.index')->with('flash_message', 'Data gagal diinput')
+                                        ->with('alert-class', 'alert-danger');
     }
 
     public function show(Video $video)
@@ -106,20 +112,28 @@ class VideoController extends Controller
               $input['video'] = $this->uploadVideo($request);
           }
           // $input['admin'] = pake admin yang baru
-          $video = $video->update($input);
+          $update = $video->update($input);
 
-          if($video){
-              return redirect('video.index')->with();
+          if($update){
+              return redirect('video.index')->with('flash_message', 'Data berhasil diubah')
+                                            ->with('alert-class', 'alert-success');
           }
           // kalo gagal, return yang dibawah ini
-          return redirect('video.index')->with();
+          return redirect('video.index')->with('flash_message', 'Data gagal diubah')
+                                        ->with('alert-class', 'alert-danger');
     }
 
     public function delete(Video $video)
     {
           $this->hapusVideo($video);
-          $data = $Akses->delete();
-          return redirect('admin/video')->with('alert', 'Video berhasil dihapus');
+          $delete = $video->delete();
+          if($delete){
+              return redirect('video.index')->with('flash_message', 'Data berhasil dihapus')
+                                            ->with('alert-class', 'alert-success');
+          }
+          // kalo gagal, return yang dibawah ini
+          return redirect('video.index')->with('flash_message', 'Data gagal dihapus')
+                                        ->with('alert-class', 'alert-danger');
 
     }
 
