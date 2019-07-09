@@ -62,9 +62,14 @@ class UserController extends Controller
                ];
 
        $register = User::create($data);
-       if($register){
-        // return redirect('user.index')
+       if($register)
+       {
+           return redirect('login')->with('flash_message', 'Registrasi berhasil, silahkan login untuk tahap selanjutnya')
+                                         ->with('alert-class', 'alert-success');
        }
+       //kalo gagal dilempar kesini
+       return redirect('register')->with('flash_message', 'Data gagal diinput')
+                                     ->with('alert-class', 'alert-danger');
     }
 
 
@@ -73,52 +78,31 @@ class UserController extends Controller
           return view('user.show', compact('user'));
     }
 
-    public function update(Request $request, $username)
+    public function update(Request $request, User $user)
     {
           $this->validator($request);
           $input = $request->all();
-          $user = User::find($username);
-          if($user)
+          $update = $user->update($input);
+          if($register)
           {
-                $update = $user->update($input);
-                if($update){
-                      $user = User::find($username); //update data terbaru
-                      return response()->json([
-                             'success' => true,
-                             'code' => 201,
-                             'message' => 'data berhasil diubah',
-                             'data' => $user,
-                             ], 201);
-                }
+              // return redirect('login')->with('flash_message', 'Data Akun berhasil diubah')
+              //                        ->with('alert-class', 'alert-success');
           }
-          // Kalo gagal nanti bakal dilempar kesini
-          // return redirect('user.dashboard')->
+          //kalo gagal dilempar kesini
+          // return redirect('register')->with('flash_message', 'Data Akun gagal diubah')
+          //                           ->with('alert-class', 'alert-danger');
     }
 
-    public function delete($username)
-    {
-          $user = User::find($username);
-          if($user)
-          {
-                $delete = $user->delete();
-                if($delete)
-                {
-                      return response()->json([
-                               'success' => true,
-                               'code' => 201,
-                               'message' => 'Hapus data berhasil dilakukan',
-                               'data' => $user
-                               ], 201);
-                }
-          }
-
-          return response()->json([
-                   'success' => true,
-                   'code' => 400,
-                   'message' => 'Data Tidak ditemukan',
-                   'data' => NULL
-                   ], 201);
-    }
+    // public function delete($username)
+    // {
+    //       $user = User::find($username);
+    //       $delete = $user->delete();
+    //       if($delete)
+    //       {
+    //
+    //       }
+    //
+    // }
 
 
 }

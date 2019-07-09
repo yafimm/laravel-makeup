@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use App\Http\Requests\TipeAdminRequest;
+
 
 use App\Tipe_admin;
 
@@ -12,18 +13,6 @@ class TipeAdminController extends Controller
     {
         //
     }
-    private function validator(Request $request)
-    {
-        //validation rules.
-        $rules = [
-          'nama_tipe_admin' => 'required|string|min:4',
-        ];
-
-        $messages = [''];
-
-        //validate the request.
-        $this->validate($request ,$rules);
-    }
 
     public function index()
     {
@@ -31,9 +20,13 @@ class TipeAdminController extends Controller
         return view('tipeadmin.index', compact('all_tipe_admin'));
     }
 
-    public function store(Request $request)
+    public function create()
     {
-        $this->validator($request);
+        return view('tipeadmin.create');
+    }
+
+    public function store(TipeAdminRequest $request)
+    {
         $data = Tipe_admin::create(['nama_tipe_admin' => $request->nama_tipe_admin]);
         if($data){
             return redirect('tipeadmin.index')->with();
@@ -46,9 +39,8 @@ class TipeAdminController extends Controller
         return view('tipeadmin.show', compact('tipeadmin'));
     }
 
-    public function update(Request $request, Tipeadmin $tipeadmin)
+    public function update(TipeAdminRequest $request, Tipeadmin $tipeadmin)
     {
-          $this->validator($request);
           $input = $request->all();
           $success = $tipeadmin->update($input);
           if($success){
@@ -65,7 +57,7 @@ class TipeAdminController extends Controller
             return redirect('tipeadmin.index')->with();
         }
         return redirect('tipeadmin.index')->with();
-        
+
     }
 
 }
