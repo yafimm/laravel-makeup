@@ -20,7 +20,7 @@
             <div class="col-md-4">
               <div class="card shadow border20 thumbnail-box">
                 <a href="video-play.html">
-                  <img class="border20" src="Images/695787.jpg" width="100%" height="250" >
+                  <img class="border20" src="{{ asset('images/thumbnail/'.$video->thumbnail) }}" width="100%" height="250" >
                 </a>
                 <div class="info-box-video border20">
                   <div class="detail-box-video">

@@ -39,10 +39,10 @@
                   @foreach($artikel_terkait as $artikel)
                   <div class="col-md-4 artikel-terkait">
                     <a href="#">
-                      <img src="{{ asset('Images/gambar-blog.jpg') }}" width="100%">
+                      <img src="{{ asset('images/thumbnail/'.$artikel->thumbnail) }}" width="100%">
                     </a>
                     <div class="judul-artikel-terkait">
-                      <a href="#">{{ $artikel->judul }}</a>
+                      <a href="#">{{ str_limit($artikel->judul, $limit = 100, $end = '...') }}</a>
                     </div>
                   </div>
                   @endforeach

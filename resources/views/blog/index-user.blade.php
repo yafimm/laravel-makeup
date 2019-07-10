@@ -22,7 +22,7 @@
 						<div class="col box-blog">
 							<div class="row">
 								<div class="col-md-4">
-									<img src="{{ asset('Images/gambar-blog.jpg') }}" width="100%">
+									<img src="{{ asset('images/thumbnail/'.$blog->thumbnail) }}" width="100%">
 								</div>
 								<div class="col-md-8">
 									<div class="judul-daftar-blog">
@@ -32,7 +32,7 @@
 										<p><i class="fa fa-calendar"></i> {{ $blog->created_at->format('d M Y') }}  /  <i class="fa fa-user"></i>{{ $blog->admin }}</p>
 									</div>
 									<div class="isi-daftar-blog">
-										{!! str_limit($blog->isi_blog, $limit = 500, $end = '...') !!}
+										{!! str_limit($blog->isi_blog, $limit = 300, $end = '...') !!}
 									</div>
 									<div class="read-more-blog">
 										<a class="btn read-more" href="{{ url('blog/'.$blog->id) }}">read more</a>
