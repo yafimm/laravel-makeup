@@ -3,25 +3,25 @@
 	      <div class="container">
 	        <div class="navbar-header">
 	          <a class="navbar-brand" href="#">
-	              <img id="logo" class="margin-logo" src="images/logo.png" alt="logo" width="100px">
+	              <img id="logo" class="margin-logo" src="{{ asset('images/logo.png') }}" alt="logo" width="100px">
 	            </a>
 	        </div>
 	        <div class="navbar-container">
 	          <ul>
 	            <li class="nav-link active-link">
-	              <a class="btn" href="index.html">Home</a>
+	              <a class="btn" href="{{ url('') }}">Home</a>
 	              <div class="underline"></div>
 	            </li>
 	            <li class="nav-link">
-	              <a class="btn" href="video.html">Video</a>
+	              <a class="btn" href="{{ url('video') }}">Video</a>
 	              <div class="underline"></div>
 	            </li>
 	            <li class="nav-link">
-	              <a class="btn" href="blog.html">Blog</a>
+	              <a class="btn" href="{{ url('blog') }}">Blog</a>
 	              <div class="underline"></div>
 	            </li>
 	            <li class="nav-link">
-	              <a class="btn" href="#">About Us</a>
+	              <a class="btn" href="{{ url('about-us') }}">About Us</a>
 	              <div class="underline"></div>
 	            </li>
 	            <li class="nav-link">
@@ -47,7 +47,7 @@
 						<h3 class="modal-title w-100 font-weight-bold text-center">LOGIN</h3>
 						<p>Silakan masukkan email dan password akun anda untuk mengakses konten ekslusif</p>
 					</div>
-					
+
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     	<span aria-hidden="true">&times;</span>
                     </button>
@@ -81,7 +81,7 @@
 						<h3 class="modal-title w-100 font-weight-bold text-center">REGISTRASI</h3>
 						<p>Silakan mengisi data diri anda untuk melakukan pendaftaran menjadi member dan mendapatkan akses ke dalam konten eksklusif</p>
 					</div>
-					
+
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     	<span aria-hidden="true">&times;</span>
                     </button>

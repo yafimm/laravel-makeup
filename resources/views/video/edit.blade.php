@@ -8,8 +8,8 @@
                 <h3 class="text-center title-2">Edit Video</h3>
             </div>
             <hr>
-            <form action="{{ route('video.update', $video->id) }}" method="post">
-              @method('POST')
+            <form action="{{ route('video.update', $video->id) }}" method="post" enctype="multipart/form-data">
+              @method('PUT')
               @CSRF
               @include('video.form')
             </form>

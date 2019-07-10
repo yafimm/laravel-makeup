@@ -47,11 +47,7 @@ class VideoController extends Controller
     {
           $all_video = Video::all();
           return view('video.index-user', compact('all_video'));
-    }
-
-    public function show_user()
-    {
-          return view('video.detail-user', compact('video'));
+          // dd($all_video);
     }
 
     public function create()
@@ -59,6 +55,12 @@ class VideoController extends Controller
           $video = new Video;
           $all_akses = Akses::all();
           return view('video.create', compact('video', 'all_akses'));
+    }
+
+    public function edit(Video $video)
+    {
+          $all_akses = Akses::all();
+          return view('video.edit', compact('video', 'all_akses'));
     }
 
     public function store(Request $request)
@@ -72,16 +74,22 @@ class VideoController extends Controller
           $video = Video::create($input);
 
           if($video){
-              return redirect('video.index')->with('flash_message', 'Data berhasil diinput')
+              return redirect()->route('video.index')->with('flash_message', 'Data berhasil diinput')
                                             ->with('alert-class', 'alert-success');
           }
-          return redirect('video.index')->with('flash_message', 'Data gagal diinput')
+          return redirect()->route('video.index')->with('flash_message', 'Data gagal diinput')
                                         ->with('alert-class', 'alert-danger');
     }
 
     public function show(Video $video)
     {
           return view('video.show', compact('video'));
+    }
+
+    public function show_user($id)
+    {
+          $video = Video::find($id);
+          return view('video.detail-user', compact('video'));
     }
 
     public function update(Request $request, Video $video)
@@ -96,24 +104,24 @@ class VideoController extends Controller
           $update = $video->update($input);
 
           if($update){
-              return redirect('video.index')->with('flash_message', 'Data berhasil diubah')
+              return redirect()->route('video.index')->with('flash_message', 'Data berhasil diubah')
                                             ->with('alert-class', 'alert-success');
           }
           // kalo gagal, return yang dibawah ini
-          return redirect('video.index')->with('flash_message', 'Data gagal diubah')
+          return redirect()->route('video.index')->with('flash_message', 'Data gagal diubah')
                                         ->with('alert-class', 'alert-danger');
     }
 
-    public function delete(Video $video)
+    public function destroy(Video $video)
     {
           $this->hapusVideo($video);
           $delete = $video->delete();
           if($delete){
-              return redirect('video.index')->with('flash_message', 'Data berhasil dihapus')
+              return redirect()->route('video.index')->with('flash_message', 'Data berhasil dihapus')
                                             ->with('alert-class', 'alert-success');
           }
           // kalo gagal, return yang dibawah ini
-          return redirect('video.index')->with('flash_message', 'Data gagal dihapus')
+          return redirect()->route('video.index')->with('flash_message', 'Data gagal dihapus')
                                         ->with('alert-class', 'alert-danger');
 
     }

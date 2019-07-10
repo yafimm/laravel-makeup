@@ -23,6 +23,7 @@ Route::get('/subscribe', function () {
 });
 
 Route::get('/video', 'VideoController@index_user');
+Route::get('/video/{id}', 'VideoController@show_user');
 
 Route::get('/admin', function () {
   return view('video.index-user');
