@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 
+use App\Http\Requests\BlogRequest;
 use App\Blog;
+
+use Storage;
 
 class BlogController extends Controller
 {
@@ -13,25 +15,26 @@ class BlogController extends Controller
         //
     }
 
-    private function validator(Request $request)
+    private function uploadGambar(Request $request)
     {
-
-        if($request->isMethod('POST')){
-            $judul = 'required|string|min:5|max:50|unique:blog';
-        }else{
-            $judul = 'required|string|min:5|max:50';
+        $gambar = $request->file('thumbnail');
+        $ext = $video->getClientOriginalExtension();
+        if($request->file('thumbnail')->isValid()){
+            $filename = date('Ymd').".$request->judul.$ext";
+            $upload_path = 'images/thumbnail';
+            $request->file('thumbnail')->move($upload_path, $filename);
+            return $filename;
         }
-        //validation rules.
-        $rules = [
-          'judul' => $judul,
-          'isi_blog' => 'required|string',
-          'id_blog_kategori' => 'required'
-        ];
+        return false;
+    }
 
-        $messages = [''];
-
-        //validate the request.
-        $this->validate($request ,$rules);
+    private function hapusGambar(Blog $blog)
+    {
+        $exist = Storage::disk('thumbnail')->exists($blog->thumbnail);
+        if(isset($blog->thumbnail) && $exist){
+            $delete = Storage::disk('thumbnail')->delete($blog->thumbnail);
+            return $delete; //Kalo delete gagal, bakal return false, kalo berhasil bakal return true
+        }
     }
 
     public function index()
@@ -48,55 +51,62 @@ class BlogController extends Controller
 
     public function create()
     {
-          return view('blog.create');
+          $blog = new Blog;
+          return view('blog.create', compact('blog'));
     }
 
     public function show(Blog $blog)
     {
-          return view('blog.show', compact($blog));
+          return view('blog.show', compact('blog'));
     }
 
-    public function store(Request $request)
+    public function edit(Blog $blog)
     {
-          $this->validator($request);
+          return view('blog.edit', compact('blog'));
+    }
+
+    // store artikel
+    public function store(BlogRequest $request)
+    {
           $input = $request->all();
+          $input['id_blog_kategori'] = 1; // Foreign key dari Artikel
           $input['slug'] = str_slug($request->judul,'-');
+          $input['admin'] = 'yafimm'; // Sementara dulu
           $blog = Blog::create($input);
           if($blog)
           {
-              return redirect('blog.index')->with('flash_message', 'Data berhasil diinput')
+              return redirect()->route('blog.index')->with('flash_message', 'Data berhasil diinput')
                                             ->with('alert-class', 'alert-success');
           }
           //kalo gagal dilempar kesini
-          return redirect('blog.index')->with('flash_message', 'Data gagal diinput')
+          return redirect()->route('blog.index')->with('flash_message', 'Data gagal diinput')
                                         ->with('alert-class', 'alert-danger');
     }
 
-    public function update(Request $request, Blog $blog)
+    public function update(BlogRequest $request, Blog $blog)
     {
-          $this->validator($request);
           $input = $request->all();
           $update = $blog->update($input);
           if($update)
           {
-              return redirect('blog.index')->with('flash_message', 'Data berhasil diubah')
+              return redirect()->route('blog.index')->with('flash_message', 'Data berhasil diubah')
                                             ->with('alert-class', 'alert-success');
           }
           //kalo gagal dilempar kesini
-          return redirect('blog.index')->with('flash_message', 'Data gagal diubah')
+          return redirect()->route('blog.index')->with('flash_message', 'Data gagal diubah')
                                         ->with('alert-class', 'alert-danger');
     }
 
-    public function delete($id)
+    public function destroy(Blog $blog)
     {
           $delete = $blog->delete();
           if($delete)
           {
-              return redirect('blog.index')->with('flash_message', 'Data berhasil dihapus')
+              return redirect()->route('blog.index')->with('flash_message', 'Data berhasil dihapus')
                                             ->with('alert-class', 'alert-success');
           }
           //kalo gagal dilempar kesini
-          return redirect('blog.index')->with('flash_message', 'Data gagal dihapus')
+          return redirect()->route('blog.index')->with('flash_message', 'Data gagal dihapus')
                                         ->with('alert-class', 'alert-danger');
     }
 

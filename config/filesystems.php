@@ -49,7 +49,7 @@ return [
         ],
         'thumbnail' => [
             'driver' => 'local',
-            'root' => public_path('images/artikel'),
+            'root' => public_path('images/thumbnail'),
         ],
         'video' => [
             'driver' => 'local',

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Http\Requests\BlogkategoriRequest;
 use App\Blog_kategori;
 
