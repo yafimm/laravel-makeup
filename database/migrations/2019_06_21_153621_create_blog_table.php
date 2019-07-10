@@ -18,6 +18,7 @@ class CreateBlogTable extends Migration
             $table->integer('id_blog_kategori')->unsigned();
             $table->string('judul')->nullable();
             $table->string('slug')->nullable();
+            $table->string('thumbnail');
             $table->text('isi_blog');
             $table->string('admin', 30);
             $table->timestamps();

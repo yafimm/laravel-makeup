@@ -36,6 +36,9 @@ class CreateBlogKategoriTable extends Migration
      */
     public function down()
     {
+        Schema::table('blog', function(Blueprint $table){
+          $table->dropForeign('blog_id_blog_kategori_foreign');
+        });
         Schema::dropIfExists('blog_kategori');
     }
 }
