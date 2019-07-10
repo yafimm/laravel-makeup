@@ -10,8 +10,8 @@
 			</center>
 		</div>
 		<ul class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
-		    <li class="breadcrumb-item active">keistimewaan berwudhu untuk kecantikan wajah</li>
+		    <li class="breadcrumb-item"><a href="{{ url('blog') }}">Blog</a></li>
+		    <li class="breadcrumb-item active">{{ $artikel->judul }}</li>
 	  	</ul>
 	</div>
 
@@ -22,34 +22,11 @@
 					<div class="col-md-9 daftar-blog">
 						<div class="body-blog">
 							<div class="judul-blog">
-								<center><h1>Keistimewaan Berwudhu Untuk Kecantikan Wajah</h1></center>
+								<center><h1>{{ $artikel->judul }}</h1></center>
 							</div>
 							<div class="isi-blog">
-								<img src="Images/gambar-blog.jpg" width="100%">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<img src="{{ asset('Images/gambar-blog.jpg') }}" width="100%">
+								{!! $artikel->isi_blog !!}
 							</div>
 						</div>
 						<div class="footer-blog">
@@ -58,30 +35,18 @@
 							</div>
 							<div class="isi-footer-blog">
 								<div class="row">
-									<div class="col-md-4 artikel-terkait">
-										<a href="#">
-											<img src="Images/gambar-blog.jpg" width="100%">
-										</a>
-										<div class="judul-artikel-terkait">
-											<a href="#">keistimewaan berwudhu untuk kecantikan wajah</a>
-										</div>
-									</div>
-									<div class="col-md-4 artikel-terkait">
-										<a href="#">
-											<img src="Images/gambar-blog.jpg" width="100%">
-										</a>
-										<div class="judul-artikel-terkait">
-											<a href="#">keistimewaan berwudhu untuk kecantikan wajah</a>
-										</div>
-									</div>
-									<div class="col-md-4 artikel-terkait">
-										<a href="#">
-											<img src="Images/gambar-blog.jpg" width="100%">
-										</a>
-										<div class="judul-artikel-terkait">
-											<a href="#">keistimewaan berwudhu untuk kecantikan wajah</a>
-										</div>
-									</div>
+
+                  @foreach($artikel_terkait as $artikel)
+                  <div class="col-md-4 artikel-terkait">
+                    <a href="#">
+                      <img src="{{ asset('Images/gambar-blog.jpg') }}" width="100%">
+                    </a>
+                    <div class="judul-artikel-terkait">
+                      <a href="#">{{ $artikel->judul }}</a>
+                    </div>
+                  </div>
+                  @endforeach
+
 								</div>
 							</div>
 						</div>

@@ -15,31 +15,6 @@ class VideoController extends Controller
 
     }
 
-    private function validator(Request $request)
-    {
-      //validation rules.
-      if($request->isMethod('POST')){
-          $video = 'required|mimes:mp4,mov,ogg,qt';
-          $judul = 'required|string|min:5|max:255|unique:video';
-      }else{
-          $video = 'sometimes|mimes:mp4,mov,ogg,qt';
-          $judul = 'required|string|min:5|max:255';
-      }
-
-      $rules = [
-        'video'   => $video,
-        'judul' => $judul,
-        'deskripsi' => 'required|string|min:10',
-        'thumbnail' => 'sometimes|mimes:jpg,png,svg',
-        'hak_akses' => 'required'
-      ];
-
-      $messages = [''];
-
-      //validate the request.
-      $this->validate($request ,$rules);
-    }
-
     private function uploadVideo(Request $request)
     {
         $video = $request->file('video');
@@ -74,6 +49,11 @@ class VideoController extends Controller
           return view('video.index-user', compact('all_video'));
     }
 
+    public function show_user()
+    {
+          return view('video.detail-user', compact('video'));
+    }
+
     public function create()
     {
           $video = new Video;
@@ -83,7 +63,6 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-          $this->validator($request);
           $input = $request->all();
           if($request->hasFile('video')){
                 $input['video'] = $this->uploadvideo($request);
@@ -107,7 +86,6 @@ class VideoController extends Controller
 
     public function update(Request $request, Video $video)
     {
-          $this->validator($request);
           $input = $request->all();
           if(isset($input['video']))
           {
