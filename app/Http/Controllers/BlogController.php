@@ -49,15 +49,23 @@ class BlogController extends Controller
           return view('blog.index-user', compact('all_blog'));
     }
 
-    public function create()
+    public function show_user($id)
     {
-          $blog = new Blog;
-          return view('blog.create', compact('blog'));
+          $artikel = Blog::find($id);
+          $artikel_terkait = Blog::inRandomOrder()->take(3)->get();
+          // dd($artikel_terkait);
+          return view('blog.detail-user', compact('artikel', 'artikel_terkait'));
     }
 
     public function show(Blog $blog)
     {
           return view('blog.show', compact('blog'));
+    }
+
+    public function create()
+    {
+      $blog = new Blog;
+      return view('blog.create', compact('blog'));
     }
 
     public function edit(Blog $blog)

@@ -16,11 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/blog', 'BlogController@index_user');
-Route::get('/video', 'VideoController@index_user');
+Route::get('/blog/{id}', 'Blogcontroller@show_user');
 
 Route::get('/subscribe', function () {
   return view('subscribe.index-user');
 });
+
+Route::get('/video', 'VideoController@index_user');
 
 Route::get('/admin', function () {
   return view('video.index-user');

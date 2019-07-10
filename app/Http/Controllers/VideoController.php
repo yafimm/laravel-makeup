@@ -49,6 +49,11 @@ class VideoController extends Controller
           return view('video.index-user', compact('all_video'));
     }
 
+    public function show_user()
+    {
+          return view('video.detail-user', compact('video'));
+    }
+
     public function create()
     {
           $video = new Video;
