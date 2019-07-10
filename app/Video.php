@@ -13,4 +13,8 @@ class Video extends Model
         'judul', 'video', 'deskripsi','admin', 'hak_akses', 'thumbnail'
     ];
 
+    public function akses(){
+        return $this->belongsTo('App\Akses', 'hak_akses');
+    }
+
 }

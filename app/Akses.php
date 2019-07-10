@@ -20,4 +20,8 @@ class Akses extends Model
         return $this->belongsToMany('App\User', 'user_akses', 'id_akses', 'username')->withPivot('status', 'waktu_berakhir');
     }
 
+    public function video(){
+       return $this->hasMany('App\Video', 'hak_akses', 'id_akses');
+    }
+
 }

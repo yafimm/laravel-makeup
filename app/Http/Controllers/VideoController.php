@@ -88,7 +88,7 @@ class VideoController extends Controller
           if($request->hasFile('video')){
                 $input['video'] = $this->uploadvideo($request);
           }
-          $input['admin'] = 'yafimm masih beta';
+          $input['admin'] = 'yafimm';
 
           $video = Video::create($input);
 
