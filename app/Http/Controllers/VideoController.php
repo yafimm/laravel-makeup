@@ -94,7 +94,7 @@ class VideoController extends Controller
                 $input['thumbnail'] = $this->uploadGambar($request);
           }
 
-          $input['admin'] = 'yafimm';
+          $input['admin'] = \Auth::guard('admin')->user()->username;
 
           $video = Video::create($input);
 
@@ -132,8 +132,8 @@ class VideoController extends Controller
               $input['thumbnail'] = $this->uploadGambar($request);
           }
 
+          $input['admin'] = \Auth::guard('admin')->user()->username;
 
-          // $input['admin'] = pake admin yang baru
           $update = $video->update($input);
 
           if($update){

@@ -79,7 +79,7 @@ class BlogController extends Controller
           $input = $request->all();
           $input['id_blog_kategori'] = 1; // Foreign key dari Artikel
           $input['slug'] = str_slug($request->judul,'-');
-          $input['admin'] = 'yafimm'; // Sementara dulu
+          $input['admin'] = \Auth::guard('admin')->user()->username;
           if(isset($input['thumbnail']))
           {
               $input['thumbnail'] = $this->uploadGambar($request);

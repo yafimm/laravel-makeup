@@ -1,6 +1,7 @@
 @extends('template-admin.template')
 @section('content')
                     <h3 class="text-center title-1 judul-halaman">Konten Video</h3>
+                        @include('_partial.flash_message')
                         <div class="table-data__tool">
                             <div class="table-data__tool-right">
                                 <!-- <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#modalTambahVideo"> -->

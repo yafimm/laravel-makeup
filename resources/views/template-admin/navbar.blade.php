@@ -59,7 +59,7 @@
                                             <img src="{{ asset('images/foto-default-user.jpg') }}" alt="Dzaki Madhani" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">Dzaki Madhani</a>
+                                            <a class="js-acc-btn" href="#">{{ Auth::guard('admin')->user()->username}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -70,9 +70,9 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">Dzaki Madhani</a>
+                                                        <a href="#">{{ Auth::guard('admin')->user()->nama }}</a>
                                                     </h5>
-                                                    <span class="email">dzakimadhani@gmail.com</span>
+                                                    <span class="email">{{ Auth::guard('admin')->user()->email }}</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -86,8 +86,13 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                <a href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                                        <i class="zmdi zmdi-power"></i>Logout
+                                                </a>
+                                                <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('post')
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -98,5 +103,3 @@
                 </div>
             </header>
             <!-- HEADER DESKTOP-->
-
-            

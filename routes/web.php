@@ -30,6 +30,7 @@ Route::namespace('Auth')->group(function(){
     Route::get('/loginadmin', 'AdminLoginController@login');
     Route::post('/loginadmin', 'AdminLoginController@loginPost');
     Route::post('/registeradmin', 'AdminLoginController@registerPost');
+    Route::post('/admin/logout', 'AdminLoginController@logout');
 });
 
 Route::group(['middleware' => ['web']], function(){
@@ -39,7 +40,7 @@ Route::group(['middleware' => ['web']], function(){
   Route::get('/video/{id}', 'VideoController@show_user');
 });
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::resource('akses', 'AksesController');
     Route::resource('tipeadmin', 'TipeAdminController');
     Route::resource('admin', 'AdminController');

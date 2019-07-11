@@ -73,8 +73,8 @@ class AdminLoginController extends Controller
    public function logout()
    {
          Auth::guard('admin')->logout();
-         return redirect('loginadmin')->with('flash_message','Admin has been logged out!')
-                                     ->with('alert-class', 'alert-info');
+         return redirect('')->with('flash_message','Admin has been logged out!')
+                             ->with('alert-class', 'alert-info');
          // the value of alert class is class in bootstrap 4
    }
 }
