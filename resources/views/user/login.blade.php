@@ -46,9 +46,12 @@
                                 <img src="images/logo.png" width="200" alt="CoolAdmin">
                             </a>
                             <h3 style="margin-top: 10px;">Silahkan masuk ke dalam akun kamu</h3>
+                            @include('_partial.flash_message')
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="{{ url('login') }}" method="post">
+                              @CSRF
+                              @method('POST')
                                 <div class="form-group">
                                     <input class="au-input au-input--full" type="input" name="username" placeholder="username">
                                 </div>

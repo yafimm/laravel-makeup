@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
-class User extends Model
+class User extends \Eloquent implements Authenticatable
 {
+    use AuthenticableTrait;
+    
     protected $table = 'user';
 
     protected $primaryKey = 'username';

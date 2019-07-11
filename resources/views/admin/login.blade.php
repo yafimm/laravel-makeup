@@ -43,11 +43,14 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/logo-admin.png" alt="CoolAdmin">
+                                <img src="{{ asset('images/logo-admin.png') }}" alt="CoolAdmin">
                             </a>
+                            @include('_partial.flash_message')
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="{{ url('loginadmin') }}" method="post">
+                              @CSRF
+                              @method('POST')
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="au-input au-input--full" type="input" name="username" placeholder="username">

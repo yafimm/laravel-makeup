@@ -18,8 +18,8 @@ class CreateUserTable extends Migration
             $table->string('password');
             $table->string('nama', 50);
             $table->string('email');
-            $table->string('alamat', 100);
-            $table->string('no_telp');
+            $table->string('alamat', 100)->nullable();
+            $table->string('no_telp')->nullable();
             $table->timestamps();
         });
 

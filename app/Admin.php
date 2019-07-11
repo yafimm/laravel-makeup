@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
-class Admin extends Model
+class Admin extends \Eloquent implements Authenticatable
 {
+
+    use AuthenticableTrait;
+
     protected $table = 'admin';
 
     protected $primaryKey = 'username';
@@ -22,6 +27,6 @@ class Admin extends Model
     ];
 
     public function tipe_admin(){
-      return $this->belongsTo('App\Tipe_admin', 'id_tipe_admin');
+        return $this->belongsTo('App\Tipe_admin', 'id_tipe_admin');
     }
 }
