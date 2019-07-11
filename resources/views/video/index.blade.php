@@ -13,7 +13,7 @@
                             @foreach($all_video as $video)
                               <div class="col-md-4">
                                   <div class="card">
-                                      <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
+                                      <img class="card-img-top" src="{{ asset('images/thumbnail/'.$video->thumbnail) }}" alt="Card image cap">
                                       <div class="card-body">
                                           <h4 class="card-title mb-3 text-center">{{ $video->judul }}</h4>
                                           <div class="row">
@@ -21,17 +21,31 @@
                                               <div class="col-md-6"><h5 class="text-center">{{ $video->akses->nama }}</h5></div>
                                           </div>
                                       </div>
-                                      <div class="card-footer">
-                                          <div class="right">
-                                            <a href="{{ route('video.edit', $video->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                      <div class="card-footer text-muted">
+                                        <div class="row">
+                                          <div class="col-7 col-sm-7 col-md-7">
+                                            <div class="row">
+                                              <div class="col-12 text-info">
+                                                <small>By : {{ $video->admin }}</small>
+                                              </div>
+                                              <div class="col-12">
+                                                <small>Date : {{ $video->created_at->format('d M, Y') }}</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-2 col-sm-2 col-md-2">
+                                            <a href="{{ route('video.edit', $video->id) }}" class="btn"><i class="fa fa-edit"></i></a>
+                                          </div>
+                                          <div class="col-2 col-sm-2 col-md-2">
                                             <form class="" action="{{ route('video.destroy', $video->id) }}" method="post">
                                                 @method('DELETE')
                                                 @CSRF
-                                                <button class="btn btn-danger" type="submit">
+                                                <button class="btn" type="submit">
                                                   <i class="fa fa-trash-o"></i>
                                                 </button>
                                             </form>
                                           </div>
+                                        </div>
                                       </div>
                                   </div>
                               </div>

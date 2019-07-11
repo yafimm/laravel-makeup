@@ -9,167 +9,49 @@
                             </div>
                         </div>
                         <div class="row">
+
+                            @foreach($all_blog as $blog)
                             <div class="col-md-4">
                                 <div class="card">
-                                    <img class="card-img-top" src="images/bg-title-01.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="{{ asset('images/thumbnail/'.$blog->thumbnail) }}" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-3 text-center">Judul Blog</h4>
+                                        <h4 class="card-title mb-3 text-center">{{ $blog->judul }}</h4>
                                         <div class="row">
-                                            <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
+                                            <div class="col-md-12"><h5 class="right">{{ $blog->blog_kategori->nama_kategori }}</h5></div>
                                         </div>
                                         <br>
-                                        <p class="card-text">Deskripsi Blog Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        </p>
+                                        <p class="card-text">{!! str_limit($blog->isi, $limit = 300, $end = '...') !!}</p>
                                     </div>
-                                    <div class="card-footer">
-                                        <div class="right">
-                                            <button class="btn" data-placement="top" title="Edit">
-                                                <a href="#">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </button>
-                                            <button class="btn" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalDeleteBlog"><i class="fa fa-trash-o"></i></button>
+                                    <div class="card-footer text-muted">
+                                      <div class="row">
+                                        <div class="col-7 col-sm-7 col-md-7">
+                                          <div class="row">
+                                            <div class="col-12 text-info">
+                                              <small>By : {{ $blog->admin }}</small>
+                                            </div>
+                                            <div class="col-12">
+                                              <small>Date : {{ $blog->created_at->format('d M, Y') }}</small>
+                                            </div>
+                                          </div>
                                         </div>
+                                        <div class="col-2 col-sm-2 col-md-2">
+                                          <a href="{{ route('blog.edit', $blog->id) }}" class="btn"><i class="fa fa-edit"></i></a>
+                                        </div>
+                                        <div class="col-2 col-sm-2 col-md-2">
+                                          <form class="" action="{{ route('blog.destroy', $blog->id) }}" method="post">
+                                              @method('DELETE')
+                                              @CSRF
+                                              <button class="btn" type="submit">
+                                                <i class="fa fa-trash-o"></i>
+                                              </button>
+                                          </form>
+                                        </div>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="images/bg-title-01.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                        <div class="row">
-                                            <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                        </div>
-                                        <br>
-                                        <p class="card-text">Deskripsi Blog Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="right">
-                                            <button class="btn" data-placement="top" title="Edit">
-                                                <a href="#">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </button>
-                                            <button class="btn" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalDeleteBlog"><i class="fa fa-trash-o"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="images/bg-title-01.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                        <div class="row">
-                                            <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                        </div>
-                                        <br>
-                                        <p class="card-text">Deskripsi Blog Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="right">
-                                            <button class="btn" data-placement="top" title="Edit">
-                                                <a href="#">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </button>
-                                            <button class="btn" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalDeleteBlog"><i class="fa fa-trash-o"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="images/bg-title-01.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                        <div class="row">
-                                            <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                        </div>
-                                        <br>
-                                        <p class="card-text">Deskripsi Blog Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="right">
-                                            <button class="btn" data-placement="top" title="Edit">
-                                                <a href="#">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </button>
-                                            <button class="btn" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalDeleteBlog"><i class="fa fa-trash-o"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="images/bg-title-01.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                        <div class="row">
-                                            <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                        </div>
-                                        <br>
-                                        <p class="card-text">Deskripsi Blog Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="right">
-                                            <button class="btn" data-placement="top" title="Edit">
-                                                <a href="#">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </button>
-                                            <button class="btn" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalDeleteBlog"><i class="fa fa-trash-o"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="images/bg-title-01.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                        <div class="row">
-                                            <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                        </div>
-                                        <br>
-                                        <p class="card-text">Deskripsi Blog Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="right">
-                                            <button class="btn" data-placement="top" title="Edit">
-                                                <a href="#">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </button>
-                                            <button class="btn" data-placement="top" title="Delete" data-toggle="modal" data-target="#modalDeleteBlog"><i class="fa fa-trash-o"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
+                            @endforeach
+
+
                         </div>
 @endsection
