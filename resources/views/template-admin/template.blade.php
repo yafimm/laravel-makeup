@@ -12,6 +12,8 @@
     <!-- Title Page-->
     <title>Dashboard</title>
 
+    <link rel="icon" href="{{ asset('Images/logo-tab.gif') }}" type="image/gif" sizes="16x16">
+
     <!-- Fontfaces CSS-->
     <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">

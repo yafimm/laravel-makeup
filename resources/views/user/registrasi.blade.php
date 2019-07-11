@@ -12,6 +12,8 @@
     <!-- Title Page-->
     <title>Registrasi</title>
 
+    <link rel="icon" href="Images/logo-tab.gif" type="image/gif" sizes="16x16">
+
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">

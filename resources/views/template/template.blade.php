@@ -4,6 +4,7 @@
 	<title>BEAUTY MASTER</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="{{ asset('Images/logo-tab.gif') }}" type="image/gif" sizes="16x16">
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/cooking-master.css') }}">
 	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
