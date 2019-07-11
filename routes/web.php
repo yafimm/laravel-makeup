@@ -22,7 +22,7 @@ Route::get('/subscribe', function () {
   return view('subscribe.index-user');
 });
 
-Route::get('/video', 'VideoController@index_user  ');
+Route::get('/video', 'VideoController@index_user');
 Route::get('/video/{id}', 'VideoController@show_user');
 
 Route::post('/login', 'UserController@login');

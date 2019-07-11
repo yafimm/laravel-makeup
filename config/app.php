@@ -166,6 +166,10 @@ return [
          * Package Service Providers...
          */
 
+         Cohensive\Embed\EmbedServiceProvider::class,
+
+
+
         /*
          * Application Service Providers...
          */
@@ -225,6 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Embed' => Cohensive\Embed\Facades\Embed::class,
 
     ],
 

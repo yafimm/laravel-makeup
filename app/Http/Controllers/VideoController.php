@@ -69,7 +69,6 @@ class VideoController extends Controller
     {
           $all_video = Video::all();
           return view('video.index-user', compact('all_video'));
-          // dd($all_video);
     }
 
     public function create()
