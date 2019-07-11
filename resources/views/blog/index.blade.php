@@ -36,14 +36,14 @@
                                           </div>
                                         </div>
                                         <div class="col-2 col-sm-2 col-md-2">
-                                          <a href="{{ route('blog.edit', $blog->id) }}" class="btn"><i class="fa fa-edit"></i></a>
+                                          <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-edit-konten"><i class="fa fa-edit"></i></a>
                                         </div>
                                         <div class="col-2 col-sm-2 col-md-2">
                                           <form class="" action="{{ route('blog.destroy', $blog->id) }}" method="post">
                                               @method('DELETE')
                                               @CSRF
-                                              <button class="btn" type="submit">
-                                                <i class="fa fa-trash-o"></i>
+                                              <button class="btn btn-hapus-konten" type="submit">
+                                                <i class="fa fa-trash-o btn-hapus-konten"></i>
                                               </button>
                                           </form>
                                         </div>

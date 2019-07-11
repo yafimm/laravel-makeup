@@ -29,6 +29,7 @@
     <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
     

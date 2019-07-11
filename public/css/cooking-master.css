@@ -218,6 +218,9 @@ footer{
 	transition: 0.4s;
 	font-size: 16px;
 }
+.read-more-blog{
+	margin: 20px 0 20px 0;
+}
 .read-more:hover{
 	color: black;
 	transform: scale(1.1);

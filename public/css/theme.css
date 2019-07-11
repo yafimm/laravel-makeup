@@ -87,6 +87,20 @@ p {
     padding-top: 15px; 
     margin-bottom: 20px;
 }
+.btn-edit-konten{
+    font-size: 24px;
+    color: black;
+}
+.btn-edit-konten:hover{
+    color: blue;
+}
+.btn-hapus-konten{
+    font-size: 24px;
+    color: black;
+}
+.btn-hapus-konten:hover{
+    color: blue;
+}
 .table-responsive {
     padding-right: 1px;
 }
