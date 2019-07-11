@@ -20,6 +20,8 @@ Route::get('/subscribe', function () {
   return view('subscribe.index-user');
 });
 
+Route::get('/getvideo/{id}', 'VideoController@getVideo')->name('getvideo');
+
 
 Route::namespace('Auth')->group(function(){
     Route::post('/login', 'LoginController@loginPost');

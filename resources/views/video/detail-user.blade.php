@@ -21,7 +21,7 @@
 			<div>
         <div class="embed-responsive embed-responsive-21by9">
           <video class="embed-responsive-item" width="320" height="240" oncontextmenu="return false;" controls>
-            <source src="{{ asset('videos/thread/'.$video->video) }}" type="video/mp4">
+            <source src="{{ route('getvideo', $video->id) }}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
         </div>

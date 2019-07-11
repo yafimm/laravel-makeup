@@ -53,7 +53,7 @@ return [
         ],
         'video' => [
             'driver' => 'local',
-            'root' => public_path('videos/thread'),
+            'root' => storage_path('app/videos/thread'),
         ],
         'public' => [
             'driver' => 'local',

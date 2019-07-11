@@ -46,7 +46,8 @@ class VideoController extends Controller
         if($request->file('video')->isValid()){
             $videoname = date('Ymd').".$judul.$ext";
             $upload_path = 'videos/thread';
-            $request->file('video')->move($upload_path, $videoname);
+            Storage::disk('video')->put($videoname, file_get_contents($video));
+            // $request->file('video')->move($upload_path, $videoname);
             return $videoname;
         }
         return false;
@@ -159,6 +160,25 @@ class VideoController extends Controller
           return redirect()->route('video.index')->with('flash_message', 'Data gagal dihapus')
                                         ->with('alert-class', 'alert-danger');
 
+    }
+
+    public function getVideo($id)
+    {
+          $video = Video::find($id);
+          // echo $video->akses->nilai_akses;
+          // if($video->akses->nilai_akses == 10)
+          // {
+            $name = $video->video;
+            $filename = storage_path() . "/app/videos/thread/$name";
+            // $mime_type= $v;
+            $headers = array(
+              'Content-type'          => 'mp4',
+              'Content-Disposition'   => 'inline; filename="' . $filename . '"'
+            );
+            return \Response::make( file_get_contents($filename), 200, $headers);
+          // }else{
+          //   return abort(404);
+          // }
     }
 
 }
