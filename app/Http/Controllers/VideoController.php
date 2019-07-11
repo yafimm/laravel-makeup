@@ -19,8 +19,9 @@ class VideoController extends Controller
     {
         $gambar = $request->file('thumbnail');
         $ext = $gambar->getClientOriginalExtension();
+        $judul = str_slug($request->judul,'-');
         if($request->file('thumbnail')->isValid()){
-            $filename = date('Ymd').".$request->judul.$ext";
+            $filename = date('Ymd').".$judul.$ext";
             $upload_path = 'images/thumbnail';
             $request->file('thumbnail')->move($upload_path, $filename);
             return $filename;
@@ -41,8 +42,9 @@ class VideoController extends Controller
     {
         $video = $request->file('video');
         $ext = $video->getClientOriginalExtension();
+        $judul = str_slug($request->judul,'-');
         if($request->file('video')->isValid()){
-            $videoname = date('Ymd').".$request->judul.$ext";
+            $videoname = date('Ymd').".$judul.$ext";
             $upload_path = 'videos/thread';
             $request->file('video')->move($upload_path, $videoname);
             return $videoname;

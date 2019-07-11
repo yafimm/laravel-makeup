@@ -19,8 +19,9 @@ class BlogController extends Controller
     {
         $gambar = $request->file('thumbnail');
         $ext = $gambar->getClientOriginalExtension();
+        $judul = str_slug($request->judul,'-');
         if($request->file('thumbnail')->isValid()){
-            $filename = date('Ymd').".$request->judul.$ext";
+            $filename = date('Ymd').".$judul.$ext";
             $upload_path = 'images/thumbnail';
             $request->file('thumbnail')->move($upload_path, $filename);
             return $filename;
