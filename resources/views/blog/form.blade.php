@@ -1,3 +1,4 @@
+      <input type="hidden" name="id" value="{{ $blog->id }}">
       <div class="row form-group">
           <div class="col col-md-3">
               <label for="nama-kategori" class=" form-control-label">Judul Artikel</label>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Http\Requests\BlogRequest;
 use App\Blog;
 
@@ -80,6 +80,11 @@ class BlogController extends Controller
           $input['id_blog_kategori'] = 1; // Foreign key dari Artikel
           $input['slug'] = str_slug($request->judul,'-');
           $input['admin'] = 'yafimm'; // Sementara dulu
+          if(isset($input['thumbnail']))
+          {
+              $input['thumbnail'] = $this->uploadGambar($request);
+          }
+
           $blog = Blog::create($input);
           if($blog)
           {
@@ -94,6 +99,12 @@ class BlogController extends Controller
     public function update(BlogRequest $request, Blog $blog)
     {
           $input = $request->all();
+          if(isset($input['thumbnail']))
+          {
+              $this->hapusGambar($blog);
+              $input['thumbnail'] = $this->uploadGambar($request);
+          }
+
           $update = $blog->update($input);
           if($update)
           {

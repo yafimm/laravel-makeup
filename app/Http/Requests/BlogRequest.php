@@ -24,10 +24,10 @@ class BlogRequest extends FormRequest
     public function rules()
     {
         if($this->method() == 'POST'){
-            $judul = 'required|string|min:5|max:50|unique:blog';
+            $judul = 'required|string|min:5|max:100|unique:blog';
             $thumbnail = 'required|image|max:2048|mimes:jpeg,jpg,bmp,png';
         }else{
-            $judul = 'required|string|min:5|max:50';
+            $judul = 'required|string|min:5|max:100|unique:blog,judul,'.$this->get('id');
             $thumbnail = 'sometimes|image|max:2048|mimes:jpeg,jpg,bmp,png';
         }
 

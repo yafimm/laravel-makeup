@@ -22,20 +22,10 @@ Route::get('/subscribe', function () {
   return view('subscribe.index-user');
 });
 
-Route::get('/video', 'VideoController@index_user');
+Route::get('/video', 'VideoController@index_user  ');
 Route::get('/video/{id}', 'VideoController@show_user');
 
-Route::get('/admin', function () {
-  return view('video.index-user');
-});
-
 Route::post('/login', 'UserController@login');
-// $router->post('/login', 'UserController@login');
-// $router->get('/user', 'UserController@index');
-// $router->get('/user/{username}', 'UserController@show');
-// $router->post('/user', 'UserController@store');
-// $router->put('/user/{username}', 'UserController@update');
-// $router->delete('/user/{username}', 'Usercontroller@delete');
 
 Route::group(['prefix' => 'admin'], function(){
   Route::resource('akses', 'AksesController');

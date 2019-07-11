@@ -20,7 +20,14 @@
           {!! $video->deskripsi !!}
         </div>
 				<div>
+          <video
 					<iframe style="display:block;margin: auto; padding-top: 2%" width="560" height="315" src="https://www.youtube.com/watch?v=nJSdYlAFKqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- {!! $video->video_html !!} -->
+            <video width="400" controls>
+                <source src="{{ asset('videos/thread/'.$video->video) }}" type="video/mp4">
+                <source src="mov_bbb.ogg" type="video/ogg">
+                Your browser does not support HTML5 video.
+            </video>
         </div>
 			</div>
 		</div>

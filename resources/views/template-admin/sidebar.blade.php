@@ -1,7 +1,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
+                <a href="{{ url('') }}">
                     <img src="{{ asset('images/logo-admin.png') }}" alt="Beauty Admin" />
                 </a>
             </div>
@@ -9,7 +9,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="#">
+                            <a href="{{ url('admin') }}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="has-sub">
@@ -17,13 +17,10 @@
                                 <i class="fas fa-video"></i>Video</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="#">Kelola Video</a>
+                                    <a href="{{ url('admin/video') }}">Kelola Video</a>
                                 </li>
                                 <li>
-                                    <a href="#">Kelola Kategori Video</a>
-                                </li>
-                                <li>
-                                    <a href="#">Kelola Hak Akses Video</a>
+                                    <a href="{{ url('') }}">Kelola Kategori Video</a>
                                 </li>
                             </ul>
                         </li>
@@ -32,10 +29,10 @@
                                 <i class="fab fa-blogger"></i>Blog</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="#">Kelola Blog</a>
+                                    <a href="{{ url('admin/blog') }}">Kelola Blog</a>
                                 </li>
                                 <li>
-                                    <a href="#">Kelola Kategori Blog</a>
+                                    <a href="{{ url('admin/blogkategori') }}">Kelola Kategori Blog</a>
                                 </li>
                             </ul>
                         </li>
@@ -44,7 +41,7 @@
                                 <i class="fas fa-gem"></i>Subscribe</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="#">Kelola Akun Premium</a>
+                                    <a href="{{ url('admin/akses') }}">Kelola Akun Premium</a>
                                 </li>
                                 <li>
                                     <a href="#">User Premium</a>
