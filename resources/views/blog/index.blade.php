@@ -3,8 +3,9 @@
                     <h3 class="text-center title-1 judul-halaman">Kelola Blog</h3>
                         <div class="table-data__tool">
                             <div class="table-data__tool-right">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#modalTambahBlog">
-                                    <i class="zmdi zmdi-plus"></i>add item</button>
+                                <a href="{{ route('blog.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+
+                                    <i class="zmdi zmdi-plus"></i>add item</a>
                                 </div>
                             </div>
                         </div>
