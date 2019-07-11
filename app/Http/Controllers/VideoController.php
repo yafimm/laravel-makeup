@@ -15,6 +15,28 @@ class VideoController extends Controller
 
     }
 
+    private function uploadGambar(Request $request)
+    {
+        $gambar = $request->file('thumbnail');
+        $ext = $gambar->getClientOriginalExtension();
+        if($request->file('thumbnail')->isValid()){
+            $filename = date('Ymd').".$request->judul.$ext";
+            $upload_path = 'images/thumbnail';
+            $request->file('thumbnail')->move($upload_path, $filename);
+            return $filename;
+        }
+        return false;
+    }
+
+    private function hapusGambar(Video $video)
+    {
+        $exist = Storage::disk('thumbnail')->exists($video->thumbnail);
+        if(isset($video->thumbnail) && $exist){
+            $delete = Storage::disk('thumbnail')->delete($video->thumbnail);
+            return $delete; //Kalo delete gagal, bakal return false, kalo berhasil bakal return true
+        }
+    }
+
     private function uploadVideo(Request $request)
     {
         $video = $request->file('video');
@@ -67,8 +89,12 @@ class VideoController extends Controller
     {
           $input = $request->all();
           if($request->hasFile('video')){
-                $input['video'] = $this->uploadvideo($request);
+                $input['video'] = $this->uploadVideo($request);
           }
+          if($request->hasFile('thumbnail')){
+                $input['thumbnail'] = $this->uploadGambar($request);
+          }
+
           $input['admin'] = 'yafimm';
 
           $video = Video::create($input);
@@ -100,6 +126,14 @@ class VideoController extends Controller
               $this->hapusVideo($video);
               $input['video'] = $this->uploadVideo($request);
           }
+
+          if(isset($input['thumbnail']))
+          {
+              $this->hapusGambar($video);
+              $input['thumbnail'] = $this->uploadGambar($request);
+          }
+
+
           // $input['admin'] = pake admin yang baru
           $update = $video->update($input);
 

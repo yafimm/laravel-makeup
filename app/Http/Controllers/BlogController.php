@@ -18,7 +18,7 @@ class BlogController extends Controller
     private function uploadGambar(Request $request)
     {
         $gambar = $request->file('thumbnail');
-        $ext = $video->getClientOriginalExtension();
+        $ext = $gambar->getClientOriginalExtension();
         if($request->file('thumbnail')->isValid()){
             $filename = date('Ymd').".$request->judul.$ext";
             $upload_path = 'images/thumbnail';

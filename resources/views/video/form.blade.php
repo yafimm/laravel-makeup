@@ -27,7 +27,7 @@
           <label for="nama-kategori" class=" form-control-label">Thumbnail</label>
         </div>
         <div class="col-12 col-md-9">
-          <input type="file" id="nama-kategori" name="thubmnail" class="form-control">
+          <input type="file" id="nama-kategori" name="thumbnail" class="form-control">
           @if($errors->has('thumbnail'))
           <small class="form-text text-danger">*{{ $errors->first('thumbnail') }}</small>
           @endif
