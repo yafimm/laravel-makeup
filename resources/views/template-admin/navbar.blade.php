@@ -56,7 +56,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/foto-default-user.jpg" alt="John Doe" />
+                                            <img src="{{ asset('images/foto-default-user.jpg') }}" alt="Dzaki Madhani" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">Dzaki Madhani</a>
@@ -65,7 +65,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/foto-default-user.jpg" alt="John Doe" />
+                                                        <img src="{{ asset('images/foto-default-user.jpg') }}" alt="Dzaki Madhani" />
                                                     </a>
                                                 </div>
                                                 <div class="content">

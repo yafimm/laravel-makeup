@@ -2,7 +2,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images/logo-admin.png" alt="Beauty Admin" />
+                    <img src="{{ asset('images/logo-admin.png') }}" alt="Beauty Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">

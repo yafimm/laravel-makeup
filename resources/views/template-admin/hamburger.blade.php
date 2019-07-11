@@ -4,7 +4,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="images/logo-admin.png" alt="CoolAdmin" width="300" />
+                            <img src="{{ asset('images/logo-admin.png') }}" alt="CoolAdmin" width="300" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
