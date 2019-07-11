@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Login</title>
+    <title>Registrasi</title>
 
     <link rel="icon" href="Images/logo-tab.gif" type="image/gif" sizes="16x16">
 
@@ -39,42 +39,58 @@
 
 <body class="animsition" style="font-family: quicksand;">
     <div class="page-wrapper">
-        <div class="page-content--bge5">
+        <div class="page-registrasi">
             <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
+                <div class="regis-wrap">
+                    <div class="regis-content">
                         <div class="login-logo">
                             <a href="#">
                                 <img src="images/logo.png" width="200" alt="CoolAdmin">
                             </a>
-                            <h3 style="margin-top: 10px;">Silahkan masuk ke dalam akun kamu</h3>
-                            @include('_partial.flash_message')
+                            <h3 style="margin-top: 10px;">Daftar akun baru sekarang</h3>
+                            <br>
+                            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                <span class="badge badge-pill badge-success">Terdaftar</span>
+                                Selamat anda telah berhasil mendaftar akun anda.
+                                <a style="font-weight: bold;" href="">Silahkan Login!</a>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                         <div class="login-form">
-                            <form action="{{ url('login') }}" method="post">
-                              @CSRF
-                              @method('POST')
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <input class="au-input au-input--full" type="input" name="fullname" placeholder="Nama Lengkap">
+                                </div>
                                 <div class="form-group">
                                     <input class="au-input au-input--full" type="input" name="username" placeholder="username">
+                                </div>
+                                <div class="form-group">
+                                    <select name="select" id="select" class="au-input au-input--full form-control">
+                                        <option value="0">Jenis Kelamin</option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="email">
                                 </div>
                                 <div class="form-group">
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember">Ingat saya
-                                    </label>
-                                    <label>
-                                        <a href="#">lupa kata sandi?</a>
+                                        <input type="checkbox" name="aggree">Saya telah membaca dan menyetujui Aturan Penggunaan dan Kebijakan Privasi Beauty Master
                                     </label>
                                 </div>
                                 <br>
-                                <input type="submit" name="login" class="btn btn-block btn-lg btn-login" value="LOGIN">
+                                <input type="submit" name="daftar" class="btn btn-block btn-lg btn-login" value="DAFTAR">
                             </form>
                             <div class="register-link">
                                 <p style="">
-                                    Belum memiliki akun?
-                                    <a href="#">Daftar Di sini</a>
+                                    Sudah punya akun?
+                                    <a href="#">Login Di sini</a>
                                 </p>
                             </div>
                         </div>
