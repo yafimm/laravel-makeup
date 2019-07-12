@@ -1,13 +1,15 @@
 <div class="col-md-3">
   <div class="cari-blog">
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search this blog">
-        <div class="input-group-append">
-          <button class="btn btn-cari-blog" type="button">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-    </div>
+    <form action="{{ url('blog') }}" method="post" enctype="multipart/form-data">
+      <div class="input-group">
+          <input type="text" name="search" class="form-control" placeholder="Search this blog">
+          <div class="input-group-append">
+            <button class="btn btn-cari-blog" type="input">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+      </div>
+    </form>
   </div>
   <div class="kategori-blog">
     kategori
