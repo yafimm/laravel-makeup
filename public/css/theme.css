@@ -346,6 +346,26 @@ section {
     height: 100vh;
 }
 
+.btn-login{
+    background-color: #AC2135;
+    color: white;
+}
+.btn-login:hover{
+    color: yellow;
+}
+.login-user{
+    background-image: url(../Images/jumbotron.jpg); 
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.regis-user{
+    background-image: url(../Images/jumbotron.jpg); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto !important;
+    padding-bottom: 60px;
+}
+
 .login-wrap {
     max-width: 540px;
     padding-top: 8vh;

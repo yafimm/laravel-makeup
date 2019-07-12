@@ -37,10 +37,10 @@
 
 <body class="animsition" style="font-family: quicksand;">
     <div class="page-wrapper">
-        <div class="page-registrasi">
+        <div class="page-content--bge5 regis-user">
             <div class="container">
-                <div class="regis-wrap">
-                    <div class="regis-content">
+                <div class="login-wrap">
+                    <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
                                 <img src="images/logo.png" width="200" alt="CoolAdmin">
