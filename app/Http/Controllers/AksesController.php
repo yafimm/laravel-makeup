@@ -14,7 +14,7 @@ class AksesController extends Controller
 
     public function index()
     {
-          $all_akses = Akses::all();
+          $all_akses = Akses::simplePaginate(15);
           return view('akses.index', compact('all_akses'));
     }
 

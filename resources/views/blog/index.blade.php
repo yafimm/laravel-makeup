@@ -54,6 +54,9 @@
                             </div>
                             @endforeach
 
-
                         </div>
+                        <div class="d-flex justify-content-center">
+                          {{ $all_blog->links() }}
+                        </div>
+                    
 @endsection

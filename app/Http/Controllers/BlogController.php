@@ -40,13 +40,17 @@ class BlogController extends Controller
 
     public function index()
     {
-          $all_blog = Blog::all();
+          $all_blog = Blog::simplePaginate(15);
           return view('blog.index', compact('all_blog'));
     }
 
-    public function index_user()
+    public function index_user(Request $request)
     {
-          $all_blog = Blog::all();
+          if(isset($request->search)){
+              $all_blog = Blog::where('judul', 'like', '%' . $request->search . '%')->get();
+          }else{
+              $all_blog = Blog::all();
+          }
           return view('blog.index-user', compact('all_blog'));
     }
 
@@ -54,8 +58,9 @@ class BlogController extends Controller
     {
           $artikel = Blog::find($id);
           $all_artikel_terkait = Blog::inRandomOrder()->take(3)->get();
+          $recent_post = Blog::orderBy('created_at')->take(4)->get();
           // dd($artikel_terkait);
-          return view('blog.detail-user', compact('artikel', 'all_artikel_terkait'));
+          return view('blog.detail-user', compact('artikel', 'all_artikel_terkait', 'recent_post'));
     }
 
     public function show(Blog $blog)

@@ -62,4 +62,9 @@
             <!-- END DATA TABLE -->
         </div>
     </div>
+
+    <div class="d-flex justify-content-center">
+      {{ $all_akses->links() }}
+    </div>
+    
 @endsection

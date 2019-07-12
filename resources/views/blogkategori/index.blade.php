@@ -54,4 +54,8 @@
               <!-- END DATA TABLE -->
           </div>
       </div>
+
+      <div class="d-flex justify-content-center">
+        {{ $all_blog_kategori->links() }}
+      </div>
 @endsection

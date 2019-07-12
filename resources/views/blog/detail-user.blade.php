@@ -78,11 +78,15 @@
 						</div>
 						<div class="daftar-kategori-blog">
 							<ul class="list-group list-group-flush">
-								<li class="list-group-item"><a href="#">lorem</a></li>
-								<li class="list-group-item"><a href="#">lorem</a></li>
-								<li class="list-group-item"><a href="#">lorem</a></li>
-								<li class="list-group-item"><a href="#">lorem</a></li>
-							</ul>
+                @foreach($recent_post as $post)
+								<li class="list-group-item">
+                  <a href="{{ url('blog/'.$post->id.'/'.$post->slug) }}">{{ str_limit($post->judul, $limit = 75, $end = '...') }}</a>
+                  <div class="col-12">
+                    <small>Posted in {{ $post->created_at->diffForHumans() }}</small>
+                  </div>
+                </li>
+                @endforeach
+              </ul>
 						</div>
 					</div>
 				</div>

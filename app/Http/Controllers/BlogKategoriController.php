@@ -15,7 +15,7 @@ class BlogKategoriController extends Controller
 
     public function index()
     {
-          $all_blog_kategori = Blog_kategori::all();
+          $all_blog_kategori = Blog_kategori::simplePaginate(15);
           return view('blogkategori.index', compact('all_blog_kategori'));
     }
 

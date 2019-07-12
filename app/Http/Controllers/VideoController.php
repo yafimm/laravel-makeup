@@ -76,7 +76,7 @@ class VideoController extends Controller
 
     public function index()
     {
-          $all_video = Video::all();
+          $all_video = Video::simplePaginate(15);
           return view('video.index', compact('all_video'));
     }
 
