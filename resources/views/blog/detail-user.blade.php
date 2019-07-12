@@ -25,7 +25,7 @@
 								<center><h1>{{ $artikel->judul }}</h1></center>
 							</div>
 							<div class="isi-blog">
-								<img src="{{ asset('Images/gambar-blog.jpg') }}" width="100%">
+								<img src="{{ asset('images/thumbnail/'.$artikel->thumbnail) }}" width="100%">
 								{!! $artikel->isi_blog !!}
 							</div>
 						</div>
@@ -36,13 +36,13 @@
 							<div class="isi-footer-blog">
 								<div class="row">
 
-                  @foreach($artikel_terkait as $artikel)
+                  @foreach($all_artikel_terkait as $artikel_terkait)
                   <div class="col-md-4 artikel-terkait">
-                    <a href="#">
-                      <img src="{{ asset('images/thumbnail/'.$artikel->thumbnail) }}" width="100%">
+                    <a href="{{ url('blog/'.$artikel_terkait->id.'/'.$artikel_terkait->slug) }}">
+                      <img src="{{ asset('images/thumbnail/'.$artikel_terkait->thumbnail) }}" width="100%">
                     </a>
                     <div class="judul-artikel-terkait">
-                      <a href="#">{{ str_limit($artikel->judul, $limit = 100, $end = '...') }}</a>
+                      <a href="{{ url('blog/'.$artikel_terkait->id.'/'.$artikel_terkait->slug) }}">{{ str_limit($artikel_terkait->judul, $limit = 100, $end = '...') }}</a>
                     </div>
                   </div>
                   @endforeach

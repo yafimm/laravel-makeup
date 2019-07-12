@@ -35,7 +35,7 @@
 										{!! str_limit($blog->isi_blog, $limit = 300, $end = '...') !!}
 									</div>
 									<div class="read-more-blog">
-										<a class="btn read-more" href="{{ url('blog/'.$blog->id) }}">read more</a>
+										<a class="btn read-more" href="{{ url('blog/'.$blog->id.'/'.$blog->slug) }}">read more</a>
 									</div>
 								</div>
 							</div>
