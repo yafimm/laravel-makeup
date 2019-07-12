@@ -11,7 +11,7 @@
     		</section>
     	</div>
     </div>
-    
+
 	<div>
 		<div class="section-about">
 			<section>

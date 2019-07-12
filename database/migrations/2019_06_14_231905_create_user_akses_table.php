@@ -17,7 +17,7 @@ class CreateUserAksesTable extends Migration
             $table->bigIncrements('id');
             $table->string('username', 30);
             $table->integer('id_akses')->unsigned();
-            $table->string('status');
+            $table->enum('status', ['Aktif','Tidak Aktif']);
             $table->date('waktu_berakhir');
             $table->timestamps();
         });

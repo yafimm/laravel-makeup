@@ -20,14 +20,12 @@ Route::get('/subscribe', function () {
   return view('subscribe.index-user');
 });
 
-Route::get('/getvideo/{id}', 'VideoController@getVideo')->name('getvideo');
-
-
 Route::namespace('Auth')->group(function(){
     Route::post('/login', 'LoginController@loginPost');
     Route::post('/register', 'LoginController@registerPost');
     Route::get('/login', 'LoginController@login');
     Route::get('/register', 'LoginController@register');
+    Route::get('/logout', 'LoginController@logout');
 
     Route::get('/loginadmin', 'AdminLoginController@login');
     Route::post('/loginadmin', 'AdminLoginController@loginPost');
@@ -39,7 +37,8 @@ Route::group(['middleware' => ['web']], function(){
   Route::get('/blog', 'BlogController@index_user');
   Route::get('/blog/{id}', 'Blogcontroller@show_user');
   Route::get('/video', 'VideoController@index_user');
-  Route::get('/video/{id}', 'VideoController@show_user');
+  Route::get('/video/{id}/{slug}', 'VideoController@show_user'); // slugnya cuma gimmik doang ini mah
+  Route::get('/videos/{id}', 'VideoController@getVideo')->name('getvideo');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){

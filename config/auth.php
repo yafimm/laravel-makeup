@@ -47,9 +47,9 @@ return [
             'hash' => false,
         ],
 
-        'users' => [
+        'user' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'user',
         ],
 
         'admin' => [
@@ -76,7 +76,7 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'user' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],

@@ -25,7 +25,7 @@
                 <div class="info-box-video border20">
                   <div class="detail-box-video">
                     <h5 class="tipe-box-video">Konten {{ $video->akses->nama }}</h5>
-                    <a class="judul-box-video" href="{{ url('video/'.$video->id) }}"><i class='fas fa-video'> {{ $video->judul }}</i></a>
+                    <a class="judul-box-video" href="{{ url('video/'.$video->id.'/'.str_slug($video->judul,'-')) }}"><i class='fas fa-video'> {{ $video->judul }}</i></a>
                     <a class="nama-pengunggah" href="video-play.html"><img src="Images/foto-default-user.jpg" width="25">{{ $video->admin }}</a>
                   </div>
                 </div>

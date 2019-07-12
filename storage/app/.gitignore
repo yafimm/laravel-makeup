@@ -1,7 +1,5 @@
 *
 !public/
-!videos/thread/sample.video1.mp4
-!videos/thread/sample.video2.mp4
-!videos/thread/sample.video3.mp4
+!videos/
 
 !.gitignore

@@ -8,20 +8,39 @@
 	        </div>
 	        <div class="navbar-container">
 	          <ul>
+              @if(!empty($halaman) && $halaman == 'home')
 	            <li class="nav-link active-link">
-	              <a class="btn" href="{{ url('') }}">Home</a>
+              @else
+              <li class="nav-link">
+              @endif
+                <a class="btn" href="{{ url('') }}">Home</a>
 	              <div class="underline"></div>
 	            </li>
-	            <li class="nav-link">
+
+              @if(!empty($halaman) && $halaman == 'video')
+	            <li class="nav-link active-link">
+              @else
+              <li class="nav-link">
+              @endif
 	              <a class="btn" href="{{ url('video') }}">Video</a>
 	              <div class="underline"></div>
 	            </li>
-	            <li class="nav-link">
+
+              @if(!empty($halaman) && $halaman == 'blog')
+	            <li class="nav-link active-link">
+              @else
+              <li class="nav-link">
+              @endif
 	              <a class="btn" href="{{ url('blog') }}">Blog</a>
 	              <div class="underline"></div>
 	            </li>
-	            <li class="nav-link">
-	              <a class="btn" href="{{ url('about-us') }}">About Us</a>
+
+              @if(!empty($halaman) && $halaman == 'about')
+	            <li class="nav-link active-link">
+              @else
+              <li class="nav-link">
+              @endif
+	              <a class="btn" href="{{ url('about') }}">About Us</a>
 	              <div class="underline"></div>
 	            </li>
 	            <li class="nav-link">

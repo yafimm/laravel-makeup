@@ -12,31 +12,9 @@ use App\User;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         // $this->middleware('guest')->except('logout');
@@ -63,7 +41,7 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        if (Auth::guard('users')->check()){
+        if (Auth::guard('user')->check()){
               return redirect('dashboard');
         }
     }
@@ -82,7 +60,7 @@ class LoginController extends Controller
     {
         $this->validator($request);
         // dd($request);
-        if(Auth::guard('users')->attempt($request->only('username','password'), false)){
+        if(Auth::guard('user')->attempt($request->only('username','password'), false)){
             //Authentication passed...
             return $this->authenticated();
         }
@@ -97,15 +75,14 @@ class LoginController extends Controller
     		$input['password'] = bcrypt($password);
     		$admin = User::create($input);
         return redirect('login')->with('flash_message', 'Selamat anda telah berhasil mendaftar akun anda. silahkan login untuk melanjutkan.. ')
-                                     ->with('alert-class', 'alert-success');
+                                 ->with('alert-class', 'alert-success');
   	}
 
     public function logout()
     {
-        Auth::guard('users')->logout();
-        return redirect('login')
-          ->with('flash_message','Your account have been logged out!')
-          ->with('alert-class', 'alert-info');
+        Auth::guard('user')->logout();
+        return redirect('login')->with('flash_message','Your account have been logged out!')
+                                ->with('alert-class', 'alert-info');
           // the value of alert class is class in bootstrap 4
     }
 

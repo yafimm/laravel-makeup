@@ -15,6 +15,18 @@ class VideoController extends Controller
 
     }
 
+    private function getUserAkses()
+    {
+        if(\Auth::guard('user')->check())
+        {
+            return $user_akses = \Auth::guard('user')->user()->hak_akses->nilai_akses;
+        }
+        else
+        {
+            return $user_akses = 0;
+        }
+    }
+
     private function uploadGambar(Request $request)
     {
         $gambar = $request->file('thumbnail');
@@ -117,7 +129,17 @@ class VideoController extends Controller
     public function show_user($id)
     {
           $video = Video::find($id);
-          return view('video.detail-user', compact('video'));
+
+          $user_akses = $this->getUserAkses();
+
+          if($video->akses->nilai_akses <= $user_akses)
+          {
+              return view('video.detail-user', compact('video'));
+          }
+          else
+          {
+              return view('video.detail-user-gabisa');
+          }
     }
 
     public function update(Request $request, Video $video)
@@ -162,23 +184,26 @@ class VideoController extends Controller
 
     }
 
+    // function get video from storage
     public function getVideo($id)
     {
           $video = Video::find($id);
-          // echo $video->akses->nilai_akses;
-          // if($video->akses->nilai_akses == 10)
-          // {
-            $name = $video->video;
-            $filename = storage_path() . "/app/videos/thread/$name";
-            // $mime_type= $v;
-            $headers = array(
-              'Content-type'          => 'mp4',
-              'Content-Disposition'   => 'inline; filename="' . $filename . '"'
-            );
-            return \Response::make( file_get_contents($filename), 200, $headers);
-          // }else{
-          //   return abort(404);
-          // }
-    }
 
+          $user_akses = $this->getUserAkses();
+
+          if($video->akses->nilai_akses <= $user_akses)
+          {
+              $name = $video->video;
+              $filename = storage_path() . "/app/videos/thread/$name";
+              $headers = array(
+                'Content-type'          => 'mp4',
+                'Content-Disposition'   => 'inline; filename="' . $filename . '"'
+              );
+              return \Response::make( file_get_contents($filename), 200, $headers);
+          }
+          else
+          {
+              return abort(404);
+          }
+    }
 }
