@@ -129,17 +129,22 @@ class VideoController extends Controller
     public function show_user($id)
     {
           $video = Video::find($id);
-
-          $user_akses = $this->getUserAkses();
-
-          if($video->akses->nilai_akses <= $user_akses)
+          if($video)
           {
-              return view('video.detail-user', compact('video'));
+                $title_halaman = $video->judul.' - BEAUTY MASTER | Video';
+
+                $user_akses = $this->getUserAkses();
+
+                if($video->akses->nilai_akses <= $user_akses)
+                {
+                    return view('video.detail-user', compact('video', 'title_halaman'));
+                }
+                else
+                {
+                    return view('video.detail-user-gabisa');
+                }
           }
-          else
-          {
-              return view('video.detail-user-gabisa');
-          }
+          return abort(404);
     }
 
     public function update(Request $request, Video $video)

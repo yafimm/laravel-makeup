@@ -51,16 +51,22 @@ class BlogController extends Controller
           }else{
               $all_blog = Blog::all();
           }
-          return view('blog.index-user', compact('all_blog'));
+
+          $recent_post = Blog::orderBy('created_at')->take(4)->get();
+          return view('blog.index-user', compact('all_blog', 'recent_post'));
     }
 
     public function show_user($id)
     {
           $artikel = Blog::find($id);
-          $all_artikel_terkait = Blog::inRandomOrder()->take(3)->get();
-          $recent_post = Blog::orderBy('created_at')->take(4)->get();
-          // dd($artikel_terkait);
-          return view('blog.detail-user', compact('artikel', 'all_artikel_terkait', 'recent_post'));
+          if($artikel)
+          {
+              $all_artikel_terkait = Blog::inRandomOrder()->take(3)->get();
+              $recent_post = Blog::orderBy('created_at')->take(4)->get();
+              $title_halaman = $artikel->judul.' - BEAUTY MASTER | Blog';
+              return view('blog.detail-user', compact('artikel', 'all_artikel_terkait', 'recent_post', 'title_halaman'));
+          }
+          return abort(404);
     }
 
     public function show(Blog $blog)
