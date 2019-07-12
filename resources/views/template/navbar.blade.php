@@ -2,7 +2,7 @@
 	    <nav class="navbar navbar-expand-lg">
 	      <div class="container">
 	        <div class="navbar-header">
-	          <a class="navbar-brand" href="#">
+	          <a class="navbar-brand" href="{{ url('') }}">
 	              <img id="logo" class="margin-logo" src="{{ asset('images/logo.png') }}" alt="logo" width="100px">
 	            </a>
 	        </div>
@@ -44,11 +44,23 @@
 	              <div class="underline"></div>
 	            </li>
 	            <li class="nav-link">
-	              <a class="btn" href="#" data-toggle="modal" data-target="#modalLogin">Log In</a>
+	              <a class="btn" href="{{ url('#') }}" data-toggle="modal" data-target="#modalLogin">Log In</a>
 	              <div class="underline"></div>
 	            </li>
+				<li class="nav-link">
+                
+                <div class="dropdown">
+                <a class="btn" href="#" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" style="font-weight: bold; font-size: 18px; text-transform: uppercase;">
+                	<img style="border-radius: 50%; margin: 0px 10px 0px 0px;" src="{{ asset('Images/foto-default-user.jpg') }}" width="40" height="40" > Nama User
+                </a>
+                  <div class="dropdown-menu" style="width: auto;">
+                    <a class="dropdown-item" href="{{ url('#') }}">Profil</a>
+                    <a class="dropdown-item" href="{{ url('#') }}">Log Out</a>
+                  </div>
+                </div>
+              </li>
 	            <li class="nav-link">
-	              <button class="btn btn-subscribe"><a href="subscribe.html"> Subscribe </a></button>
+	              <button class="btn btn-subscribe"><a href="{{ url('#') }}"> Subscribe </a></button>
 	            </li>
 	          </ul>
 	        </div>
@@ -82,7 +94,6 @@
               	 <div class="form-group">
               		   <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required>
               	 </div>
-              	 <div class="float-right"><a href="#" style="font-size: 12px;">lupa kata sandi?</a></div>
              </div>
               <!-- MODAL LOGIN FOOTER-->
              <div class="modal-footer">

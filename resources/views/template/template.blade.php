@@ -20,7 +20,7 @@
 <body>
 		@include('template.navbar')
     	@yield('content')
-    @include('template.footer')
+    	@include('template.footer')
 
 		<script type="text/javascript" src="{{ asset('js/efek-website.js') }}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
