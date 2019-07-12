@@ -26,17 +26,21 @@ class MenuActiveServiceProvider extends ServiceProvider
     public function boot()
     {
         $halaman = 'home';
+        $title_halaman = 'BEAUTY MASTER - The Greatest Makeup Online Course';
 
         if (Request::segment(1) == 'about') {
              $halaman = 'about';
+             $title_halaman = 'About - BEAUTY MASTER';
         }
 
         if (Request::segment(1) == 'blog') {
              $halaman = 'blog';
+             $title_halaman = 'Blog - BEAUTY MASTER';
         }
 
         if (Request::segment(1) == 'video') {
              $halaman = 'video';
+             $title_halaman = 'Video - BEAUTY MASTER';
         }
 
         // Buat Admin Dashboard
@@ -54,6 +58,7 @@ class MenuActiveServiceProvider extends ServiceProvider
 
 
         view()->share('halaman', $halaman);
+        view()->share('title_halaman', $title_halaman);
 
     }
 }

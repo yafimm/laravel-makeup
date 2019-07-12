@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>BEAUTY MASTER</title>
+	<title>
+		{{ $title_halaman }}
+	</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="{{ asset('Images/logo-tab.gif') }}" type="image/gif" sizes="16x16">
