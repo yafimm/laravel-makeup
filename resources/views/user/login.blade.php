@@ -39,7 +39,7 @@
 
 <body class="animsition" style="font-family: quicksand;">
     <div class="page-wrapper">
-        <div class="page-content--bge5">
+        <div class="page-content--bge5 login-user">
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">
