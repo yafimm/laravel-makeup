@@ -25,7 +25,7 @@ Route::namespace('Auth')->group(function(){
     Route::post('/register', 'LoginController@registerPost');
     Route::get('/login', 'LoginController@login');
     Route::get('/register', 'LoginController@register');
-    Route::get('/logout', 'LoginController@logout');
+    Route::post('/logout', 'LoginController@logout');
 
     Route::get('/loginadmin', 'AdminLoginController@login');
     Route::post('/loginadmin', 'AdminLoginController@loginPost');
@@ -39,6 +39,15 @@ Route::group(['middleware' => ['web']], function(){
   Route::get('/video', 'VideoController@index_user');
   Route::get('/video/{id}/{slug}', 'VideoController@show_user'); // slugnya cuma gimmik doang ini mah
   Route::get('/videos/{id}', 'VideoController@getVideo')->name('getvideo');
+
+  Route::get('/{username}', 'UserController@index_user')->name('profile');
+});
+
+Route::group(['prefix' => 'settings'], function(){
+    Route::get('password', 'UserController@edit_password')->name('password.edit');
+    Route::get('profile', 'UserController@edit_profile')->name('profile.edit');
+    Route::post('password', 'UserController@update_password')->name('password.update');
+    Route::post('profile', 'UserController@update_profile')->name('profile.update');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){

@@ -55,6 +55,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/videos/thread'),
         ],
+        'fotoprofil' => [
+            'driver' => 'local',
+            'root' => public_path('images/profil'),
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

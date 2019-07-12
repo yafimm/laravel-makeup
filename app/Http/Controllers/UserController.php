@@ -17,22 +17,17 @@ class UserController extends Controller
 
     private function validator(Request $request)
     {
-
-        if($request->isMethod('post')){
-          $alamat = 'sometimes|string|min:5|max:50|unique:blog';
-          $no_telp = 'sometimes|regex:/(01)[0-9]{9}/';
-        }else{
-          $alamat = 'required|string|min:5|max:100';
-          $no_telp = 'required|regex:/(01)[0-9]{9}/';
-        }
         //validation rules.
         $rules = [
-          'username' => $judul,
-          'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|confirmed',
           'nama' => 'required|string|min:6|max:50',
           'email' => 'required|email|unique:user',
           'alamat' => $alamat,
-          'no_telp' => $no_telp,
+          'facebook' => 'sometimes|string|min:6|max:50',
+          'twitter' => 'sometimes|string|min:6|max:50',
+          'linkedin' => 'sometimes|string|min:6|max:50',
+          'instagram' => 'sometimes|string|min:6|max:50',
+          'foto' => 'sometimes|image|max:500|mimes:jpeg,jpg,bmp,png',
+          'no_telp' => 'sometimes|numeric|phone_number|size:11'
         ];
 
         $messages = [''];
@@ -41,56 +36,107 @@ class UserController extends Controller
         $this->validate($request ,$rules);
     }
 
+    private function uploadGambar(Request $request)
+    {
+        $foto = $request->file('foto');
+        $ext = $foto->getClientOriginalExtension();
+        $username = \Auth::guard('user')->user()->username;
+        if($request->file('foto')->isValid()){
+            $filename = date('Ymd').".$username.$ext";
+            $upload_path = 'images/thumbnail';
+            $request->file('foto')->move($upload_path, $filename);
+            return $filename;
+        }
+        return false;
+    }
+
+    private function hapusGambar(User $user)
+    {
+        $exist = Storage::disk('fotoprofil')->exists($user->foto);
+        if(isset($user->foto) && $exist){
+            $delete = Storage::disk('fotoprofil')->delete($user->foto);
+            return $delete; //Kalo delete gagal, bakal return false, kalo berhasil bakal return true
+        }
+    }
+
     public function index()
     {
         $all_user = User::all();
         return view('user.index', compact('all_user'));
     }
 
-
-    public function store(Request $request)
+    public function index_user($username)
     {
-        $this->validator($request);
-        $password = Hash::make($request->password);
-        $data = [
-                 'username' => $request->username,
-                 'password' => $password,
-                 'nama' => $request->nama,
-                 'email' => $request->email,
-                 'alamat' => $request->alamat,
-                 'no_telp' => $request->no_telp
-               ];
-
-       $register = User::create($data);
-       if($register)
-       {
-           return redirect('login')->with('flash_message', 'Registrasi berhasil, silahkan login untuk tahap selanjutnya')
-                                         ->with('alert-class', 'alert-success');
-       }
-       //kalo gagal dilempar kesini
-       return redirect('register')->with('flash_message', 'Data gagal diinput')
-                                     ->with('alert-class', 'alert-danger');
+        $user = User::find($username);
+        if($user)
+        {
+            return view('profile.index-user', compact('user'));
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
+    public function edit_profile()
+    {
+        $user = \Auth::guard('user')->user();
+        return view('profile.edit-profile-user', compact('user'));
+    }
+
+    public function edit_password()
+    {
+        $user = \Auth::guard('user')->user();
+        return view('profile.edit-password-user');
+    }
 
     public function show(User $user)
     {
           return view('user.show', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update_profile(Request $request, User $user)
     {
           $this->validator($request);
           $input = $request->all();
-          $update = $user->update($input);
-          if($register)
+          if(isset($input['foto']))
           {
-              // return redirect('login')->with('flash_message', 'Data Akun berhasil diubah')
-              //                        ->with('alert-class', 'alert-success');
+              $this->hapusGambar($user);
+              $input['foto'] = $this->uploadGambar($request);
           }
-          //kalo gagal dilempar kesini
-          // return redirect('register')->with('flash_message', 'Data Akun gagal diubah')
-          //                           ->with('alert-class', 'alert-danger');
+
+          $update = $user->update($input);
+
+          if($update)
+          {
+              return redirect()->route('profile')->with('flash_message', 'Data Akun berhasil diubah')
+                                     ->with('alert-class', 'alert-success');
+          }
+          // kalo gagal dilempar kesini
+          return redirect()->route('profile')with('flash_message', 'Data Akun gagal diubah')
+                                    ->with('alert-class', 'alert-danger');
+    }
+
+    public function update_password(Request $request)
+    {
+          $validator = Validator::make($request->all(), [
+              'password' => 'required',
+              'new_password'=>'required|confirmed|min:6|max:32',
+              'new_password_confirmation'=>'sometimes|required_with:new_password',
+          ]);
+
+          if ($validator->fails()) {
+              return redirect()->route('edit_password_user')
+                              ->withErrors($validator)
+                              ->with('flash_message', 'Ada kesalahan pada saat memasukkan data password');
+          }else{
+              $users = Users::find(\Auth::guard('users')->user()->username);
+              if(Hash::check($request->password, $users->password)){
+                  $users->update(['password' => bcrypt($request->new_password)]);
+                  return redirect()->route('edit_password_user')->with('flash_message', 'Password Akun berhasil diubah')
+                                                      ->with('alert-class', 'alert-success');
+              }
+          }
     }
 
     // public function delete($username)

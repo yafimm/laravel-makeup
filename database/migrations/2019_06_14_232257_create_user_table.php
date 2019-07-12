@@ -18,6 +18,12 @@ class CreateUserTable extends Migration
             $table->string('password');
             $table->string('nama', 50);
             $table->string('email');
+            $table->enum('jenis_kelamin',['Pria', 'Wanita']);
+            $table->string('foto')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
             $table->string('alamat', 100)->nullable();
             $table->string('no_telp')->nullable();
             $table->timestamps();
