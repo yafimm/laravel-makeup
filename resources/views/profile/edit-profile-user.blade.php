@@ -6,23 +6,28 @@
 			<div class="row header-profile">
 				<div class="col-md-4">
 					<center>
-						<img class="foto-profil-header" src="{{ asset('Images/foto-default-user.jpg') }}" width="200">
+						<div class="image-upload-profil">
+							<label for="foto-profil" style="font-size: 30px;">
+								<i class="fas fa-camera"></i>
+							</label>
+							<input id="foto-profil" type="file" onchange="readURL(this);"/>
+						</div>
+						<img id="blah" class="foto-profil-header" src="Images/foto-default-user.jpg" width="200" height="200">
 					</center>
 				</div>
 				<div class="col-md-4">
 					<div class="profile-tengah">
 						<h4>Dzaki Madhani</h4>
 						<center>
-							<span class="dot-profile"></span>
-							<span class="dot-profile"></span>
-							<span class="dot-profile"></span>
+							<button class="btn-hakakses" disabled>Platinum</button>
 						</center>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="profile-tengah">
 						<center>
-							<button class="btn-hakakses" disabled>Platinum</button>
+							<h5 class="username-header"><i class="fas fa-user"></i> dzakimadhani</h5>
+							<h5 class="join-date"><i class="far fa-calendar-check"></i> Juli 2019</h5>
 						</center>
 					</div>
 				</div>

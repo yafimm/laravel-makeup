@@ -12,16 +12,15 @@
 					<div class="profile-tengah">
 						<h4>Dzaki Madhani</h4>
 						<center>
-							<span class="dot-profile"></span>
-							<span class="dot-profile"></span>
-							<span class="dot-profile"></span>
+							<button class="btn-hakakses" disabled>Platinum</button>
 						</center>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="profile-tengah">
 						<center>
-							<button class="btn-hakakses" disabled>Platinum</button>
+							<h5 class="username-header"><i class="fas fa-user"></i> dzakimadhani</h5>
+							<h5 class="join-date"><i class="far fa-calendar-check"></i> Juli 2019</h5>
 						</center>
 					</div>
 				</div>
