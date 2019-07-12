@@ -11,6 +11,10 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
+
+     // Override redirect buat login yang dari halaman home
+     protected $redirect = 'register';
+
     public function authorize()
     {
         return true;

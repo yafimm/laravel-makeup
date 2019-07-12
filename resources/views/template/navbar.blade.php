@@ -59,35 +59,39 @@
 	<!-- The Modal -->
   	<div class="modal fade" id="modalLogin" role="dialog">
         <div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<!-- MODAL LOGIN HEADER -->
-				<div class="modal-header">
-					<div class="row">
-						<h3 class="modal-title w-100 font-weight-bold text-center">LOGIN</h3>
-						<p>Silakan masukkan email dan password akun anda untuk mengakses konten ekslusif</p>
-					</div>
+			     <div class="modal-content">
+			         <!-- MODAL LOGIN HEADER -->
+      				<div class="modal-header">
+        					<div class="row">
+        				 		 <h3 class="modal-title w-100 font-weight-bold text-center">LOGIN</h3>
+        					 	 <p>Silakan masukkan email dan password akun anda untuk mengakses konten ekslusif</p>
+        					</div>
 
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    	<span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- MODAL LOGIN BODY -->
-                <div class="modal-body mx-3">
-                	<div class="form-group">
-                		<input type="text" name="username" id="username" class="form-control input-lg" placeholder="username" required>
-                	</div>
-                	<div class="form-group">
-                		<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required>
-                	</div>
-                	<div class="float-right"><a href="#" style="font-size: 12px;">lupa kata sandi?</a></div>
-                </div>
-                <!-- MODAL LOGIN FOOTER-->
-                <div class="modal-footer">
-                	<button class="btn btn-block btn-lg modal-regis" data-toggle="modal" data-target="#modalRegis">Registrasi</button>
-                	<br>
-                	<input type="submit" name="login" class="btn btn-block btn-lg btn-login" value="Login">
-                </div>
-            </div>
+        					 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    	 <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <!-- MODAL LOGIN BODY -->
+             <form class="" action="{{ url('login') }}" method="post">
+               @CSRF
+               @method('POST')
+              <div class="modal-body mx-3">
+              	 <div class="form-group">
+              		   <input type="text" name="username" id="username" class="form-control input-lg" placeholder="username" required>
+              	 </div>
+              	 <div class="form-group">
+              		   <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required>
+              	 </div>
+              	 <div class="float-right"><a href="#" style="font-size: 12px;">lupa kata sandi?</a></div>
+             </div>
+              <!-- MODAL LOGIN FOOTER-->
+             <div class="modal-footer">
+              	<button class="btn btn-block btn-lg modal-regis" data-toggle="modal" data-dismiss="modal" data-target="#modalRegis">Registrasi</button>
+              	<br>
+              	<input type="submit" name="login" class="btn btn-block btn-lg btn-login" value="Login">
+             </div>
+           </form>
+          </div>
         </div>
     </div>
 
@@ -107,23 +111,40 @@
                 </div>
                 <!-- MODAL LOGIN BODY -->
                 <div class="modal-body mx-3">
-                	<div class="form-group">
-                		<input type="text" name="fullname" id="fullname" class="form-control input-lg" placeholder="Full Name" required>
-                	</div>
-                	<div class="form-group">
-                		<input type="text" name="noTelepon" id="noTelepon" class="form-control input-lg" placeholder="Phone Number" required>
-                	</div>
-                	<div class="form-group">
-                		<input type="text" name="email" id="email" class="form-control input-lg" placeholder="Email" required>
-                	</div>
-                	<div class="form-group">
-                		<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required>
-                	</div>
-                </div>
-                <!-- MODAL LOGIN FOOTER-->
-                <div class="modal-footer">
-                	<input type="submit" name="registrasi" class="btn btn-block btn-lg btn-login" value="Registrasi">
-                </div>
+                  <form class="" action="{{ url('register') }}" method="post">
+                    @CSRF
+                    @method('POST')
+                    <div class="form-group">
+                  		<input type="text" name="nama" id="fullname" class="form-control input-lg" placeholder="Full Name" required>
+                  	</div>
+                  	<div class="form-group">
+                  		<input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username" required>
+                  	</div>
+                    <div class="form-group">
+                        <select name="jenis_kelamin" id="select" class="au-input au-input--full form-control">
+                            <option value="" disabled>Jenis Kelamin</option>
+                            <option value="pria">Laki-laki</option>
+                            <option value="wanita">Perempuan</option>
+                        </select>
+                        @if($errors->has('jenis_kelamin'))
+                          <small class="form-text text-danger">*{{ $errors->first('jenis_kelamin') }}</small>
+                        @endif
+                    </div>
+                  	<div class="form-group">
+                  		<input type="text" name="email" id="email" class="form-control input-lg" placeholder="Email" required>
+                  	</div>
+                  	<div class="form-group">
+                  		<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required>
+                  	</div>
+                    <div class="form-group">
+                  		<input type="password" name="password-confirmation" id="password" class="form-control input-lg" placeholder="Re-enter Password" required>
+                  	</div>
+                  </div>
+                  <!-- MODAL LOGIN FOOTER-->
+                  <div class="modal-footer">
+                  	<input type="submit" name="registrasi" class="btn btn-block btn-lg btn-login" value="Registrasi">
+                  </div>
+              </form>
             </div>
         </div>
     </div>

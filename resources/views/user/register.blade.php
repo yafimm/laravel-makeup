@@ -12,6 +12,8 @@
     <!-- Title Page-->
     <title>Registrasi</title>
 
+    <link rel="icon" href="Images/logo-tab.gif" type="image/gif" sizes="16x16">
+
     <!-- Fontfaces CSS-->
     <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
@@ -53,7 +55,7 @@
                               @CSRF
                               @method('POST')
                                 <div class="form-group">
-                                    <input class="au-input au-input--full" type="input" name="nama" placeholder="Nama Lengkap" value="{{ old('nama') }}">
+                                    <input class="au-input au-input--full" type="input" name="nama" placeholder="Full name" value="{{ old('nama') }}">
                                     @if($errors->has('nama'))
                                       <small class="form-text text-danger">*{{ $errors->first('nama') }}</small>
                                     @endif

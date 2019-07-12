@@ -53,9 +53,9 @@ class BlogController extends Controller
     public function show_user($id)
     {
           $artikel = Blog::find($id);
-          $artikel_terkait = Blog::inRandomOrder()->take(3)->get();
+          $all_artikel_terkait = Blog::inRandomOrder()->take(3)->get();
           // dd($artikel_terkait);
-          return view('blog.detail-user', compact('artikel', 'artikel_terkait'));
+          return view('blog.detail-user', compact('artikel', 'all_artikel_terkait'));
     }
 
     public function show(Blog $blog)
