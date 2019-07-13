@@ -18,6 +18,7 @@
 			<div>
         {!! $video->deskripsi !!}
       </div>
+      @if($akses == 'BISA');
 			<div>
         <div class="embed-responsive embed-responsive-21by9">
           <video class="embed-responsive-item" width="320" height="240" oncontextmenu="return false;" controls>
@@ -26,6 +27,17 @@
             </video>
         </div>
       </div>
+      @else
+      <div class="cant-play" style="width:560px; height:315px; margin: auto; background-color: black; padding: 50px 30px 50px 30px;">
+        <h3 style="color: gold; font-weight: bold; text-align: center; margin-bottom: 30px">Konten Premium</h3>
+        <p style="color: white;">Jadilah membership agar dapat mengakses konten premium ini.</p>
+        <center>
+          <i class="far fa-hand-point-down" style="font-size: 40px; color: white;"></i>
+          <br>
+          <a class="btn btn-upgrade-akun" href="subscribe.html">Subscribe</a>
+        </center>
+      </div>
+      @endif
 		</div>
 	</div>
 

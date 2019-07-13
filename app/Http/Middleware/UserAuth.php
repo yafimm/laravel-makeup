@@ -15,7 +15,7 @@ class UserAuth
      */
      public function handle($request, Closure $next)
      {
-       if (\Auth::guard('users')->check()) {
+       if (\Auth::guard('user')->check()) {
            return $next($request);
        }else{
            return redirect('/login');

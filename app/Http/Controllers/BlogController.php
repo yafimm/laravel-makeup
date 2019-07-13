@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\BlogRequest;
 use App\Blog;
+use App\Blog_kategori;
 
 use Storage;
 
@@ -51,9 +52,18 @@ class BlogController extends Controller
           }else{
               $all_blog = Blog::all();
           }
+          $all_blog_kategori = Blog_kategori::all();
+          $recent_post = Blog::orderBy('created_at','desc')->take(4)->get();
+          return view('blog.index-user', compact('all_blog', 'recent_post', 'all_blog_kategori'));
+    }
 
-          $recent_post = Blog::orderBy('created_at')->take(4)->get();
-          return view('blog.index-user', compact('all_blog', 'recent_post'));
+    public function index_user_by_kategori($slug)
+    {
+          $blog_kategori = Blog_kategori::where('slug', $slug)->first();
+          $all_blog = $blog_kategori->blog;
+          $all_blog_kategori = Blog_kategori::all();
+          $recent_post = Blog::orderBy('created_at','desc')->take(4)->get();
+          return view('blog.index-user', compact('all_blog', 'recent_post', 'all_blog_kategori'));
     }
 
     public function show_user($id)
@@ -61,10 +71,11 @@ class BlogController extends Controller
           $artikel = Blog::find($id);
           if($artikel)
           {
+              $all_blog_kategori = Blog_kategori::all();
               $all_artikel_terkait = Blog::inRandomOrder()->take(3)->get();
-              $recent_post = Blog::orderBy('created_at')->take(4)->get();
+              $recent_post = Blog::orderBy('created_at','desc')->take(4)->get();
               $title_halaman = $artikel->judul.' - BEAUTY MASTER | Blog';
-              return view('blog.detail-user', compact('artikel', 'all_artikel_terkait', 'recent_post', 'title_halaman'));
+              return view('blog.detail-user', compact('artikel', 'all_artikel_terkait', 'recent_post', 'title_halaman', 'all_blog_kategori'));
           }
           return abort(404);
     }
@@ -77,19 +88,20 @@ class BlogController extends Controller
     public function create()
     {
       $blog = new Blog;
-      return view('blog.create', compact('blog'));
+      $all_blog_kategori = Blog_kategori::all();
+      return view('blog.create', compact('blog', 'all_blog_kategori'));
     }
 
     public function edit(Blog $blog)
     {
-          return view('blog.edit', compact('blog'));
+          $all_blog_kategori = Blog_kategori::all();
+          return view('blog.edit', compact('blog','all_blog_kategori'));
     }
 
     // store artikel
     public function store(BlogRequest $request)
     {
           $input = $request->all();
-          $input['id_blog_kategori'] = 1; // Foreign key dari Artikel
           $input['slug'] = str_slug($request->judul,'-');
           $input['admin'] = \Auth::guard('admin')->user()->username;
           if(isset($input['thumbnail']))

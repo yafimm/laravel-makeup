@@ -1,6 +1,6 @@
 @if(Session::has('flash_message'))
   <div class="sufee-alert alert with-close {{ Session::get('alert-class') }} alert-dismissible fade show">
-      <span class="badge badge-pill <?php if(Session::get('alert-class') == 'alert-success'){echo 'badge-success';}else{echo 'badge-danger';}?>">
+      <span class="badge badge-pill <?php if(Session::get('alert-class') == 'alert-danger'){echo 'badge-danger';}else{echo 'badge-success';}?>">
         <?php if(Session::get('alert-class') == 'alert-danger'){ echo 'Failed'; }else{ echo 'Success'; } ?>
       </span>
       {{ Session::get('flash_message') }}

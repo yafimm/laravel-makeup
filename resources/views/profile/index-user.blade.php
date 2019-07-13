@@ -1,41 +1,19 @@
 @extends('template.template')
 @section('content')
     <div class="header-halaman-profile">
-		<div class="container">
-			<h3 class="judul-profile">Profile</h3>
-
-			<div class="row header-profile">
-				<div class="col-md-4">
-					<img class="foto-profil-header" src="{{ asset('images/foto-default-user.jpg') }}" width="200">
-				</div>
-				<div class="col-md-4">
-					<div class="profile-tengah">
-						<h4>{{ $user->username }}</h4>
-						<center>
-							<span class="dot-profile"></span>
-							<span class="dot-profile"></span>
-							<span class="dot-profile"></span>
-						</center>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="profile-tengah">
-						<center>
-							<button class="btn-hakakses" disabled>{{ $user->hak_akses->nama }}</button>
-						</center>
-					</div>
-				</div>
-			</div>
-		</div>
+    @include('profile.header-user')
 	</div>
 
 	<div>
 		<div class="body-video">
 			<div class="container">
+
+        @include('_partial.flash_message')
+
         @if(Auth::guard('user')->check() && Auth::guard('user')->user()->username == $user->username)
         <center>
-          <a class="btn btn-editprofil" href="#">Edit Profil</a>
-          <a class="btn btn-editprofil" href="#">Ubah Password</a>
+          <a class="btn btn-editprofil" href="{{ route('profile.edit') }}">Edit Profil</a>
+          <a class="btn btn-editprofil" href="{{ route('password.edit') }}">Ubah Password</a>
         </center>
         @endif
 				<div class="row">
@@ -66,7 +44,7 @@
 									<span>Gender</span>
 								</div>
 								<div class="col-md-8 info-profil">
-									<p  >Laki-laki</p>
+									<p>{{ $user->jenis_kelamin }}</p>
 								</div>
 							</div>
 						</div>
@@ -88,7 +66,7 @@
 									<span>Facebook</span>
 								</div>
 								<div class="col-md-8 info-profil">
-									<p  >-</p>
+									<p>{{ $user->facebook }}</p>
 								</div>
 							</div>
 						</div>
@@ -98,7 +76,7 @@
 									<span>Twitter</span>
 								</div>
 								<div class="col-md-8 info-profil">
-									<p  >-</p>
+									<p>{{ $user->twitter }}</p>
 								</div>
 							</div>
 						</div>
@@ -108,7 +86,7 @@
 									<span>Instagram</span>
 								</div>
 								<div class="col-md-8 info-profil">
-									<p  >-</p>
+									<p>{{ $user->instagram }}</p>
 								</div>
 							</div>
 						</div>
@@ -118,7 +96,7 @@
 									<span>Linked In</span>
 								</div>
 								<div class="col-md-8 info-profil">
-									<p  >-</p>
+									<p>{{ $user->linkedin }}</p>
 								</div>
 							</div>
 						</div>

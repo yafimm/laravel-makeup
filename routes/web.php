@@ -35,19 +35,19 @@ Route::namespace('Auth')->group(function(){
 
 Route::group(['middleware' => ['web']], function(){
   Route::get('/blog', 'BlogController@index_user');
+  Route::get('/blog/kategori/{slug}', 'BlogController@index_user_by_kategori');
   Route::get('/blog/{id}/{slug}', 'Blogcontroller@show_user');
   Route::get('/video', 'VideoController@index_user');
   Route::get('/video/{id}/{slug}', 'VideoController@show_user'); // slugnya cuma gimmik doang ini mah
   Route::get('/videos/{id}', 'VideoController@getVideo')->name('getvideo');
-
   Route::get('/{username}', 'UserController@index_user')->name('profile');
 });
 
-Route::group(['prefix' => 'settings'], function(){
+Route::group(['prefix' => 'settings',  'middleware' => ['user']], function(){
     Route::get('password', 'UserController@edit_password')->name('password.edit');
     Route::get('profile', 'UserController@edit_profile')->name('profile.edit');
-    Route::post('password', 'UserController@update_password')->name('password.update');
-    Route::post('profile', 'UserController@update_profile')->name('profile.update');
+    Route::put('password', 'UserController@update_password')->name('password.update');
+    Route::put('profile', 'UserController@update_profile')->name('profile.update');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){

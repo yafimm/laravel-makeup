@@ -42,7 +42,7 @@ class LoginController extends Controller
     protected function authenticated()
     {
         if (Auth::guard('user')->check()){
-              return redirect('dashboard');
+              return redirect('');
         }
     }
 

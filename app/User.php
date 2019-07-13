@@ -16,7 +16,7 @@ class User extends \Eloquent implements Authenticatable
     public $incrementing = false;
 
     protected $fillable = [
-        'nama', 'email', 'username', 'no_telp', 'alamat', 'password'
+        'nama', 'email', 'username', 'no_telp', 'alamat', 'password', 'foto','facebook','instagram','twitter','linkedin'
     ];
 
     protected $hidden = [
@@ -34,6 +34,7 @@ class User extends \Eloquent implements Authenticatable
         $data = collect();
         foreach ($akses->get() as $test) {
              $test->pivot->nilai_akses = $test->nilai_akses;
+             $test->pivot->nama = $test->nama;
              $data->push($test->pivot);
         }
         $data = $data->where('status', 'Aktif')

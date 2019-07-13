@@ -33,6 +33,7 @@ class BlogKategoriController extends Controller
     public function store(BlogkategoriRequest $request)
     {
           $input = $request->all();
+          $input['slug'] = str_slug($input['nama_kategori'], '-');
           $store = Blog_kategori::create($input);
           if($store)
           {
@@ -52,6 +53,7 @@ class BlogKategoriController extends Controller
     public function update(BlogkategoriRequest $request, Blog_kategori $blog_kategori)
     {
           $input = $request->all();
+          $input['slug'] = str_slug($input['nama_kategori'], '-');
           $update = $blog_kategori->update($input);
           if($update)
           {

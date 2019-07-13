@@ -16,10 +16,9 @@
   </div>
   <div class="daftar-kategori-blog">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item"><a href="#">lorem</a></li>
-      <li class="list-group-item"><a href="#">lorem</a></li>
-      <li class="list-group-item"><a href="#">lorem</a></li>
-      <li class="list-group-item"><a href="#">lorem</a></li>
+      @foreach($all_blog_kategori as $blog_kategori)
+       <li class="list-group-item"><a href="{{ url('blog/kategori/'.$blog_kategori->slug) }}">{{ $blog_kategori->nama_kategori }}</a></li>
+      @endforeach
     </ul>
   </div>
   <div class="kategori-blog">

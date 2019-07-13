@@ -169,6 +169,41 @@ html * {
 footer{
 	
 }
+.image-upload-profil:hover{
+	background-color: #C01C73;
+	transition: 0.4s;
+}
+.image-upload-profil i{
+	color: gold;
+}
+.image-upload-profil label{
+	cursor: pointer;
+}
+.image-upload-profil{
+	transition: all 0.4s;
+	background-color: black;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+    top: 68%;
+    right: 25%;
+    font-size: 23px;
+    cursor: pointer !important;
+    direction: ltr;
+}
+.image-upload-profil > input
+{
+    display: none;
+}
+
+
+
+.image-upload-profil img
+{
+    width: 80px;
+    cursor: pointer;
+}
 .margin-logo{
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -353,6 +388,22 @@ footer{
 	text-align: center;
 	
 }
+.username-header{
+	color: gold; 
+	font-weight: bold; 
+	margin-bottom: 20px; 
+	padding-top: 4px;
+}
+.username-header i{
+	color: gold; 
+	font-weight: bold;
+}
+.join-date{
+	color: gold; font-weight: bold; margin-top: 45px;
+}
+.join-date i{
+	color: gold; font-weight: bold;
+}
 .btn-editprofil{
 	padding: 10px 20px 10px 20px;
 	color: #C01C73;
@@ -408,6 +459,19 @@ footer{
 	border-radius: 0.25rem;
 	transition: all 0.2s ease-in-out, all 0.2s ease-in-out;
 
+}
+.form-editprofil-textarea{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: transparent;
+	border: 1.5px solid #C01C73;
+	border-radius: 0.25rem;
+	transition: all 0.2s ease-in-out, all 0.2s ease-in-out;
 }
 .select-editprofil{
 	margin-top: 5px;
@@ -468,6 +532,7 @@ footer{
 	font-weight: bold;
 }
 .btn-hakakses{
+	margin-top: 20px;
 	padding: 10px 20px 10px 20px;
 	color: white;
 	border-radius: 50px;

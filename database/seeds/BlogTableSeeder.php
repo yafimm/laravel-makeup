@@ -13,7 +13,7 @@ class BlogTableSeeder extends Seeder
     public function run()
     {
         $blog = new Blog;
-        $blog->id_blog_kategori = 1;
+        $blog->id_blog_kategori = 3;
         $blog->judul = 'Riasan Wajah yang Berkilau Bening Jadi Tren. Inilah 10 ‘Glass Skin Make-Up’ Ala Para Beauty Vlogger';
         $blog->isi_blog = "Saat ini, cewek-cewek lagi berlomba-lomba membuat kulitnya tampak berkilau sehat. Mulai dari menggunakan produk perawatan kulit hingga riasan. Cara paling instan ya mengenakan riasan yang bisa membuat kulit berkilau basah sehat sampai seolah bening. Kuncinya ada pada produk primer wajah, alas bedak yang dewy, serta tambahan highlighter yang membuat kilau makin terpancar.
                       Para Youtuber dan vlogger kecantikan juga membuat tampilan make-up seperti itu dan menamainya sebagai ‘glass skin make-up’ karena memang kulit sengaja dibuat berkilau sehat agar terlihat bening. Dengan cara merias khas masing-masing, secara mengejutkan, hasilnya beda-beda lo. Intip yuk bagaimana penampilan riasan mereka~
@@ -42,7 +42,7 @@ class BlogTableSeeder extends Seeder
        $blog->save();
 
        $blog = new Blog;
-       $blog->id_blog_kategori = 1;
+       $blog->id_blog_kategori = 5;
        $blog->judul = 'Diundang Rachel Goddard Buat Nebak Harga Make-Up, Gini Reaksi Kocak Najwa Shihab!';
        $blog->isi_blog = "Saat ini, cewek-cewek lagi berlomba-lomba membuat kulitnya tampak berkilau sehat. Mulai dari menggunakan produk perawatan kulit hingga riasan. Cara paling instan ya mengenakan riasan yang bisa membuat kulit berkilau basah sehat sampai seolah bening. Kuncinya ada pada produk primer wajah, alas bedak yang dewy, serta tambahan highlighter yang membuat kilau makin terpancar.
                      Para Youtuber dan vlogger kecantikan juga membuat tampilan make-up seperti itu dan menamainya sebagai ‘glass skin make-up’ karena memang kulit sengaja dibuat berkilau sehat agar terlihat bening. Dengan cara merias khas masing-masing, secara mengejutkan, hasilnya beda-beda lo. Intip yuk bagaimana penampilan riasan mereka~
@@ -72,7 +72,7 @@ class BlogTableSeeder extends Seeder
 
 
       $blog = new Blog;
-      $blog->id_blog_kategori = 1;
+      $blog->id_blog_kategori = 2;
       $blog->judul = '5 Trik Make Up Natural Untukmu yang Masih Pemula. Anti Ribet dan Effortless Pastinya!';
       $blog->isi_blog = "Saat ini, cewek-cewek lagi berlomba-lomba membuat kulitnya tampak berkilau sehat. Mulai dari menggunakan produk perawatan kulit hingga riasan. Cara paling instan ya mengenakan riasan yang bisa membuat kulit berkilau basah sehat sampai seolah bening. Kuncinya ada pada produk primer wajah, alas bedak yang dewy, serta tambahan highlighter yang membuat kilau makin terpancar.
                     Para Youtuber dan vlogger kecantikan juga membuat tampilan make-up seperti itu dan menamainya sebagai ‘glass skin make-up’ karena memang kulit sengaja dibuat berkilau sehat agar terlihat bening. Dengan cara merias khas masing-masing, secara mengejutkan, hasilnya beda-beda lo. Intip yuk bagaimana penampilan riasan mereka~

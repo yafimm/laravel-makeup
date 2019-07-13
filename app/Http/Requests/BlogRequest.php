@@ -34,6 +34,7 @@ class BlogRequest extends FormRequest
         return [
             'judul' => $judul,
             'thumbnail' => $thumbnail,
+            'id_blog_kategori' => 'required',
             'isi_blog' => 'required|string|min:5',
         ];
     }

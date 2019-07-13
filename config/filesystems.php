@@ -57,7 +57,7 @@ return [
         ],
         'fotoprofil' => [
             'driver' => 'local',
-            'root' => public_path('images/profil'),
+            'root' => public_path('images/profile'),
         ],
         'public' => [
             'driver' => 'local',

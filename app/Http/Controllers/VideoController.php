@@ -137,12 +137,13 @@ class VideoController extends Controller
 
                 if($video->akses->nilai_akses <= $user_akses)
                 {
-                    return view('video.detail-user', compact('video', 'title_halaman'));
+                    $akses = 'BISA';
                 }
                 else
                 {
-                    return view('video.detail-user-gabisa');
+                    $akses = '';
                 }
+                return view('video.detail-user', compact('video', 'title_halaman', 'akses'));
           }
           return abort(404);
     }

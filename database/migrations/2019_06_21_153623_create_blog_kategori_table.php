@@ -16,6 +16,7 @@ class CreateBlogKategoriTable extends Migration
         Schema::create('blog_kategori', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_kategori');
+            $table->string('slug');
             $table->timestamps();
         });
 

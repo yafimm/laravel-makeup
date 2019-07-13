@@ -13,6 +13,23 @@
 
       <div class="row form-group">
           <div class="col col-md-3">
+              <label for="nama-kategori" class=" form-control-label">Kategori Artikel</label>
+          </div>
+          <div class="col-12 col-md-9">
+              <select name="id_blog_kategori" id="select" class="form-control">
+                <option disabled>Pilih Kategori artikel.</option>
+                @foreach($all_blog_kategori as $blog_kategori)
+                  <option value="{{ $blog_kategori->id }}" {{ ($blog_kategori->id == $blog->id) ? 'selected' : ''}}>{{ $blog_kategori->nama_kategori }}</option>
+                @endforeach
+              </select>
+            @if($errors->has('id_blog_kategori'))
+              <small class="form-text text-danger">*{{ $errors->first('id_blog_kategori') }}</small>
+              @endif
+          </div>
+      </div>
+
+      <div class="row form-group">
+          <div class="col col-md-3">
               <label for="nama-kategori" class=" form-control-label">Thumbnail Artikel</label>
           </div>
           <div class="col-12 col-md-9">

@@ -48,11 +48,16 @@
 	            <li class="nav-link">
                   <div class="dropdown">
                     <a class="btn" href="#" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" style="font-weight: bold; font-size: 18px; text-transform: uppercase;">
-                    	<img style="border-radius: 50%; margin: 0px 10px 0px 0px;" src="{{ asset('Images/foto-default-user.jpg') }}" width="40" height="40">
+                      @if(Auth::guard('user')->user()->foto == null)
+                        <img style="border-radius: 50%; margin: 0px 10px 0px 0px;" src="{{ asset('Images/foto-default-user.jpg') }}" width="40" height="40">
+                      @else
+                        <img style="border-radius: 50%; margin: 0px 10px 0px 0px;" src="{{ asset('images/profile/'. Auth::guard('user')->user()->foto) }}" width="40" height="40">
+                      @endif
+
                       {{ Auth::guard('user')->user()->username }}
                     </a>
                     <div class="dropdown-menu" style="width: auto;">
-                      <a class="dropdown-item" href="{{ url('#') }}">Profil</a>
+                      <a class="dropdown-item" href="{{ url('/'.Auth::guard('user')->user()->username) }}">Profil</a>
                       <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">Log Out</a>
                       <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                           @csrf
@@ -69,7 +74,7 @@
               @endif
 
 	            <li class="nav-link">
-	              <button class="btn btn-subscribe"><a href="{{ url('#') }}"> Subscribe </a></button>
+	              <button class="btn btn-subscribe"><a href="{{ url('subscribe') }}"> Subscribe </a></button>
 	            </li>
 	          </ul>
 	        </div>
