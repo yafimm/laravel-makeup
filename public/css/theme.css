@@ -101,8 +101,20 @@ p {
 .btn-hapus-konten:hover{
     color: blue;
 }
+.btn-section-dashboard{
+    float: right; display: block;
+}
+.judul-section-dashboard{
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    padding-bottom: 10px; 
+    border-bottom: 2px solid white;
+}
 .table-responsive {
     padding-right: 1px;
+}
+.link-active{
+    color: #a500ff !important;
 }
 
 .card {
@@ -345,7 +357,6 @@ section {
     background: #e5e5e5;
     height: 100vh;
 }
-
 .btn-login{
     background-color: #AC2135;
     color: white;
@@ -365,7 +376,11 @@ section {
     height: auto !important;
     padding-bottom: 60px;
 }
-
+.regis-wrap {
+    max-width: 540px;
+    padding-top: 8vh;
+    margin: 0 auto;
+}
 .login-wrap {
     max-width: 540px;
     padding-top: 8vh;
