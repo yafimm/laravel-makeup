@@ -154,6 +154,4 @@ class BlogController extends Controller
           return redirect()->route('blog.index')->with('flash_message', 'Data gagal dihapus')
                                         ->with('alert-class', 'alert-danger');
     }
-
-    //
 }
