@@ -32,7 +32,8 @@
 										<p><i class="fa fa-calendar"></i> {{ $blog->created_at->format('d M Y') }}  /  <i class="fa fa-user"></i>{{ $blog->admin }}</p>
 									</div>
 									<div class="isi-daftar-blog">
-										{!! str_limit($blog->isi_blog, $limit = 500, $end = '...') !!}
+                  <?php  $parser = new Parsedown; ?>
+                  {!! $parser->text(str_limit($blog->isi_blog, 300, '...')) !!}
 									</div>
 									<div class="read-more-blog">
 										<a class="btn read-more" href="{{ url('blog/'.$blog->id.'/'.$blog->slug) }}">read more</a>

@@ -104,6 +104,7 @@ class BlogController extends Controller
           $input = $request->all();
           $input['slug'] = str_slug($request->judul,'-');
           $input['admin'] = \Auth::guard('admin')->user()->username;
+          $input['isi_blog'] = \Purifier::clean($input['isi_blog']);
           if(isset($input['thumbnail']))
           {
               $input['thumbnail'] = $this->uploadGambar($request);
@@ -123,6 +124,7 @@ class BlogController extends Controller
     public function update(BlogRequest $request, Blog $blog)
     {
           $input = $request->all();
+          $input['isi_blog'] = \Purifier::clean($input['isi_blog']);
           if(isset($input['thumbnail']))
           {
               $this->hapusGambar($blog);

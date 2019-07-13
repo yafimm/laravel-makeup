@@ -109,6 +109,7 @@ class VideoController extends Controller
                 $input['thumbnail'] = $this->uploadGambar($request);
           }
 
+          $input['deskripsi'] = \Purifier::clean($input['deskripsi']);
           $input['admin'] = \Auth::guard('admin')->user()->username;
 
           $video = Video::create($input);
@@ -163,6 +164,7 @@ class VideoController extends Controller
               $input['thumbnail'] = $this->uploadGambar($request);
           }
 
+          $input['deskripsi'] = \Purifier::clean($input['deskripsi']);
           $input['admin'] = \Auth::guard('admin')->user()->username;
 
           $update = $video->update($input);
@@ -205,11 +207,14 @@ class VideoController extends Controller
                 'Content-type'          => 'mp4',
                 'Content-Disposition'   => 'inline; filename="' . $filename . '"'
               );
-              return \Response::make( file_get_contents($filename), 200, $headers);
+
+              $source = @file_get_contents($filename); // pale at biar gak error
+              if($source !== FALSE && !empty($source)){
+                return \Response::make( $source, 200, $headers);
+              }
           }
-          else
-          {
-              return abort(404);
-          }
+          //kalo file gak bisa diakses atau gak ada filenya
+          return abort(404);
+
     }
 }
