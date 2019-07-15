@@ -945,3 +945,18 @@ footer{
 .footer-metode-pembayaran a:hover{
 	background-color: #F098BE;
 }
+.isi-info-transaksi{
+	background-color: white; 
+	border-top-right-radius: 10px; 
+	border-top-left-radius: 10px;
+	color: black;
+}
+.isi-info-transaksi th{
+	font-size: 18px;
+	text-transform: uppercase;
+	color: black;
+	font-weight: bold;
+}
+.isi-info-transaksi td{
+	color: black;
+}
