@@ -937,10 +937,11 @@ footer{
 	margin-top: 20px;
 }
 .footer-metode-pembayaran a{
-	background-color: #F098BE;
-	border: none;
+	color: #C01C73;
+	background-color: #E9ECEF;
+	border: 1px solid #F098BE;
 	width: 220px;
 }
 .footer-metode-pembayaran a:hover{
-	background-color: #E9ECEF;
+	background-color: #F098BE;
 }
