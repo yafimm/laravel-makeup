@@ -73,7 +73,12 @@ class LoginController extends Controller
     		$input = $request->all();
     		$password = $request->password;
     		$input['password'] = bcrypt($password);
-    		$admin = User::create($input);
+    		$user = User::create($input);
+        $user->akses->attach(1,  [
+                                  'status' => 'Aktif',
+                                  'waktu_berakhir' => '2099-11-11',
+                                  'waktu_mulai' => date('Y-m-d'),
+                                ]);
         return redirect('login')->with('flash_message', 'Selamat anda telah berhasil mendaftar akun anda. silahkan login untuk melanjutkan.. ')
                                  ->with('alert-class', 'alert-success');
   	}

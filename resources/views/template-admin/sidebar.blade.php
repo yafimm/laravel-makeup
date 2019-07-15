@@ -14,6 +14,18 @@
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
+                                <i class="fas fa-money-check-alt"></i>Transaksi</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="{{ url('admin/transaksi/riwayat') }}">Riwayat Transaksi</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('admin/transaksi') }}">Transaksi</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-video"></i>Video</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>

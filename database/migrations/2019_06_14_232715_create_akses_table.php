@@ -38,7 +38,7 @@ class CreateAksesTable extends Migration
         });
 
         Schema::table('produk_akses', function (Blueprint $table){
-            $table->foreign('id_akses')
+            $table->foreign('akun_akses')
                 ->references('id')
                 ->on('akses')
                 ->onDelete('cascade')
@@ -62,7 +62,7 @@ class CreateAksesTable extends Migration
         });
 
         Schema::table('produk_akses', function(Blueprint $table){
-          $table->dropForeign('produk_akses_id_akses_foreign');
+          $table->dropForeign('produk_akses_akun_akses_foreign');
         });
 
         Schema::dropIfExists('akses');

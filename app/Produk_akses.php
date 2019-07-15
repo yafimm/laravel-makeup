@@ -9,10 +9,10 @@ class Produk_akses extends Model
     protected $table = 'produk_akses';
 
     protected $fillable = [
-      'id_akses', 'harga', 'waktu', 'potongan_harga', 'deskripsi'
+      'akun_akses', 'harga', 'waktu', 'potongan_harga', 'deskripsi'
     ];
 
     public function akses(){
-        return $this->belongsTo('App\akses','id_akses');
+        return $this->belongsTo('App\akses','akun_akses');
     }
 }

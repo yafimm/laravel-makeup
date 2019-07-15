@@ -21,7 +21,11 @@ class Akses extends Model
     }
 
     public function video(){
-       return $this->hasMany('App\Video', 'hak_akses', 'id_akses');
+       return $this->hasMany('App\Video', 'hak_akses', 'id');
+    }
+
+    public function produk_akses(){
+       return $this->hasMany('App\Produk_akses', 'akun_akses', 'id');
     }
 
 }

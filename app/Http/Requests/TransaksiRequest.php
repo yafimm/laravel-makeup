@@ -25,8 +25,6 @@ class TransaksiRequest extends FormRequest
     {
         return [
             'id_produk' => 'required',
-            'total_harga' => 'integer|required',
-            'waktu' => 'required',
         ];
     }
 }

@@ -57,7 +57,8 @@
                       {{ Auth::guard('user')->user()->username }}
                     </a>
                     <div class="dropdown-menu" style="width: auto;">
-                      <a class="dropdown-item" href="{{ url('/'.Auth::guard('user')->user()->username) }}">Profil</a>
+                      <a class="dropdown-item" href="{{ route('profile',Auth::guard('user')->user()->username) }}">Profil</a>
+                      <a class="dropdown-item" href="{{ route('profile.transaksi') }}">Transaction</a>
                       <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">Log Out</a>
                       <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                           @csrf

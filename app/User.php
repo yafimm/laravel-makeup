@@ -46,4 +46,8 @@ class User extends \Eloquent implements Authenticatable
     public function akses(){
       return $this->belongsToMany('App\Akses', 'user_akses', 'username', 'id_akses')->withPivot('status', 'waktu_berakhir');
     }
+
+    public function transaksi(){
+      return $this->hasMany('App\Transaksi', 'user', 'username');
+    }
 }

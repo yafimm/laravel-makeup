@@ -19,6 +19,7 @@ class CreateUserAksesTable extends Migration
             $table->integer('id_akses')->unsigned();
             $table->enum('status', ['Aktif','Tidak Aktif']);
             $table->date('waktu_berakhir');
+            $table->date('waktu_mulai');
             $table->timestamps();
         });
     }

@@ -25,3 +25,9 @@ if(!function_exists('setIdTransaksi')) {
         return $id;
     }
 }
+
+if(!function_exists('helper_money_format')) {
+    function helper_money_format($data) {
+        return number_format($data, 2, ',', '.');
+    }
+}

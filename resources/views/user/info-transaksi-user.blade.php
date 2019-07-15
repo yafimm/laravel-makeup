@@ -3,7 +3,7 @@
     <div class="header-halaman-profile">
         @include('profile.header-user')
     </div>
-    
+
     <div>
 		<div class="body-video">
 			<div class="container">
@@ -18,25 +18,24 @@
 									<th class="text-center">Id Transaksi</th>
 									<th class="text-center">Produk</th>
 									<th class="text-center">Harga</th>
-									<th class="text-center">Tanggal</th>
-									<th class="text-center">Deskripsi</th>
+                  <th class="text-center">Tanggal</th>
+									<th class="text-center">Status</th>
+									<th class="text-center">Action</th>
 								</tr>
 							</thead>
 							<tbody id="myTable">
+               @foreach($all_transaksi as $transaksi)
 								<tr>
-									<td>#122142314</td>
-									<td>Akun Premium</td>
-									<td>Rp.450.000</td>
-									<td>02/07/2019</td>
-									<td>Membership Akun Premium - 3 Bulan (02/07/2019 - 02/10/2019)*</td>
+									<td>{{ $transaksi->id }}</td>
+									<td>{{ $transaksi->produk_akses->akses->nama }}</td>
+									<td>Rp. {{ helper_money_format($transaksi->total_harga) }}</td>
+                  <td>{{ $transaksi->created_at->format('d/m/Y') }}</td>
+									<td>{{ $transaksi->status }}</td>
+									<td>
+                      <a href="{{ route('profile.transaksi.show', $transaksi->id) }}">Detail</a>
+                  </td>
 								</tr>
-								<tr>
-									<td>#647676956</td>
-									<td>Akun Premium</td>
-									<td>Rp.450.000</td>
-									<td>02/07/2019</td>
-									<td>Membership Akun Premium - 3 Bulan (02/07/2019 - 02/10/2019)*</td>
-								</tr>
+						   @endforeach
 							</tbody>
 						</table>
 					</div>

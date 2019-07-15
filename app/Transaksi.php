@@ -11,10 +11,10 @@ class Transaksi extends Model
     public $incrementing = false;
 
     protected $fillable = [
-      'user', 'admin', 'id', 'total_harga', 'id_akses', 'waktu';
+      'user', 'admin', 'id', 'total_harga', 'id_produk', 'waktu', 'status'
     ];
 
-    public function user(){
+    public function users(){
         return $this->belongsTo('App\User', 'user');
     }
 
@@ -22,7 +22,7 @@ class Transaksi extends Model
         return $this->belongsTo('App\Admin', 'admin');
     }
 
-    public function akses(){
-        return $this->belongsTo('App\Akses', 'akses');
+    public function produk_akses(){
+        return $this->belongsTo('App\Produk_akses', 'id_produk');
     }
 }

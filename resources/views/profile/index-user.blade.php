@@ -14,6 +14,7 @@
         <center>
           <a class="btn btn-editprofil" href="{{ route('profile.edit') }}">Edit Profil</a>
           <a class="btn btn-editprofil" href="{{ route('password.edit') }}">Ubah Password</a>
+          <a class="btn btn-editprofil" href="{{ route('profile.transaksi') }}">Transaksi</a>
         </center>
         @endif
 				<div class="row">

@@ -61,6 +61,31 @@
     </div>
 
     <div>
+
+      <div class="container">
+        @foreach($all_produk as $produk_detail)
+          <div class="row">
+            @foreach($produk_detail->produk_akses as $produk)
+              <div class="col-md-4">
+                <div class="card shadow box-subscribe">
+                  <center>
+                    <img class="pricing-image" src="images/6-bulan.png" width="200">
+                    <div class="bawah-pricing-image">
+                      <h3>{{ $produk->waktu }} Bulan Menjadi Membership</h3>
+                      <h5>{{ $produk->deskripsi }}</h5>
+                      <!-- <h5 class="coret">Rp.1.200.000,00</h5> -->
+                      <h4>Rp. {{ number_format($produk->harga) }}</h4>
+                      <a class="btn btn-lg btn-daftar" href="{{ url('subscribe/pesan?idproduk='.$produk->id) }}">Daftar</a>
+                    </div>
+                  </center>
+                </div>
+              </div>
+            @endforeach
+          </div>
+        @endforeach
+
+      </div>
+
     	<div class="keuntungan-subscribe">
     		<div class="container">
     			<div class="header-keuntungan">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProdukAksesRequest;
 use App\Akses;
 use App\Produk_akses;
+use App\Tipe_admin;
 
 class ProdukAksesController extends Controller
 {
@@ -13,6 +14,13 @@ class ProdukAksesController extends Controller
   {
       $all_produk = Produk_akses::simplePaginate(15);
       return view('produk.index', compact('all_produk'));
+  }
+
+  public function index_user(Request $request)
+  {
+      $all_produk = Akses::all(); //biar produknya berurut sesuai dengan jenisnya, entar diambil relasinya
+      return view('produk.index-user', compact('all_produk'));
+
   }
 
   public function create()

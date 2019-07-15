@@ -15,7 +15,7 @@ class CreateProdukAksesTable extends Migration
     {
         Schema::create('produk_akses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_akses')->unsigned();
+            $table->integer('akun_akses')->unsigned();
             $table->integer('harga');
             $table->integer('potongan_harga')->nullable();
             $table->string('waktu');
@@ -43,7 +43,7 @@ class CreateProdukAksesTable extends Migration
     public function down()
     {
         Schema::table('transaksi', function(Blueprint $table){
-          $table->dropForeign('transaksi_id_akses_foreign');
+          $table->dropForeign('transaksi_id_produk_foreign');
         });
 
         Schema::dropIfExists('produk_akses');

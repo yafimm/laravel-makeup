@@ -109,11 +109,11 @@ class UserController extends Controller
 
           if($update)
           {
-              return redirect('/'.$user->username)->with('flash_message', 'Data Akun berhasil diubah')
+              return redirect('/u/'.$user->username)->with('flash_message', 'Data Akun berhasil diubah')
                                      ->with('alert-class', 'alert-success');
           }
           // kalo gagal dilempar kesini
-          return redirect('/'.$user->username)->with('flash_message', 'Data Akun gagal diubah')
+          return redirect('/u/'.$user->username)->with('flash_message', 'Data Akun gagal diubah')
                                     ->with('alert-class', 'alert-danger');
     }
 
