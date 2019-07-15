@@ -57,9 +57,9 @@
 					</div>
 					<div class="isi-metode-pembayaran">
 						<div class="tab-bank">
-							<button class="tablinks" onclick="openCity(event, 'bri')"><img src="Images/bri.png" width="50" alt="logo-bri" height="40"></button>
-							<button class="tablinks" onclick="openCity(event, 'mandiri')"><img src="Images/mandiri.png" width="60" alt="logo-mandiri" height="40"></button>
-							<button class="tablinks" onclick="openCity(event, 'bca')"><img src="Images/bca.png" width="60" alt="logo-bca" height="40"></button>
+							<button class="tablinks" onclick="openCity(event, 'bri')"><img src="{{ asset('Images/bri.png') }}" width="50" alt="logo-bri" height="40"></button>
+							<button class="tablinks" onclick="openCity(event, 'mandiri')"><img src="{{ asset('Images/mandiri.png') }}" width="60" alt="logo-mandiri" height="40"></button>
+							<button class="tablinks" onclick="openCity(event, 'bca')"><img src="{{ asset('Images/bca.png') }}" width="60" alt="logo-bca" height="40"></button>
 						</div>
 
 						<div id="bri" class="tabcontent">
@@ -91,6 +91,9 @@
 								<input type="submit" name="pembayaran" class="btn input-pembayaran" value="Konfirmasi">
 							</div>
 						</div>
+					</div>
+					<div class="footer-metode-pembayaran">
+						<a href="#" class="btn input-pembayaran">Batal</a>
 					</div>
 				</div>
 			</div>
