@@ -31,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('tipeadmin', 'App\Tipe_admin');
         Route::model('video', 'App\Video');
         Route::model('user','App\User');
+        Route::model('produk', 'App\Produk_akses');
     }
 
     /**

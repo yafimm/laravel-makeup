@@ -32,6 +32,14 @@ class CreateAdminTable extends Migration
              ->onUpdate('cascade');
         });
 
+        Schema::table('transaksi', function (Blueprint $table){
+          $table->foreign('admin')
+             ->references('username')
+             ->on('admin')
+             ->onDelete('restrict')
+             ->onUpdate('cascade');
+        });
+
         Schema::table('blog', function (Blueprint $table){
           $table->foreign('admin')
              ->references('username')
@@ -51,6 +59,11 @@ class CreateAdminTable extends Migration
       Schema::table('video', function(Blueprint $table){
         $table->dropForeign('video_admin_foreign');
       });
+
+      Schema::table('transaksi', function(Blueprint $table){
+        $table->dropForeign('transaksi_admin_foreign');
+      });
+
       Schema::table('blog', function(Blueprint $table){
         $table->dropForeign('blog_admin_foreign');
       });

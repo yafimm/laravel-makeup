@@ -36,6 +36,14 @@ class CreateUserTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+
+        Schema::table('transaksi', function (Blueprint $table){
+            $table->foreign('user')
+                ->references('username')
+                ->on('user')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
+        });
     }
 
     /**
@@ -47,6 +55,10 @@ class CreateUserTable extends Migration
     {
         Schema::table('user_akses', function(Blueprint $table){
           $table->dropForeign('user_akses_username_foreign');
+        });
+
+        Schema::table('transaksi', function(Blueprint $table){
+          $table->dropForeign('transaksi_user_foreign');
         });
 
         Schema::dropIfExists('user');

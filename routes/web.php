@@ -57,4 +57,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::resource('video', 'VideoController');
     Route::resource('blogkategori', 'BlogKategoriController');
     Route::resource('blog', 'BlogController');
+    Route::resource('produk', 'ProdukAksesController');
 });
