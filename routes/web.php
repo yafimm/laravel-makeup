@@ -51,6 +51,7 @@ Route::group(['prefix' => 'settings',  'middleware' => ['user']], function(){
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
+    Route::get('dashboard', 'AdminController@index');
     Route::resource('akses', 'AksesController');
     Route::resource('tipeadmin', 'TipeAdminController');
     Route::resource('admin', 'AdminController');

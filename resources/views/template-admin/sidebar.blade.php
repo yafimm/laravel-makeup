@@ -9,7 +9,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="{{ url('admin') }}">
+                            <a href="{{ url('admin/dashboard') }}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="has-sub">
@@ -42,6 +42,9 @@
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="{{ url('admin/akses') }}">Kelola Akun Premium</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('admin/produk') }}">Kelola Produk Akun Premium</a>
                                 </li>
                                 <li>
                                     <a href="#">User Premium</a>

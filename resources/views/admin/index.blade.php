@@ -3,8 +3,8 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-3">
                                 <div class="statistic__item">
-                                    <h2 class="number">14</h2>
-                                    <span class="desc">user minggu ini</span>
+                                    <h2 class="number">{{ $total_user_week }}</h2>
+                                    <span class="desc">user bulan ini</span>
                                     <div class="icon">
                                         <i class="zmdi zmdi-account-o"></i>
                                     </div>
@@ -12,7 +12,7 @@
                             </div>
                             <div class="col-md-6 col-lg-3">
                                 <div class="statistic__item">
-                                    <h2 class="number">74</h2>
+                                    <h2 class="number">{{ $total_videos }}</h2>
                                     <span class="desc">total video</span>
                                     <div class="icon">
                                         <i class="zmdi zmdi-collection-video"></i>
@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-md-6 col-lg-3">
                                 <div class="statistic__item">
-                                    <h2 class="number">31</h2>
+                                    <h2 class="number">{{ $total_blogs }}</h2>
                                     <span class="desc">total blog</span>
                                     <div class="icon">
                                         <i class="zmdi zmdi-blogger"></i>
@@ -132,7 +132,7 @@
                                                         <td>username</td>
                                                         <td class="text-right">Silver</td>
                                                     </tr>
-                                                    
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -141,139 +141,67 @@
                             </div>
                         </div>
                         <div>
-                            <a href="" class="au-btn au-btn-icon au-btn--green au-btn--small btn-section-dashboard">Kelola Blog</a>
+                            <a href="{{ route('blog.index') }}" class="au-btn au-btn-icon au-btn--green au-btn--small btn-section-dashboard">Kelola Blog</a>
                             <div class="judul-section-dashboard">
                                 <h2 class="title-1 judul-section">Recent Blog</h2>
                             </div>
                             <div class="row">
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                            <div class="row">
-                                                <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                          <div class="row">
-                                            <div class="col-7 col-sm-7 col-md-7">
+                                @foreach($all_recent_blogs as $recent_blog)
+                                  <div class="col-md-3">
+                                      <div class="card">
+                                          <img class="card-img-top" src="{{ asset('images/thumbnail/'.$recent_blog->thumbnail) }}" alt="Card image cap">
+                                          <div class="card-body">
+                                              <h4 class="card-title mb-3 text-center">{{ $recent_blog->judul }}</h4>
                                               <div class="row">
-                                                <div class="col-12 text-info">
-                                                  <small>By : admin</small>
-                                                </div>
-                                                <div class="col-12">
-                                                  <small>Date : 7 Juli 2019</small>
+                                                  <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
+                                              </div>
+                                          </div>
+                                          <div class="card-footer text-muted">
+                                            <div class="row">
+                                              <div class="col-12 col-sm-12 col-md-12">
+                                                <div class="row">
+                                                  <div class="col-12 text-info">
+                                                    <small>By : {{ $recent_blog->admin }}</small>
+                                                  </div>
+                                                  <div class="col-12">
+                                                    <small>Date : {{ $recent_blog->created_at->format('d M Y') }}</small>
+                                                  </div>
                                                 </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                            <div class="row">
-                                                <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                          <div class="row">
-                                            <div class="col-7 col-sm-7 col-md-7">
-                                              <div class="row">
-                                                <div class="col-12 text-info">
-                                                  <small>By : admin</small>
-                                                </div>
-                                                <div class="col-12">
-                                                  <small>Date : 7 Juli 2019</small>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                            <div class="row">
-                                                <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                          <div class="row">
-                                            <div class="col-7 col-sm-7 col-md-7">
-                                              <div class="row">
-                                                <div class="col-12 text-info">
-                                                  <small>By : admin</small>
-                                                </div>
-                                                <div class="col-12">
-                                                  <small>Date : 7 Juli 2019</small>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Blog</h4>
-                                            <div class="row">
-                                                <div class="col-md-12"><h5 class="right">Kategori Blog</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                          <div class="row">
-                                            <div class="col-7 col-sm-7 col-md-7">
-                                              <div class="row">
-                                                <div class="col-12 text-info">
-                                                  <small>By : admin</small>
-                                                </div>
-                                                <div class="col-12">
-                                                  <small>Date : 7 Juli 2019</small>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                      </div>
+                                  </div>
+                                @endforeach
                             </div>
                         </div>
 
                         <div>
-                            <a href="" class="au-btn au-btn-icon au-btn--green au-btn--small btn-section-dashboard">Kelola Video</a>
+                            <a href="{{ route('video.index') }}" class="au-btn au-btn-icon au-btn--green au-btn--small btn-section-dashboard">Kelola Video</a>
                             <div class="judul-section-dashboard">
                                 <h2 class="title-1 judul-section">Recent Video</h2>
                             </div>
                             <div class="row">
+                              @foreach($all_recent_videos as $recent_video)
                                 <div class="col-md-3">
                                     <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
+                                        <img class="card-img-top" src="{{ asset('images/thumbnail/'.$recent_video->thumbnail) }}" alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Video</h4>
+                                            <h4 class="card-title mb-3 text-center">{{$recent_video->judul}}</h4>
                                             <div class="row">
                                                 <div class="col-md-6"><h5 class="text-center">Kategori Video</h5></div>
-                                                <div class="col-md-6"><h5 class="text-center">Hak Akses</h5></div>
+                                                <div class="col-md-6"><h5 class="text-center">{{ $recent_video->akses->nama }}</h5></div>
                                             </div>
                                         </div>
                                         <div class="card-footer text-muted">
                                             <div class="row">
-                                                <div class="col-7 col-sm-7 col-md-7">
+                                                <div class="col-12 col-sm-12 col-md-12">
                                                     <div class="row">
                                                         <div class="col-12 text-info">
-                                                            <small>By : admin</small>
+                                                            <small>By : {{ $recent_video->admin }}</small>
                                                         </div>
                                                         <div class="col-12">
-                                                            <small>Date : 7 Juli 2019</small>
+                                                            <small>Date : {{ $recent_video->created_at->format('d M Y') }}</small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -281,84 +209,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Video</h4>
-                                            <div class="row">
-                                                <div class="col-md-6"><h5 class="text-center">Kategori Video</h5></div>
-                                                <div class="col-md-6"><h5 class="text-center">Hak Akses</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                            <div class="row">
-                                                <div class="col-7 col-sm-7 col-md-7">
-                                                    <div class="row">
-                                                        <div class="col-12 text-info">
-                                                            <small>By : admin</small>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <small>Date : 7 Juli 2019</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Video</h4>
-                                            <div class="row">
-                                                <div class="col-md-6"><h5 class="text-center">Kategori Video</h5></div>
-                                                <div class="col-md-6"><h5 class="text-center">Hak Akses</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                            <div class="row">
-                                                <div class="col-7 col-sm-7 col-md-7">
-                                                    <div class="row">
-                                                        <div class="col-12 text-info">
-                                                            <small>By : admin</small>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <small>Date : 7 Juli 2019</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('images/bg-title-01.jpg') }}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-3 text-center">Judul Video</h4>
-                                            <div class="row">
-                                                <div class="col-md-6"><h5 class="text-center">Kategori Video</h5></div>
-                                                <div class="col-md-6"><h5 class="text-center">Hak Akses</h5></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                            <div class="row">
-                                                <div class="col-7 col-sm-7 col-md-7">
-                                                    <div class="row">
-                                                        <div class="col-12 text-info">
-                                                            <small>By : admin</small>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <small>Date : 7 Juli 2019</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                              @endforeach
+
                             </div>
                         </div>
 
