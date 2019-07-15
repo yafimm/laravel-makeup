@@ -89,36 +89,36 @@ html * {
 	transition: none;
 }
 .navbar-hover .navbar-underline {
-  	text-transform: uppercase;
-  	text-decoration: none;
-  	display: inline-block;
-  	position: relative;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline-block;
+	position: relative;
 }
 .navbar-hover .navbar-underline:after {    
-  	background: none repeat scroll 0 0 transparent;
-  	bottom: 0;
-  	content: "";
-  	display: block;
-  	height: 2px;
-  	left: 50%;
-  	position: absolute;
-  	background: #fff;
-  	background-color: #462461;
-  	transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  	width: 0;
-  	color: white;
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	background: #fff;
+	background-color: #462461;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
+	color: white;
 }
 .navbar-hover .navbar-underline:hover:after {
 	color: white;
-  	width: 100%; 
-  	left: 0; 
+	width: 100%; 
+	left: 0; 
 }
 .navbar-hover .navbar-underline:hover {
 	color: #462461;
 }
 
 #navbar #logo {
-  transition: 0.4s;
+	transition: 0.4s;
 }
 
 .jumbotron-1{
@@ -150,7 +150,7 @@ html * {
 	font-size: 18px;
 }
 .right {
-  float: right !important;
+	float: right !important;
 }
 .font-tebal{
 	color : #AC2135 !important;
@@ -186,23 +186,23 @@ footer{
 	width: 50px;
 	height: 50px;
 	position: absolute;
-    top: 68%;
-    right: 25%;
-    font-size: 23px;
-    cursor: pointer !important;
-    direction: ltr;
+	top: 68%;
+	right: 25%;
+	font-size: 23px;
+	cursor: pointer !important;
+	direction: ltr;
 }
 .image-upload-profil > input
 {
-    display: none;
+	display: none;
 }
 
 
 
 .image-upload-profil img
 {
-    width: 80px;
-    cursor: pointer;
+	width: 80px;
+	cursor: pointer;
 }
 .margin-logo{
 	margin-top: 10px;
@@ -589,6 +589,13 @@ footer{
 	margin: 100px 5px 5px 5px;
 	height: 55vh;
 }
+.pembayaran-body{
+	margin-top:  50px;
+	margin-bottom: 50px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 50px 20px 50px 20px;
+}
 .pricing-image{
 	position: absolute;
 	top: -100px;
@@ -620,9 +627,9 @@ footer{
 	background-color: none;
 	color: #333;
 	border: 2px solid #333;
-    transition: all 0.3s ease-in;
-    width: 75%;
-    margin-top: 20px;
+	transition: all 0.3s ease-in;
+	width: 75%;
+	margin-top: 20px;
 }
 .btn-daftar:hover{
 	background-color: #F599C2;
@@ -769,13 +776,13 @@ footer{
 }
 .kategori-blog{
 	clip-path: polygon(0px 0px, 100% 0px, 82.8033% 100%, 0% 100%) !important;
-    background: #F599C2;
-    color: white;
-    text-transform: uppercase;
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 30px;
-    padding: 10px;
+	background: #F599C2;
+	color: white;
+	text-transform: uppercase;
+	font-size: 26px;
+	font-weight: bold;
+	margin-top: 30px;
+	padding: 10px;
 }
 .list-group-item{
 	background-color: transparent;
@@ -875,4 +882,53 @@ footer{
 }
 .login-content{
 	background-color: #FFCF40;
+}
+.tab-bank {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+.tab-bank button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+.tab-bank button:hover {
+	background-color: #ddd;
+}
+.tab-bank button.active {
+	background-color: #ccc;
+}
+.tabcontent h3{
+	color: black;
+}
+.tabcontent p{
+	color: black;
+}
+.tabcontent {
+	text-align: center;
+	padding: 15px;
+	display: none;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+.input-pembayaran:hover{
+	color: #C01C73;
+	background-color: transparent;
+}
+.input-pembayaran{
+	color: white;
+	background-color: #C01C73;
+	padding: 10px 15px 10px 15px;
+	font-size: 18px;
+	font-weight: bold;
+	border: 1px solid #C01C73;
+	transition: all 0.2s ease-in;
+	margin: 0 auto;
+    display: block;
 }
