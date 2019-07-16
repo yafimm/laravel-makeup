@@ -15,8 +15,7 @@ class TransaksiController extends Controller
     {
         $all_transaksi = Transaksi::where('status', 'Belum Selesai')->simplePaginate(20);
         return view('transaksi.index', compact('all_transaksi'));
-        // $user = Transaksi::get()->first();
-        // dd($user->users->hak_akses);
+
     }
 
     public function index_riwayat()
@@ -123,23 +122,27 @@ class TransaksiController extends Controller
 
               if($update_status)
               {
-                  // berarti artinya ada akun premium yang sedang jalan, sehingga
-                  // akun akan melanjutkan waktunya 0 itu artinya akun free
-                  if($user->hak_akses->nilai_akses != 0 && $user->hak_akses->id_akses == $data->produk_akses->id_produk)
+                  // berarti artinya ada akun premium yang sedang jalan dan kalo sama sama yang dibeli
+                  // akun tersebut bakal diperpanjang
+                  if($user->hak_akses_aktif->nilai_akses != 0 && $user->hak_akses_aktif->pivot->id_akses == $data->produk_akses->akses->id)
                   {
-                      $waktu_mulai = Carbon::parse($user->hak_akses->waktu_berakhir)->addDays(1);
-                      $waktu_berakhir = Carbon::parse($user->hak_akses->waktu_berakhir)->addDays(1)->addMonths($data->produk_akses->waktu);
+                      $waktu_berakhir = Carbon::parse($user->hak_akses->waktu_berakhir)->addMonths($data->produk_akses->waktu);
+                      $user_akses = $user->akses()->updateExistingPivot($user->hak_akses_aktif->id,['waktu_berakhir' => $waktu_berakhir]);
                   }else{
+                      // kalo ada akun premium aktif dan berbeda akan ditimpa, jadi diganti dulu statusnya sama tidak aktif
+                      if($user->hak_akses_aktif->nilai_akses != 0 )
+                      {
+                          $user->akses()->updateExistingPivot($user->hak_akses_aktif->id, ['status' => 'Tidak Aktif']);
+                      }
                       $waktu_mulai = Carbon::now();
                       $waktu_berakhir = Carbon::now()->addMonths($data->produk_akses->waktu);
+                      $user_akses = $user->akses()->attach($data->produk_akses->akun_akses,
+                                                        [
+                                                          'status' => 'Aktif',
+                                                          'waktu_berakhir' => $waktu_berakhir,
+                                                          'waktu_mulai' => $waktu_mulai
+                                                        ]);
                   }
-
-                  $user_akses = $user->akses()->attach($data->produk_akses->akun_akses,
-                                                      [
-                                                        'status' => 'Aktif',
-                                                        'waktu_berakhir' => $waktu_berakhir,
-                                                        'waktu_mulai' => $waktu_mulai
-                                                      ]);
 
                   return redirect()->route('transaksi.index')->with('flash_message', 'Berhasil menyelesaikan transaksi, akun premium'.$data->username.' berhasil di aktifkan / diperpanjang')
                                                         ->with('alert-class', 'alert-success');

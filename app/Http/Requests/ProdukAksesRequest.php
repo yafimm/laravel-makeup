@@ -27,7 +27,7 @@ class ProdukAksesRequest extends FormRequest
             'akun_akses' => 'required',
             'harga' => 'required|integer',
             'potongan_harga' => 'sometimes|integer',
-            'waktu' => 'required|integer|max:2|min:1',
+            'waktu' => 'required|integer|max:12|min:1',
             'deskripsi' => 'required|string|min:10|max:255',
         ];
     }

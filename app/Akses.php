@@ -13,11 +13,11 @@ class Akses extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nama', 'nilai_akses', 'deskripsi', 'harga'
+        'nama', 'nilai_akses', 'deskripsi', 'harga', 'logo'
     ];
 
     public function user(){
-        return $this->belongsToMany('App\User', 'user_akses', 'id_akses', 'username')->withPivot('status', 'waktu_berakhir');
+        return $this->belongsToMany('App\User', 'user_akses', 'id_akses', 'username')->withPivot('status', 'waktu_berakhir', 'waktu_mulai')->withTimestamps();
     }
 
     public function video(){

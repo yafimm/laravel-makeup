@@ -28,6 +28,21 @@ class User extends \Eloquent implements Authenticatable
         return 'username';
     }
 
+    public function getHakAksesAktifAttribute()
+    {
+        $akses = $this->akses();
+        foreach ($akses->get() as $hak_akses) {
+            if($hak_akses->pivot->status == 'Aktif' && $hak_akses->pivot->waktu_berakhir >= date('Y-m-d'))
+            {
+              if($hak_akses->nilai_akses != 0)
+              {
+                return $hak_akses;
+              }
+            }
+        }
+        return $akses->get()->first();
+    }
+
     public function getHakAksesAttribute()
     {
         $akses = $this->akses();
@@ -44,7 +59,7 @@ class User extends \Eloquent implements Authenticatable
     }
 
     public function akses(){
-      return $this->belongsToMany('App\Akses', 'user_akses', 'username', 'id_akses')->withPivot('status', 'waktu_berakhir');
+      return $this->belongsToMany('App\Akses', 'user_akses', 'username', 'id_akses')->withPivot('status', 'waktu_berakhir', 'waktu_mulai')->withTimestamps();
     }
 
     public function transaksi(){
