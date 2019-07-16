@@ -73,8 +73,12 @@
                     <div class="bawah-pricing-image">
                       <h3>{{ $produk->waktu }} Bulan Menjadi Membership</h3>
                       <h5>{{ $produk->deskripsi }}</h5>
-                      <!-- <h5 class="coret">Rp.1.200.000,00</h5> -->
-                      <h4>Rp. {{ number_format($produk->harga) }}</h4>
+                      @if($produk->potongan_harga != 0 && $produk->potongan_harga != NULL)
+                        <h5 class="coret">Rp.{{ helper_money_format($produk->harga) }}</h5>
+                        <h4>Rp. {{ helper_money_format($produk->harga - $produk->potongan_harga) }}</h4>
+                      @else
+                        <h4>Rp. {{ helper_money_format($produk->harga) }}</h4>
+                      @endif
                       <a class="btn btn-lg btn-daftar" href="{{ url('subscribe/pesan?idproduk='.$produk->id) }}">Daftar</a>
                     </div>
                   </center>

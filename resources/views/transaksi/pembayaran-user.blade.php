@@ -48,7 +48,8 @@
 							</div>
               <small class="form-text text-info">*Tanggal Estimasi siklus akun premium, jika membayar dan dikonfirmasi tepat waktu</small>
               <small class="form-text text-info">*Waktu dimulai setelah admin mengaktifasi</small>
-              <small class="form-text text-info">*Jika akun anda sudah premium, maka akan memperpanjang waktu siklus dan hak aksesnya sesuai dengan pembelian</small>
+              <small class="form-text text-danger">*Jika akun anda sudah premium dan membeli akun premium yang berbeda, maka akun premium yang aktif akan tertimpa dengan yang baru</small>
+              <small class="form-text text-danger">*Jika akun anda sudah premium dan membeli akun premium yang sama, maka akan memperpanjang masa aktif akun premium anda</small>
 						</div>
 					</div>
 				</div>

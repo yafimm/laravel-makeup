@@ -57,8 +57,11 @@
                       {{ Auth::guard('user')->user()->username }}
                     </a>
                     <div class="dropdown-menu" style="width: auto;">
-                      <a class="dropdown-item" href="{{ route('profile',Auth::guard('user')->user()->username) }}">Profil</a>
+                      <a class="dropdown-item disabled text-warning" href="#">{{ Auth::guard('user')->user()->hak_akses->nama }}</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{{ route('profile',Auth::guard('user')->user()->username) }}">Profile</a>
                       <a class="dropdown-item" href="{{ route('profile.transaksi') }}">Transaction</a>
+                      <a class="dropdown-item" href="{{ route('profile.transaksi') }}">Service</a>
                       <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">Log Out</a>
                       <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                           @csrf

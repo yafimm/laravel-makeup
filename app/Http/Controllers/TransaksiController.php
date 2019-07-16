@@ -100,7 +100,7 @@ class TransaksiController extends Controller
         $produk = $transaksi->produk_akses;
         $estimasi_mulai = date('d/m/Y', strtotime(Carbon::parse($user->hak_akses->waktu_berakhir)->addDays(1)));
         $estimasi_habis = date('d/m/Y', strtotime(Carbon::parse($user->hak_akses->waktu_berakhir)->addDays(1)->addMonths($produk->waktu)));
-      
+
         return view('user.transaksi-show-user', compact('transaksi', 'user', 'produk', 'estimasi_mulai', 'estimasi_habis'));
     }
 
@@ -125,7 +125,7 @@ class TransaksiController extends Controller
               {
                   // berarti artinya ada akun premium yang sedang jalan, sehingga
                   // akun akan melanjutkan waktunya 0 itu artinya akun free
-                  if($user->hak_akses->nilai_akses != 0)
+                  if($user->hak_akses->nilai_akses != 0 && $user->hak_akses->id_akses == $data->produk_akses->id_produk)
                   {
                       $waktu_mulai = Carbon::parse($user->hak_akses->waktu_berakhir)->addDays(1);
                       $waktu_berakhir = Carbon::parse($user->hak_akses->waktu_berakhir)->addDays(1)->addMonths($data->produk_akses->waktu);

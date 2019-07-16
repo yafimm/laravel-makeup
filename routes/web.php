@@ -19,11 +19,11 @@ Route::get('/', function () {
 Route::get('/subscribe', 'ProdukAksesController@index_user');
 
 Route::namespace('Auth')->group(function(){
-    Route::post('/login', 'LoginController@loginPost');
-    Route::post('/register', 'LoginController@registerPost');
-    Route::get('/login', 'LoginController@login');
-    Route::get('/register', 'LoginController@register');
-    Route::post('/logout', 'LoginController@logout');
+    Route::post('/login', 'LoginController@loginPost')->name('login.post');
+    Route::post('/register', 'LoginController@registerPost')->name('register.post');
+    Route::get('/login', 'LoginController@login')->name('login');
+    Route::get('/register', 'LoginController@register')->name('register');
+    Route::post('/logout', 'LoginController@logout')->name('logout.post');
 
     Route::get('/loginadmin', 'AdminLoginController@login');
     Route::post('/loginadmin', 'AdminLoginController@loginPost');
@@ -49,6 +49,7 @@ Route::group(['prefix' => 'profile',  'middleware' => ['user']], function(){
     Route::put('profile', 'UserController@update_profile')->name('profile.update');
     Route::get('transaksi', 'TransaksiController@index_user')->name('profile.transaksi');
     Route::get('transaksi/{id}', 'TransaksiController@show_user')->name('profile.transaksi.show');
+    Route::get('service', 'ProdukAksesController@index_service');
 });
 
 Route::group(['middleware' => ['user']], function(){

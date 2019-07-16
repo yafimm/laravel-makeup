@@ -20,7 +20,12 @@ class ProdukAksesController extends Controller
   {
       $all_produk = Akses::all(); //biar produknya berurut sesuai dengan jenisnya, entar diambil relasinya
       return view('produk.index-user', compact('all_produk'));
+  }
 
+  public function index_service(Request $request)
+  {
+      $user = \Auth::guard('user')->user();
+      return view('profile.index-service', compact('user'));
   }
 
   public function create()

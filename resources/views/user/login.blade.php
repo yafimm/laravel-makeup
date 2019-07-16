@@ -74,7 +74,7 @@
                             <div class="register-link">
                                 <p style="">
                                     Belum memiliki akun?
-                                    <a href="#">Daftar Di sini</a>
+                                    <a href="{{ route('register') }}">Daftar Di sini</a>
                                 </p>
                             </div>
                         </div>

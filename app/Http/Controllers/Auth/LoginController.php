@@ -74,7 +74,7 @@ class LoginController extends Controller
     		$password = $request->password;
     		$input['password'] = bcrypt($password);
     		$user = User::create($input);
-        $user->akses->attach(1,  [
+        $user->akses()->attach(1,  [
                                   'status' => 'Aktif',
                                   'waktu_berakhir' => '2099-11-11',
                                   'waktu_mulai' => date('Y-m-d'),
