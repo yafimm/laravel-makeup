@@ -93,10 +93,12 @@
             <form class="" action="{{ route('pesan.store') }}" method="POST">
               @method('POST')
               @CSRF
+			  <center>
               <input type="hidden" name="id_produk" value="{{ $produk->id }}">
+			  <a href="{{ url('subscribe') }}" class="btn input-pembayaran">Batal</a>
               <input type="submit" class="btn input-pembayaran" value="Konfirmasi">
+			  </center>
             </form>
-						<a href="{{ url('subscribe') }}" class="btn input-pembayaran">Batal</a>
 					</div>
 				</div>
 			</div>

@@ -11,6 +11,11 @@
 	    			</center>
 	    		</div>
 	    		<div class="subscribe-body">
+					<div class="judul-bestseeler">
+		    			<center>
+		    				<strong style="font-size: 50px;">Best Seller!</strong>
+		    			</center>
+		    		</div>
 	    			<div class="row">
 	    				<div class="col-md-4">
 		    				<div class="card shadow box-subscribe">
@@ -57,94 +62,39 @@
 	    			</div>
 	    		</div>
     		</div>
+			<div class="background-subscribe-2">
+    			<div class="container">
+    				<div class="subscribe-body-2">
+					@foreach($all_produk as $produk_detail)
+	    				<div class="row">
+						@foreach($produk_detail->produk_akses as $produk)
+	    					<div class="col-md-4">
+	    						<div class="card shadow box-subscribe-2">
+								<center>
+									<img class="pricing-image" src="images/6-bulan.png" width="200">
+									<div class="bawah-pricing-image">
+										<h3>{{ $produk->waktu }} Bulan Menjadi Membership</h3>
+										<h5>{{ $produk->deskripsi }}</h5>
+										@if($produk->potongan_harga != 0 && $produk->potongan_harga != NULL)
+										<h5 class="coret">Rp.{{ helper_money_format($produk->harga) }}</h5>
+										<h4>Rp. {{ helper_money_format($produk->harga - $produk->potongan_harga) }}</h4>
+									@else
+										<h4>Rp. {{ helper_money_format($produk->harga) }}</h4>
+									@endif
+										<a class="btn btn-lg btn-daftar" href="{{ url('subscribe/pesan?idproduk='.$produk->id) }}">Daftar</a>
+									</div>
+								</center>
+								</div>
+							</div>
+						@endforeach
+						</div>
+					@endforeach
+					</div>
+				</div>
+			</div>
     	</div>
     </div>
 
-    <div>
-
-      <div class="container">
-        @foreach($all_produk as $produk_detail)
-          <div class="row">
-            @foreach($produk_detail->produk_akses as $produk)
-              <div class="col-md-4">
-                <div class="card shadow box-subscribe">
-                  <center>
-                    <img class="pricing-image" src="images/6-bulan.png" width="200">
-                    <div class="bawah-pricing-image">
-                      <h3>{{ $produk->waktu }} Bulan Menjadi Membership</h3>
-                      <h5>{{ $produk->deskripsi }}</h5>
-                      @if($produk->potongan_harga != 0 && $produk->potongan_harga != NULL)
-                        <h5 class="coret">Rp.{{ helper_money_format($produk->harga) }}</h5>
-                        <h4>Rp. {{ helper_money_format($produk->harga - $produk->potongan_harga) }}</h4>
-                      @else
-                        <h4>Rp. {{ helper_money_format($produk->harga) }}</h4>
-                      @endif
-                      <a class="btn btn-lg btn-daftar" href="{{ url('subscribe/pesan?idproduk='.$produk->id) }}">Daftar</a>
-                    </div>
-                  </center>
-                </div>
-              </div>
-            @endforeach
-          </div>
-        @endforeach
-
-      </div>
-
-    	<div class="keuntungan-subscribe">
-    		<div class="container">
-    			<div class="header-keuntungan">
-    				<h2>dengan menjadi membership,</h2>
-    				<h2>anda akan mendapatkan :</h2>
-    			</div>
-    			<div class="row">
-    				<div class="col-md-3">
-    					<div class="card shadow box-keuntungan">
-    						<img class="pricing-image" src="Images/keuntungan-logo.png" width="150">
-    						<div class="judul-keuntungan">
-    							<h3>Video Premium</h3>
-    						</div>
-    						<div class="isi-keuntungan">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    						</div>
-    					</div>
-    				</div>
-    				<div class="col-md-3">
-    					<div class="card shadow box-keuntungan">
-    						<img class="pricing-image" src="Images/keuntungan-logo.png" width="150">
-    						<div class="judul-keuntungan">
-    							<h3>Video Premium</h3>
-    						</div>
-    						<div class="isi-keuntungan">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    						</div>
-    					</div>
-    				</div>
-    				<div class="col-md-3">
-    					<div class="card shadow box-keuntungan">
-    						<img class="pricing-image" src="Images/keuntungan-logo.png" width="150">
-    						<div class="judul-keuntungan">
-    							<h3>Video Premium</h3>
-    						</div>
-    						<div class="isi-keuntungan">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    						</div>
-    					</div>
-    				</div>
-    				<div class="col-md-3">
-    					<div class="card shadow box-keuntungan">
-    						<img class="pricing-image" src="Images/keuntungan-logo.png" width="150">
-    						<div class="judul-keuntungan">
-    							<h3>Video Premium</h3>
-    						</div>
-    						<div class="isi-keuntungan">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
 
     <div>
 		<div class="testimoni-background">
