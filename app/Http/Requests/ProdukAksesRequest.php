@@ -24,7 +24,7 @@ class ProdukAksesRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_akses' => 'required',
+            'akun_akses' => 'required',
             'harga' => 'required|integer',
             'potongan_harga' => 'sometimes|integer',
             'waktu' => 'required|integer|max:2|min:1',

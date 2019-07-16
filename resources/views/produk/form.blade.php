@@ -3,14 +3,14 @@
               <label for="nama-kategori" class=" form-control-label">Jenis Akun</label>
           </div>
           <div class="col-12 col-md-9">
-              <select name="id_akses" id="select" class="form-control">
+              <select name="akun_akses" id="select" class="form-control">
                 <option disabled>Pilih Jenis Akun.</option>
                 @foreach($all_jenis_akun as $jenis_akun)
                   <option value="{{ $jenis_akun->id }}" {{ ($jenis_akun->id == $produk->id_akses) ? 'selected' : ''}}>{{ $jenis_akun->nama }}</option>
                 @endforeach
               </select>
-            @if($errors->has('id_akses'))
-              <small class="form-text text-danger">*{{ $errors->first('id_akses') }}</small>
+            @if($errors->has('akun_akses'))
+              <small class="form-text text-danger">*{{ $errors->first('akun_akses') }}</small>
               @endif
           </div>
       </div>
