@@ -16,6 +16,7 @@ class CreateAksesTable extends Migration
         Schema::create('akses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
+            $table->string('logo')->nullable();
             $table->integer('nilai_akses');
             $table->string('deskripsi');
             $table->integer('harga');
