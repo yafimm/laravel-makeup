@@ -25,7 +25,8 @@ class ProdukAksesController extends Controller
   public function index_service(Request $request)
   {
       $user = \Auth::guard('user')->user();
-      return view('profile.index-service', compact('user'));
+      $all_user_akses = $user->akses;
+      return view('profile.index-service', compact('all_user_akses', 'user'));
   }
 
   public function create()

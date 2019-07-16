@@ -71,11 +71,11 @@
 	    					<div class="col-md-4">
 	    						<div class="card shadow box-subscribe-2">
 								<center>
-									<img class="pricing-image" src="images/6-bulan.png" width="200">
+									<img class="pricing-image" src="{{ asset('images/logo/'.$produk->akses->logo) }}" width="200">
 									<div class="bawah-pricing-image">
 										<h3>{{ $produk->waktu }} Bulan Menjadi Membership</h3>
 										<h5>{{ $produk->deskripsi }}</h5>
-										@if($produk->potongan_harga != 0 && $produk->potongan_harga != NULL)
+									@if($produk->potongan_harga != 0 && $produk->potongan_harga != NULL)
 										<h5 class="coret">Rp.{{ helper_money_format($produk->harga) }}</h5>
 										<h4>Rp. {{ helper_money_format($produk->harga - $produk->potongan_harga) }}</h4>
 									@else
@@ -97,49 +97,6 @@
 
 
     <div>
-		<div class="testimoni-background">
-			<div class="container">
-				<div  class="header-testimoni">
-					<h2>testimonial</h2>
-				</div>
-				<div class="body-testimoni">
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card shadow box-testimoni">
-								<figure class="figure">
-									<img class="d-block mx-auto foto-testimoni" src="Images/foto-default-user.jpg" width="150">
-								</figure>
-								<h4>Nama User</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card shadow box-testimoni">
-								<figure class="figure">
-									<img class="d-block mx-auto foto-testimoni" src="Images/foto-default-user.jpg" width="150">
-								</figure>
-								<h4>Nama User</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card shadow box-testimoni">
-								<figure class="figure">
-									<img class="d-block mx-auto foto-testimoni" src="Images/foto-default-user.jpg" width="150">
-								</figure>
-								<h4>Nama User</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+      @include('template.testimonial')
 	</div>
 @endsection

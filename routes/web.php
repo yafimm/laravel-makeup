@@ -49,7 +49,7 @@ Route::group(['prefix' => 'profile',  'middleware' => ['user']], function(){
     Route::put('profile', 'UserController@update_profile')->name('profile.update');
     Route::get('transaksi', 'TransaksiController@index_user')->name('profile.transaksi');
     Route::get('transaksi/{id}', 'TransaksiController@show_user')->name('profile.transaksi.show');
-    Route::get('service', 'ProdukAksesController@index_service');
+    Route::get('service', 'ProdukAksesController@index_service')->name('service.index');
 });
 
 Route::group(['middleware' => ['user']], function(){

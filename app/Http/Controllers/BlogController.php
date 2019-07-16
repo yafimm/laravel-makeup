@@ -48,9 +48,9 @@ class BlogController extends Controller
     public function index_user(Request $request)
     {
           if(isset($request->search)){
-              $all_blog = Blog::where('judul', 'like', '%' . $request->search . '%')->get();
+              $all_blog = Blog::where('judul', 'like', '%' . $request->search . '%')->simplePaginate(15);
           }else{
-              $all_blog = Blog::all();
+              $all_blog = Blog::simplePaginate(5);
           }
           $all_blog_kategori = Blog_kategori::all();
           $recent_post = Blog::orderBy('created_at','desc')->take(4)->get();

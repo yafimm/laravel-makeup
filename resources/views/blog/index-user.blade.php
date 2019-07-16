@@ -42,7 +42,9 @@
 							</div>
 						</div>
             @endforeach
-
+            <div class="d-flex justify-content-center">
+              {{ $all_blog->links() }}
+            </div>
 					</div>
           @include('blog.sidebar-user')
 				</div>

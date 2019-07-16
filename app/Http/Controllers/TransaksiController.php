@@ -28,7 +28,7 @@ class TransaksiController extends Controller
     {
         $user = \Auth::guard('user')->user();
         $all_transaksi = $user->transaksi;
-        return view('user.info-transaksi-user', compact('user', 'all_transaksi'));
+        return view('profile.info-transaksi-user', compact('user', 'all_transaksi'));
     }
 
     public function create()
