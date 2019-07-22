@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('test', 'BlogController@test');
+Route::get('dir','BlogController@dir');
 
 Route::get('/subscribe', 'ProdukAksesController@index_user');
 

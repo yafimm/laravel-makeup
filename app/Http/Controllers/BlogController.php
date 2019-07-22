@@ -154,4 +154,35 @@ class BlogController extends Controller
           return redirect()->route('blog.index')->with('flash_message', 'Data gagal dihapus')
                                         ->with('alert-class', 'alert-danger');
     }
+
+    public function test(){
+        // $disk = Storage::disk('google')->getAdapter()->getMetadata('');
+        // $disk = Storage::disk('google')->files('1Xph-9IJmLzHFxmUTcgiy6FWeXI9Pm47Z/');
+        // $disk = Storage::disk('google')->list();
+
+        // $disk = Storage::disk('google')->url('1-kLV9S1DL8NBkOY2gcTkrdZIHMytye0L');
+        // $disk = Storage::disk('google')->getAdapter()->getPathPrefix();
+        // $disk = Storage::disk('google')->put('test.txt', 'eta terangkanlah');
+        $filename = '20190721.mantap.mp4';
+        $dir = '/';
+        $recursive = false; // Get subdirectories also?
+        $contents = collect(Storage::disk('google')->listContents($dir, $recursive));
+        $file = $contents
+            ->where('type', '=', 'file')
+            ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+            ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+            ->first(); // there can be duplicate file names!
+        //return $file; // array with file info
+        $rawData = Storage::disk('google')->get($file['path']);
+
+    }
+
+    public function dir(){
+         $dir = '/';
+         $recursive = false; // Get subdirectories also?
+         $contents = collect(Storage::disk('google')->listContents($dir, $recursive));
+         //return $contents->where('type', '=', 'dir'); // directories
+         return $contents->where('type', '=', 'file'); // files
+    }
+
 }

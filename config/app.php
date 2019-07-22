@@ -177,6 +177,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\MenuActiveServiceProvider::class,
+        App\Providers\GoogleDriveServiceProvider::class,
+        \Pion\Laravel\ChunkUpload\Providers\ChunkUploadServiceProvider::class,  
 
     ],
 

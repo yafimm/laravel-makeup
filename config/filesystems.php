@@ -26,7 +26,8 @@ return [
     |
     */
 
-    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+    // 'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+    'cloud' => 'google',
 
     /*
     |--------------------------------------------------------------------------
@@ -47,24 +48,36 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+
         'thumbnail' => [
             'driver' => 'local',
             'root' => public_path('images/thumbnail'),
         ],
+
         'video' => [
             'driver' => 'local',
             'root' => storage_path('app/videos/thread'),
         ],
+
         'fotoprofil' => [
             'driver' => 'local',
             'root' => public_path('images/profile'),
         ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+
+        'google' => [
+           'driver' => 'google',
+           'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+           'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+           'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+           'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),
+         ],
 
         's3' => [
             'driver' => 's3',

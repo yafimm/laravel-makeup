@@ -18,6 +18,7 @@
 			<div>
         {!! $video->deskripsi !!}
       </div>
+      
       @if($akses == 'BISA');
 			<div>
         <div class="embed-responsive embed-responsive-21by9">
@@ -38,6 +39,7 @@
         </center>
       </div>
       @endif
+
 		</div>
 	</div>
 
