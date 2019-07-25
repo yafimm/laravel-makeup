@@ -9,8 +9,17 @@ function scrollFunction() {
 		document.getElementById("logo").style.width = "100px";
 		document.getElementById("navbar").style.backgroundColor = "transparent";
 		document.getElementById("navbar").style.boxShadow = "0 0 0 0";
+		if (x.matches) { // If media query matches
+			document.getElementById("navbar").style.backgroundColor = "black";
+		} else {
+			
+		}
 	}
 }
+
+var x = window.matchMedia("(max-width: 991.98px)")
+myFunction(x) // Call listener function at run time
+x.addListener(myFunction) // Attach listener function on state changes
 
 function readURL(input) {
 	if (input.files && input.files[0]) {

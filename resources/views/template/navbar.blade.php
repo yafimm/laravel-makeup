@@ -6,8 +6,11 @@
 	              <img id="logo" class="margin-logo" src="{{ asset('images/logo.png') }}" alt="logo" width="100px">
 	            </a>
 	        </div>
-	        <div class="navbar-container">
-	          <ul>
+          <div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" style="color: white;"></i></button>
+          </div>
+	        <div class="navbar-container collapse navbar-collapse" id="navbarText">
+					  <ul class="nav navbar-nav ml-auto">
               @if(!empty($halaman) && $halaman == 'home')
 	            <li class="nav-link active-link">
               @else
@@ -43,6 +46,21 @@
 	              <a class="btn" href="{{ url('about') }}">About Us</a>
 	              <div class="underline"></div>
 	            </li>
+
+              <li class="nav-link">
+                <div class="dropdown">
+                  <a href="#" class="btn" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bell" style="color: white;"></i><span class="jumlah-notif">300</span>
+                  </a>
+                  <div class="dropdown-menu" style="width: auto;">
+                    <a class="dropdown-item" href="#" style="font-size: 16px;">Pemberitahuan 1</a>
+                    <a class="dropdown-item" href="#" style="font-size: 16px;">Pemberitahuan 2</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-warning" href="#" style="font-size: 16px;">Lihat Semua</a>
+                  </div>
+                </div>
+                <div class="underline"></div>
+              </li>
 
 	            @if(Auth::guard('user')->check())
 	            <li class="nav-link">

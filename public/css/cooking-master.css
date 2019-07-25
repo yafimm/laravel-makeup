@@ -7,6 +7,12 @@ html * {
 	font-variant: normal;
 	color: #C01C73;
 }
+
+@media only screen and (max-width: 991.98px) {
+  #navbar {
+    background-color: black;
+  }
+}
 #navbar {
 	
 	position: fixed; 
@@ -30,6 +36,22 @@ html * {
 	color: black;
 	transition: 0.3s;
 }
+.btn .jumlah-notif{
+	position: absolute;
+    display: inline-block;
+    padding: 1px 2px 1px 2px;
+    height: auto;
+    width: auto;
+    line-height: 15px;
+    text-align: center;
+    background: #ff4b5a;
+    color: #fff;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    border-radius: 10%;
+    font-size: 11px;
+}
+
 .navbar-container {
 	text-align: center;
 	font-size: 0;
@@ -38,8 +60,6 @@ html * {
 .navbar-container ul {
 	margin: 0;
 	padding: 0;
-	text-align: right;
-	display: inline-block;
 	vertical-align: middle;
 }
 
@@ -79,6 +99,11 @@ html * {
 
 .navbar-container ul li:hover .btn {
 	color:  #F098BE;
+}
+
+.btn i:hover{
+	color:  #F098BE !important;
+	transition: 0.3s;
 }
 
 .navbar-container ul li:active .btn {
