@@ -37,6 +37,7 @@ class BlogKategoriController extends Controller
           $store = Blog_kategori::create($input);
           if($store)
           {
+             event(new App\Events\Notifikasi(Auth::guard('admin')->user()->username, ' Menambahkan Data Blogkategori'));
               return redirect()->route('blogkategori.index')->with('flash_message', 'Data berhasil diinput')
                                                   ->with('alert-class', 'alert-success');
           }

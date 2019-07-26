@@ -34,7 +34,7 @@
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
-    
+
 
     <!-- Main CSS-->
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
@@ -86,6 +86,53 @@
     <script src="{{ asset('js/main.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+
+    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+    <script>
+     var notificationsWrapper   = $('.noti-wrap');
+     var notificationsToggle    = notificationsWrapper.find('.js-item-menu');
+     var notificationsCountElem = notificationsToggle.find('.quantity');
+     var notificationsCount     = parseInt(notificationsCountElem.val());
+     var notifications          = notificationsWrapper.find('notifi__item');
+
+     if (notificationsCount <= 0) {
+       notificationsWrapper.hide();
+     }
+
+      // Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
+
+      var pusher = new Pusher('adebb69f536b1052d849', {
+        cluster: 'ap1',
+        forceTLS: true
+      });
+
+      // Subscribe to the channel we specified in our Laravel Event
+      var channel = pusher.subscribe('notifikasi');
+
+      // Bind a function to a Event (the full Laravel class)
+      channel.bind('App\\Events\\Notifikasi', function(data) {
+        var existingNotifications = notifications.html();
+        var newNotificationHtml = `
+          <div class="notifi__item">
+              <div class="bg-c1 img-cir img-40">
+                  <i class="zmdi zmdi-email-open"></i>
+              </div>
+              <div class="content">
+                  <p>`+ data.message +`</p>
+                  <span class="date">20 april 2019</span>
+              </div>
+          </div>
+        `;
+        notifications.html(newNotificationHtml + existingNotifications);
+
+        notificationsCount += 1;
+        notificationsCountElem.attr('data-count', notificationsCount);
+        notificationsWrapper.find('.notif-count').text(notificationsCount);
+        notificationsWrapper.show();
+      });
+
+    </script>
 
     <script type="text/javascript">
         $('#summernote').summernote({
